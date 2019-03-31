@@ -46,12 +46,9 @@ RUN apk update \
 
 WORKDIR /app/src
 
-ARG commit=unknown
-ARG tag=1.0.0
-ARG version=1.0.0
-LABEL image.name="froscon-web" \
-      image.version=$version \
-      image.tag=$tag \
+LABEL image.name=m4ProjectName() \
+      image.version=m4ProjectVersion() \
+      image.tag=m4ReleaseImageTag() \
       image.scm.commit=$commit \
-      image.author="Maximilian Berghoff <maximilian.berghoff@gmx.de>" \
-      image.scm.url="git@gitlab.com:froscon/php-track-web.git"
+      image.scm.url=m4GitOriginUrl() \
+      image.author="Maximilian Berghoff <maximilian.berghoff@gmx.de>"

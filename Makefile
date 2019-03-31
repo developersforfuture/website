@@ -25,15 +25,17 @@ override M4_OPTS = \
 	--define m4BaseImageTag=$(call getImageTag, $(baseImage),latest) \
 	--define m4ContainerBasePath=$(containerBasePath)
 
-kubernetes_image_versions:
+kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml
 	@echo @m4 "$(M4_OPTS) $(projectRootDir)/kubernetes/app.production.m4.yaml > $(projectRootDir)/kubernetes/app.production.yaml"
-	@m4 $(M4_OPTS) $(projectRootDir)/kubernetes/app.production.m4.yaml > $(projectRootDir)/kubernetes/app.production.yaml
 
+Dockerfile: Dockerfile.m4
+	@echo @m4 "$(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile"
 
 release:
 	@echo "Release next version: $(VERSION_TAG)"
 	@echo $(VERSION_TAG) > ./VERSION
-	@make kubernetes_image_versions
+	@make kubernetes/app.production.yaml
+	@make Dockerfile
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
