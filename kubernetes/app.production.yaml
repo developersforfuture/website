@@ -1,52 +1,52 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: froscon
-  name: froscon-web
+  namespace: developers
+  name: developers-web
   labels:
-    app.kubernetes.io/name: froscon-web
-    app.kubernetes.io/instance: froscon-web-v1
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
     app.kubernetes.io/version: "v1"
     app.kubernetes.io/component: frontend
-    app.kubernetes.io/part-of: froscon
+    app.kubernetes.io/part-of: developers
     app.kubernetes.io/managed-by: max
 spec:
   ports:
     -
       name: "http"
-      port: 6092
+      port: 7092
       targetPort: 80
       protocol: "TCP"
   selector:
-    app.kubernetes.io/name: froscon-web
-    app.kubernetes.io/instance: froscon-web-v1
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
     app.kubernetes.io/version: "v1"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: froscon
-  name: froscon-web-v1
+  namespace: developers
+  name: developers-web-v1
   labels:
-    app.kubernetes.io/name: froscon-web
-    app.kubernetes.io/instance: froscon-web-v1
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
     app.kubernetes.io/version: "v1"
     app.kubernetes.io/component: frontend
-    app.kubernetes.io/part-of: froscon
+    app.kubernetes.io/part-of: developers
     app.kubernetes.io/managed-by: max
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: froscon-web
-      app.kubernetes.io/instance: froscon-web-v1
+      app.kubernetes.io/name: developers-web
+      app.kubernetes.io/instance: developers-web-v1
       app.kubernetes.io/version: "v1"
   replicas: 2
   template:
     metadata:
-      name: froscon-web-v1
+      name: developers-web-v1
       labels:
-        app.kubernetes.io/name: froscon-web
-        app.kubernetes.io/instance: froscon-web-v1
+        app.kubernetes.io/name: developers-web
+        app.kubernetes.io/instance: developers-web-v1
         app.kubernetes.io/version: "v1"
     spec:
       imagePullSecrets:
@@ -72,38 +72,38 @@ spec:
             - name: APP_WEBROOT
               value: /app/src/public
             - name: BASE_URL
-              value: froscon.local.k8s
+              value: developers.local.k8s
             - name: COMPOSER_CACHE_DIR
               value: /build/cache/composeer
             - name: CONTAINER_DEBUG
               value: "0"
             - name: DB_DATABASE
-              value: froscon
+              value: developers
             - name: DB_HOST
-              value: froscon-mysql
+              value: developers-mysql
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: password
-                  name: froscon-db
+                  name: developers-db
             - name: DB_ROOT_PW
               valueFrom:
                 secretKeyRef:
                   key: root
-                  name: froscon-db
+                  name: developers-db
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
                   key: username
-                  name: froscon-db
+                  name: developers-db
             - name: DB_URL
-              value: mysql://${DB_USER}:${DB_PASSWORD}@froscon-mysql:3306/froscon
+              value: mysql://${DB_USER}:${DB_PASSWORD}@developers-mysql:3306/developers
             - name: PHPCR_PASSWORD
               value: admin
             - name: PHPCR_USER
               value: admin
             - name: PHPCR_WORKSPACE
-              value: froscon
+              value: developers
             - name: RUNTIME
               value: development
             - name: SYMFONY_ENV
@@ -113,8 +113,8 @@ spec:
             - name: VERSION_TAG
             - name: XDEBUG_ENABLED
               value: "1"
-          image: registry.gitlab.com/froscon/php-track-web/app-production:0.2.16
-          name: froscon-web
+          image: //app-:latest
+          name: developers-web
           ports:
             - containerPort: 80
               name: "http"
