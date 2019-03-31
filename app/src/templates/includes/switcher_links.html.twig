@@ -1,0 +1,4 @@
+{% trans %}Read in{% endtrans %}:&nbsp;
+{% for locale in locales %}
+    <a href="{{ locale.link }}" title="{{ locale.locale_target_language }}" class="navbar-item" ><img src="{{ asset('/bundles/sonatatranslation/img/flags/' ~ locale.locale ~ '.png') }}"></a>
+{% endfor %}

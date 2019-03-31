@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="no-js" {{ sonata_seo_html_attributes() }} >
+<head>
+    {% block structured_data %}
+        <script type="application/ld+json">{% spaceless %}
+{
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Developers For Future",
+    "image": "https://developersforfuture.org/img/socialcard.png",
+    "url": "https://developersforfuture.org",
+    "sameAs": [
+        "https://twitter.com/DevelopersForFuture",
+        "https://developersforfuture.org"
+    ]
+}
+{% endspaceless %}</script>
+    {% endblock %}
+
+    {{ sonata_seo_metadatas() }}
+    {{ sonata_seo_link_canonical() }}
+    {{ sonata_seo_lang_alternates() }}
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_head_attributes() }}
+    <meta name="og:url" charset="UTF-8" content="{{ app.request.uri }}"/>
+    {% set homeRoute = '/cms/routes/'~app.request.getLocale() %}
+    {% block extra_metas %}{% endblock %}
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/manifest.json">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/build/base.css">
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+		var _paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(["setCookieDomain", "*.developersforfuture.org"]);
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+			var u="//piwik.prberghoff.de/";
+			_paq.push(['setTrackerUrl', u+'matomo.php']);
+			_paq.push(['setSiteId', '3']);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+    </script>
+    <!-- End Matomo Code -->
+</head>
+<body class="bg-green">
+<section class="hero is-medium is-bold bg-green-light font-light">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="{{ url('home') }}">
+                        <img src="/img/logo.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                </div>
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+
+                        <div class="tabs is-right">
+                            <ul>
+                                <li class="is-active">{{ locale_switcher(null, null, 'includes/switcher_links.html.twig') }}</li>
+                            </ul>
+                            &nbsp;
+                            <span class="navbar-item">
+                                        <a class="button is-white is-outlined" href="https://github.com/developersforfuture/website">
+                                            <span class="icon">
+                                                <i class="fa fa-github"></i>
+                                            </span>
+                                            <span title="Hello from the other side">View Source</span>
+                                        </a>
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                Developers For Future
+            </h1>
+            <h2 class="subtitle">
+                {% trans %}Support the movement, evaluate a climate friendly development workflow.{% endtrans %}
+            </h2>
+        </div>
+    </div>
+</section>
+<div class="box cta">
+    <p class="has-text-centered">
+        <span class="tag is-primary">New</span> {% trans %}Let's experience something different. Stay tuned.{% endtrans %}
+    </p>
+</div>
+
+{% block content %}
+
+{% endblock %}
+<br>
+<footer class="footer bg-green font-light">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3 is-offset-2"></div>
+            <div class="column is-3"></div>
+            <div class="column is-4">
+                <h2><strong>{% trans %}legals{% endtrans %}</strong></h2>
+                <ul>
+                    <ul>
+                        <li><a href="{{ url(homeRoute ~ '/impressum') }}">{% trans %}impressum{% endtrans %}</a></li>
+                        <li><a href="{{ url(homeRoute ~ '/data-policy') }}">{% trans %}data_policy{% endtrans %}</a></li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <div class="content has-text-centered">
+            <p>
+                {% trans %}Contact{% endtrans %}:&nbsp;
+                <a class="icon" href="https://twitter.com/DevelopersForFuture">
+                    <i class="fa fa-twitter"></i>
+                </a>&nbsp;
+                <a class="icon" href="mailto:info@developersforfuture.org">
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </p>
+
+            <div class="control level-item">
+                <a href="https://github.com/dansup/bulma-templates">
+                    <div class="tags has-addons">
+                        <span class="tag is-dark">Bulma Templates</span>
+                        <span class="tag is-info">MIT license</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="/build/app.js"></script>
+</footer>
+</body>
+</html>

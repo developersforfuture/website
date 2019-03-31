@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+
+set -ex
+
+
+echo "+ + + Installation of tmp dir for ... + + +"
+if [[ -d /etc/nginx/data/tmp/client_temp ]]; then
+    echo "+ + + Creation of client_temp dir not needed + + +"
+else
+    echo "+ + + Create client_tmp + + +"
+    mkdir -p /etc/nginx/data/tmp/client_temp
+fi
+
+echo "+ + + Installation of proxy dir for ... + + +"
+if [[ -d /etc/nginx/data/proxy_temp ]]; then
+    echo "+ + + Creation of proxy_dir dir not needd + + +"
+else
+    echo "+ + + Create proxy_dir + + +"
+    mkdir -p /etc/nginx/data/proxy_temp
+fi
+
+echo " + + + Composer install + + + "
+composer-install-wrapper.sh
+echo " + + + Cache handling + + +"
+cd ${APP_BASEDIR_SRC}
+php -d memory_limit=-1 bin/console cache:clear
+php -d memory_limit=-1 bin/console cache:warmup
+bin/console assets:install
+sh bin/reloadFixtures.sh
+cd -
+
+chmod g+rwx -R ${APP_BASEDIR_SRC}/var
+chown ${SYSTEM_APPUSER_NAME}:${SYSTEM_APPUSER_NAME} -R ${APP_BASEDIR_SRC}/var
+
+chmod g+rwx -R ${APP_BASEDIR_TMP}
+chown ${SYSTEM_APPUSER_NAME}:${SYSTEM_APPUSER_NAME} -R ${APP_BASEDIR_TMP}

@@ -1,0 +1,66 @@
+@import "../fonts/fonts";
+@import "~bulma";
+
+body {
+  background-color: lightgray;
+}
+
+
+// Set your brand colors
+$green: #1B7340;
+$green-light: #1DA64A;
+$black: #000000;
+$blue-light: #90D3ED;
+$beige-light: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Jost", sans-serif;
+$grey-dark: $black;
+$grey-light: $beige-light;
+$primary: $green;
+$link: $blue-light;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+$family-primary: "Jost", sans-serif;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-light;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/form.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Jost-Semi;
+}
+
+p, a, li {
+  font-family: MerriweatherSans-Regular;
+}
+
+.bg-green-light {
+  background-color: $green-light;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.bg-beige-light {
+  background-color: $beige-light;
+}
+
+.font-light {
+  color: $beige-light!important;
+}

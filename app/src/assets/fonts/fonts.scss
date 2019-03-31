@@ -1,0 +1,36 @@
+font-face {
+  font-family: 'Jost-Semi';
+  src: url('Jost-Semi.svg#Jost-Semi') format('svg'),
+       url('Jost-Semi.ttf') format('truetype'),
+       url('Jost-Semi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jost';
+  src: url('jost.eot'),
+       url('jost.eot?#iefix') format('embedded-opentype'),
+       url('jost.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MerriweatherSans-Regular';
+  src: url('MerriweatherSans-Regular.svg#MerriweatherSans-Regular') format('svg'),
+       url('MerriweatherSans-Regular.ttf') format('truetype'),
+       url('MerriweatherSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'merriw';
+  src: url('merriw.eot');
+  src: url('merriw.eot?#iefix') format('embedded-opentype'),
+       url('merriw.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

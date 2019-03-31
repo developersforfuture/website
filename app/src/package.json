@@ -1,0 +1,24 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.22.0",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "current:release": "semver $(git describe --abbrev=0 --tags)",
+        "next:patch": "semver $(git describe --abbrev=0 --tags) -i patch",
+        "next:minor": "semver $(git describe --abbrev=0 --tags) -i minor",
+        "next:major": "semver $(git describe --abbrev=0 --tags) -i major",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "bulma": "^0.7.2",
+        "semver": "^5.6.0"
+    }
+}

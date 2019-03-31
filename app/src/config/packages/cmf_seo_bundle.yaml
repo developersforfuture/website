@@ -1,0 +1,39 @@
+# Read the documentation: https://symfony.com/doc/master/cmf/bundles/seo/configuration.html
+cmf_seo:
+    persistence:
+        phpcr: ~
+    title: '%%content_title%% | Developers For Future'
+    description: '%%content_description%% Support the movement, evaluate a climate friendly development workflow.'
+
+sonata_seo:
+    page:
+        title: Developers For Future
+        metas:
+            name:
+                "viewport": " minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no"
+                keywords: 'web, development, infrastructure, climate'
+                title: '%default_title%'
+                description: '%default_description%'
+                "msapplication-TileColor": "#ffffff"
+                "msapplication-TileImage": "/favicons/ms-icon-144x144.png"
+                "theme-color": "#ffffff"
+                "referrer": "origin"
+                "twitter:site": "DevelopersForFuture"
+                "twitter:creator": "@DevelopersForFuture"
+                "twitter:card": "summary_large_image"
+                "twitter:title": '%default_title%'
+                "twitter:description": '%default_description%'
+                "twitter:url": "https://developers-for-future.org"
+                "twitter:image:src": "https://developers-for-future.org/img/socialcard.png"
+            http-equiv:
+                "Content-Type": "text/html; charset=utf-8"
+            property:
+                "og:site_name": '%default_title%'
+                "og:type": "article"
+                "og:title": '%default_title%'
+                "og:description": '%default_description%'
+                "og:url": "/img/socialcard.png"
+                "og:image": "%default_page_image%"
+                "og:image:alt": "%default_description%"
+                "article:author": "https://developers-for-future.org"
+                "article:publisher": "https://developers-for-future.org"
