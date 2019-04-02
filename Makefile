@@ -3,7 +3,7 @@ include Makefile.docker
 .PHONY: unit_test, before_release, release
 unit_test:
 	@echo "+++ Unit tests +++"
-override projectRootDir = .
+override projectRootDir = ./
 override projectVersionFile = $(projectRootDir)/VERSION
 override projectVersion = $(shell head -n1 $(projectVersionFile))
 override gitOriginUrl = $(shell git config --get remote.origin.url)
