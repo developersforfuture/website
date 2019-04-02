@@ -32,9 +32,9 @@ Dockerfile: Dockerfile.md
 	@echo @m4 "$(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile"
 
 args=$(filter-out $@,$(MAKECMDGOALS))
+VERSION_TAG=$(args)
 release:
 	$(if $(args),,$(error: set project version string, when calling this task))
-	export VERSION_TAG=$(args)
 	@echo "Release next version: $(VERSION_TAG)"
 	@echo $(VERSION_TAG) > ./VERSION
 	@make kubernetes/app.production.yaml
