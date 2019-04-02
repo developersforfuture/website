@@ -31,7 +31,7 @@ kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml
 Dockerfile: Dockerfile.md
 	@echo @m4 "$(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile"
 
-args=`arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
+args=$(filter-out $@,$(MAKECMDGOALS))
 release:
 	$(if $(args),,$(error: set project version string, when calling this task))
 	export VERSION_TAG=$(args)
