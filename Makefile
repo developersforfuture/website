@@ -1,6 +1,6 @@
 include Makefile.docker
 
-.PHONY: unit_test, before_release, release
+.PHONY: unit_test, before_release, release, kubernetes/app.production.yaml, Dockerfile
 unit_test:
 	@echo "+++ Unit tests +++"
 override projectRootDir = ./

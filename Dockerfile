@@ -47,7 +47,7 @@ RUN apk update \
 WORKDIR /app/src
 
 LABEL image.name= \
-      image.version=0.1.12 \
+      image.version=0.1.13 \
       image.tag=m4ReleaseImageTag() \
       image.scm.commit=$commit \
       image.scm.url=git@github.com:developersforfuture/website.git \
