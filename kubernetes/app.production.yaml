@@ -113,7 +113,7 @@ spec:
             - name: VERSION_TAG
             - name: XDEBUG_ENABLED
               value: "1"
-          image: registry.gitlab.com/developersforfuture/registry/app-production:0.1.3
+          image: registry.gitlab.com/developersforfuture/registry/app-production:0.1.14
           name: developers-web
           ports:
             - containerPort: 80
