@@ -28,7 +28,7 @@ override M4_OPTS = \
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml
 	@echo @m4 "$(M4_OPTS) $(projectRootDir)/kubernetes/app.production.m4.yaml > $(projectRootDir)/kubernetes/app.production.yaml"
 
-Dockerfile: Dockerfile.m4
+Dockerfile: Dockerfile
 	@echo @m4 "$(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile"
 
 release:
