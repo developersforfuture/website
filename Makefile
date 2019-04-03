@@ -8,6 +8,7 @@ override projectRootDir = ./
 override projectVersionFile = $(projectRootDir)/VERSION
 override projectVersion = $(shell head -n1 $(projectVersionFile))
 override gitOriginUrl = $(shell git config --get remote.origin.url)
+override projectName=frontend-web
 override projectRegistry=$(REGISTRY)
 override projectPath=$(REPOSITORY_PATH)
 override baseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)

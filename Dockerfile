@@ -46,7 +46,7 @@ RUN apk update \
 
 WORKDIR /app/src
 
-LABEL image.name= \
+LABEL image.name=developers-web\
       image.version=0.1.18 \
       image.tag=registry.gitlab.com/developersforfuture/registry/app-production:0.1.18 \
       image.scm.commit=$commit \
