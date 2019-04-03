@@ -113,7 +113,7 @@ spec:
             - name: VERSION_TAG
             - name: XDEBUG_ENABLED
               value: "1"
-          image: registry.gitlab.com/developersforfuture/registry/app-production:0.1.18
+          image: registry.gitlab.com/developersforfuture/registry/app-production:0.1.20
           name: developers-web
           ports:
             - containerPort: 80
@@ -124,5 +124,4 @@ spec:
               cpu: "250m"
             limits:
               memory: "248Mi"
-              cpu: "300m"
-
+              cpu: "200m"
