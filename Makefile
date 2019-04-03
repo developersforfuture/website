@@ -21,8 +21,8 @@ override M4_OPTS = \
 	--define m4ProjectName=$(projectName) \
 	--define m4ProjectVersion=$(projectVersion) \
 	--define m4GitOriginUrl=$(gitOriginUrl) \
-	--define m4BaseImage=$(call getImage, $(baseImage)) \
-	--define m4BaseImageTag=$(call getImageTag, $(baseImage)) \
+	--define m4BaseImage=$(baseImage) \
+	--define m4BaseImageTag=$(projectVersion) \
 	--define m4ContainerBasePath=$(containerBasePath)
 
 
