@@ -4,7 +4,7 @@
     <unit id="ELxDKd1" name="Read in">
       <segment>
         <source>Read in</source>
-        <target>Read in</target>
+        <target>Auch in</target>
       </segment>
     </unit>
     <unit id="10oNJWZ" name="Support the movement, evaluate a climate friendly development workflow.">
@@ -22,7 +22,7 @@
     <unit id="JWCR3cW" name="legals">
       <segment>
         <source>legals</source>
-        <target>Legals</target>
+        <target>Rechtliches</target>
       </segment>
     </unit>
     <unit id="D_wJUok" name="impressum">
@@ -34,13 +34,13 @@
     <unit id="VWqvJ1a" name="data_policy">
       <segment>
         <source>data_policy</source>
-        <target>Datapolicy</target>
+        <target>Datenschutz</target>
       </segment>
     </unit>
     <unit id="K1w9JnI" name="Contact">
       <segment>
         <source>Contact</source>
-        <target>Contact</target>
+        <target>Kontakt</target>
       </segment>
     </unit>
   </file>
