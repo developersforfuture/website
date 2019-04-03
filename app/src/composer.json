@@ -8,6 +8,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.1",
         "lunetics/locale-bundle": "^2.6",
         "sonata-project/translation-bundle": "^2.4",
+        "symfony-cmf/block-bundle": "^2.1",
         "symfony-cmf/cmf-phpcr-dbal-pack": "^1.0",
         "symfony-cmf/routing-auto-bundle": "^2.1",
         "symfony-cmf/seo-bundle": "^2.1",

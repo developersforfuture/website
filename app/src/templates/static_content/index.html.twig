@@ -1,5 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    {{ cmfMainContent.body|raw }}
+    {% if cmfMainContent.body  %}
+        {{ cmfMainContent.body|raw }}
+    {% endif %}
+    {% if cmfMainContent.additionalInfoBlock  %}
+    <section class="container">
+        {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
+    </section>
+    {% endif %}
 {% endblock %}

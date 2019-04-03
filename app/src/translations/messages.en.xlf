@@ -55,5 +55,11 @@
         <target>Contact</target>
       </segment>
     </unit>
+    <unit id="2QGf8iC" name="organisation">
+      <segment>
+        <source>organisation</source>
+        <target>Oranisation</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

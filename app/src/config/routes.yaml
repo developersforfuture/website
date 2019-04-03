@@ -2,12 +2,6 @@ home_redirect:
     path: /
     defaults:
         _controller: lunetics_locale.switcher_controller:switchAction
-        route: 'home'
+        route: '/cms/routes/%locale%'
         statusCode: 301
         useReferrer: false
-
-home:
-    path: /%locale%/home
-    controller:   Symfony\Bundle\FrameworkBundle\Controller\TemplateController
-    defaults:
-        template: "pages/home.html.twig"

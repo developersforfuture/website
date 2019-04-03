@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures\PHPCR;
 
+use App\Document\IconBlock;
 use DateTime;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -92,14 +93,13 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
 
                 }
             }
-
-            if (isset($overview['blocks'])) {
-                foreach ($overview['blocks'] as $name => $block) {
-                    $this->loadBlock($manager, $page, $name, $block);
-                }
-            }
         }
 
+        if (isset($overview['blocks'])) {
+            foreach ($overview['blocks'] as $name => $block) {
+                $this->loadBlock($manager, $page, $name, $block);
+            }
+        }
         $manager->flush(); //to get ref id populated
     }
 
@@ -127,7 +127,7 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
      * Load a block from the fixtures and create / update the node. Recurse if there are children.
      *
      * @param ObjectManager|DocumentManagerInterface $manager the document manager
-     * @param string $parentPath the parent of the block
+     * @param object $parent
      * @param string $name the name of the block
      * @param array $block the block definition
      *
@@ -148,7 +148,6 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
             // $document needs to be an instance of BaseBlock ...
             $document->setParentDocument($parent);
             $document->setName($name);
-            $manager->persist($document);
         }
 
         if ('Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ReferenceBlock' == $className) {
@@ -161,10 +160,20 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
             $document->setActionName($block['actionName']);
         }
 
+        $manager->persist($document);
+
         // set properties
         if (isset($block['properties'])) {
             foreach ($block['properties'] as $propName => $prop) {
-                $class->reflFields[$propName]->setValue($document, $prop);
+                if (is_array($prop)) {
+                    foreach ($prop as $lang => $translatedProp) {
+                        $class->reflFields[$propName]->setValue($document, $translatedProp);
+                    }
+                    $manager->bindTranslation($document, $lang);
+                } else {
+                    $class->reflFields[$propName]->setValue($document, $prop);
+                }
+
             }
         }
         // create children
