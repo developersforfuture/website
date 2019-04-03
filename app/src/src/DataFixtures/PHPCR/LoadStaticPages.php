@@ -11,6 +11,7 @@ use Doctrine\ODM\PHPCR\DocumentManager;
 use App\Document\StaticPage;
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use PHPCR\Util\NodeHelper;
+use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute;
 use Symfony\Cmf\Bundle\SeoBundle\Model\SeoMetadata;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -100,6 +101,26 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
                 $this->loadBlock($manager, $page, $name, $block);
             }
         }
+
+        // redirect to uri
+        $redirect = new RedirectRoute();
+        $redirect->setPosition($parent, 'de');
+        $redirect->setUri('/de/home');
+        $manager->persist($redirect);
+
+        // redirect to uri
+        $redirect = new RedirectRoute();
+        $redirect->setPosition($parent, 'en');
+        $redirect->setUri('/en/home');
+        $manager->persist($redirect);
+
+        $manager->persist($redirect);
+
+        // redirect to uri
+        $redirect = new RedirectRoute();
+        $redirect->setPosition($parent, 'external');
+        $redirect->setUri('http://cmf.symfony.com');
+        $manager->persist($redirect);
         $manager->flush(); //to get ref id populated
     }
 
