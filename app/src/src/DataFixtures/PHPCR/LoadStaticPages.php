@@ -102,26 +102,7 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
             }
         }
 
-        // redirect to uri
-        $redirect = new RedirectRoute();
-        $redirect->setPosition($parent, 'de');
-        $redirect->setUri('/de/home');
-        $manager->persist($redirect);
-
-        // redirect to uri
-        $redirect = new RedirectRoute();
-        $redirect->setPosition($parent, 'en');
-        $redirect->setUri('/en/home');
-        $manager->persist($redirect);
-
-        $manager->persist($redirect);
-
-        // redirect to uri
-        $redirect = new RedirectRoute();
-        $redirect->setPosition($parent, 'external');
-        $redirect->setUri('http://cmf.symfony.com');
-        $manager->persist($redirect);
-        $manager->flush(); //to get ref id populated
+        $manager->flush();
     }
 
     /**
