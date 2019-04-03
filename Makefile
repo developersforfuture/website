@@ -3,6 +3,7 @@ include Makefile.docker
 .PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, before_release, release,
 unit_test:
 	@echo "+++ Unit tests +++"
+
 override projectRootDir = ./
 override projectVersionFile = $(projectRootDir)/VERSION
 override projectVersion = $(shell head -n1 $(projectVersionFile))
