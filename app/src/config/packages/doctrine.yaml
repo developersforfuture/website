@@ -28,10 +28,6 @@ doctrine_phpcr:
     odm:
         auto_mapping: true
         auto_generate_proxy_classes: '%kernel.debug%'
-        locales:
-            en: ['de']
-            de: ['en']
-
 
 doctrine_cache:
     providers:

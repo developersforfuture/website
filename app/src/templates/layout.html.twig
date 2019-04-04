@@ -23,7 +23,6 @@
     {{ sonata_seo_title() }}
     {{ sonata_seo_head_attributes() }}
     <meta name="og:url" charset="UTF-8" content="{{ app.request.uri }}"/>
-    {% set homeRoute = '/cms/routes/'~app.request.getLocale() %}
     {% block extra_metas %}{% endblock %}
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
@@ -70,7 +69,7 @@
                         <img src="/img/logo.png" alt="Logo">
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenu">
-                                <span></span>
+                                <span><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></span>
                                 <span></span>
                                 <span></span>
                             </span>
@@ -80,8 +79,7 @@
 
                         <div class="tabs is-right">
                             <ul>
-                                <li><a href="{{ url(homeRoute ~ '/organisation') }}">{% trans %}organisation{% endtrans %}</a></li>
-                                <li class="is-active">{{ locale_switcher(null, null, 'includes/switcher_links.html.twig') }}</li>
+                                <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
                             </ul>
                             &nbsp;
                             <span class="navbar-item">
@@ -105,14 +103,14 @@
                 Developers For Future
             </h1>
             <h2 class="subtitle">
-                {% trans %}Support the movement, evaluate a climate friendly development workflow.{% endtrans %}
+                Support the movement, evaluate a climate friendly development workflow.
             </h2>
         </div>
     </div>
 </section>
 <div class="box cta">
     <p class="has-text-centered">
-        <span class="tag is-primary">New</span> {% trans %}Let's experience something different. Stay tuned.{% endtrans %}
+        <span class="tag is-primary">New</span> Let's experience something different. Stay tuned.
     </p>
 </div>
 
@@ -124,20 +122,27 @@
     <div class="container">
         <div class="columns">
             <div class="column is-3 is-offset-2"></div>
-            <div class="column is-3"></div>
-            <div class="column is-4">
-                <h2><strong>{% trans %}legals{% endtrans %}</strong></h2>
+            <div class="column is-3">
+                <h2><strong>Other</strong></h2>
                 <ul>
                     <ul>
-                        <li><a href="{{ url(homeRoute ~ '/impressum') }}">{% trans %}impressum{% endtrans %}</a></li>
-                        <li><a href="{{ url(homeRoute ~ '/data-policy') }}">{% trans %}data_policy{% endtrans %}</a></li>
+                        <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="column is-4">
+                <h2><strong>Legals</strong></h2>
+                <ul>
+                    <ul>
+                        <li><a href="{{ url('/cms/routes/impressum') }}">Impressum</a></li>
+                        <li><a href="{{ url('/cms/routes/data-policy') }}">Data Policy</a></li>
                     </ul>
                 </ul>
             </div>
         </div>
         <div class="content has-text-centered">
             <p>
-                {% trans %}Contact{% endtrans %}:&nbsp;
+                Contact:&nbsp;
                 <a class="icon" href="https://twitter.com/DevsForFuture">
                     <i class="fa fa-twitter"></i>
                 </a>&nbsp;

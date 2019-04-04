@@ -17,8 +17,6 @@ cmf_routing:
             App\Document\StaticPage: static_content/index.html.twig
 
 cmf_core:
-    multilang:
-        locales: '%locales%'
     # content-bundle, menu-bundle, block-bundle and routing-bundle will get same persistence configduration as core
     # read about configuration: https://symfony.com/doc/current/cmf/bundles/core/configuration.html
     persistence:

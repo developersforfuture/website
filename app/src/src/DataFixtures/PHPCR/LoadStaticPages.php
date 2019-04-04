@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures\PHPCR;
 
-use App\Document\IconBlock;
 use DateTime;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -11,7 +10,6 @@ use Doctrine\ODM\PHPCR\DocumentManager;
 use App\Document\StaticPage;
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use PHPCR\Util\NodeHelper;
-use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute;
 use Symfony\Cmf\Bundle\SeoBundle\Model\SeoMetadata;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -73,6 +71,7 @@ class LoadStaticPages implements FixtureInterface, OrderedFixtureInterface, Cont
             } else {
                 $page->setTitle($overview['title']);
                 $page->setBody($overview['body']);
+                $page->setDescription($overview['description']);
             }
 
             if (isset($overview['publishable']) && false === $overview['publishable']) {

@@ -14,7 +14,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 use Symfony\Cmf\Bundle\SeoBundle\SitemapAwareInterface;
 
 /**
- * @PHPCRODM\Document(referenceable=true, translator="child")
+ * @PHPCRODM\Document(referenceable=true)
  *
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
@@ -34,7 +34,7 @@ class StaticPage extends StaticContent implements SitemapAwareInterface, SeoAwar
 
     /**
      * @var string
-     * @PHPCRODM\Field(type="string", translated=true)
+     * @PHPCRODM\Field(type="string")
      */
     private $description;
 

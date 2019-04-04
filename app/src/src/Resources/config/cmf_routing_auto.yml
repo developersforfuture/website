@@ -1,6 +1,5 @@
 App\Document\StaticPage:
     definitions:
-        - { uri_schema: '/{locale}/{title}' }
+        - { uri_schema: '/{title}' }
     token_providers:
         title: [content_method, {method: getName }]
-        locale: [content_method, {method: getLocale }]

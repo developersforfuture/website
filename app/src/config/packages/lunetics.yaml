@@ -1,7 +1,0 @@
-lunetics_locale:
-  strict_mode: true
-  guessing_order:
-    - router
-    - cookie
-    - browser
-  allowed_locales: '%locales%'

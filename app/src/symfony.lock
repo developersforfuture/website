@@ -119,38 +119,14 @@
     "knplabs/knp-menu-bundle": {
         "version": "v2.2.1"
     },
-    "lunetics/locale-bundle": {
-        "version": "2.6.4"
-    },
     "monolog/monolog": {
         "version": "1.24.0"
-    },
-    "nikic/php-parser": {
-        "version": "v4.2.1"
     },
     "nyholm/nsa": {
         "version": "1.1.0"
     },
     "php-translation/common": {
         "version": "1.0.0"
-    },
-    "php-translation/extractor": {
-        "version": "1.7.1"
-    },
-    "php-translation/symfony-bundle": {
-        "version": "0.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.4",
-            "ref": "ee15ad002114fba7b694a7fe429419b518d43bc4"
-        },
-        "files": [
-            "config/packages/dev/php_translation.yaml",
-            "config/packages/php_translation.yaml",
-            "config/routes/dev/php_translation.yaml",
-            "config/routes/php_translation.yaml"
-        ]
     },
     "php-translation/symfony-storage": {
         "version": "1.0.1"
@@ -182,20 +158,6 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
-    "sonata-project/admin-bundle": {
-        "version": "3.31",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "3.31",
-            "ref": "0e5931df1732e3dccfba42a20853049e5e9db6ae"
-        },
-        "files": [
-            "config/packages/sonata_admin.yaml",
-            "config/routes/sonata_admin.yaml",
-            "src/Admin/.gitignore"
-        ]
-    },
     "sonata-project/block-bundle": {
         "version": "3.14.0"
     },
@@ -222,18 +184,6 @@
     },
     "sonata-project/seo-bundle": {
         "version": "2.7.0"
-    },
-    "sonata-project/translation-bundle": {
-        "version": "2.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "2.3",
-            "ref": "00e821cb362f00c6893f7183311893267330ecfe"
-        },
-        "files": [
-            "config/packages/sonata_translation.yaml"
-        ]
     },
     "symfony-cmf/block-bundle": {
         "version": "2.1.1"
@@ -334,9 +284,6 @@
     "symfony/event-dispatcher": {
         "version": "v4.2.2"
     },
-    "symfony/expression-language": {
-        "version": "v4.2.4"
-    },
     "symfony/filesystem": {
         "version": "v4.2.2"
     },
@@ -423,9 +370,6 @@
             "ref": "5374e24d508ba8fd6ba9eb15170255fdb778316a"
         }
     },
-    "symfony/security-acl": {
-        "version": "v3.0.1"
-    },
     "symfony/security-bundle": {
         "version": "3.3",
         "recipe": {
@@ -438,17 +382,8 @@
             "config/packages/security.yaml"
         ]
     },
-    "symfony/security-core": {
-        "version": "v4.2.3"
-    },
     "symfony/security-csrf": {
         "version": "v4.2.3"
-    },
-    "symfony/security-guard": {
-        "version": "v4.2.4"
-    },
-    "symfony/security-http": {
-        "version": "v4.2.4"
     },
     "symfony/stopwatch": {
         "version": "v4.2.3"

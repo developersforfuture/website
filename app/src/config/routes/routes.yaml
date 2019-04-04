@@ -1,15 +1,6 @@
 home_redirect:
   path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   defaults:
-    _controller: lunetics_locale.switcher_controller:switchAction
-    route: '/cms/routes/%locale%/home'
-    statusCode: 301
-    useReferrer: false
-
-home_locale_redirect:
-  path: /{_locale}
-  defaults:
-    _controller: lunetics_locale.switcher_controller:switchAction
-    route: '/cms/routes/%locale%/home'
-    statusCode: 301
-    useReferrer: false
+    path: /home
+    permanent: true
