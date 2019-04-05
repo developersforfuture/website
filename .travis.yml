@@ -13,8 +13,9 @@ cache:
   directories:
     - vendor
     - node_modules
+    - $HOME/.node_modules
     - npm
-    - composer
+    - $HOME/.composer
 
 stages:
   - name: prepare
