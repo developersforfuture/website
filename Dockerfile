@@ -47,8 +47,8 @@ RUN apk update \
 WORKDIR /app/src
 
 LABEL image.name=frontend \
-      image.version=0.1.23 \
-      image.tag=registry.gitlab.com/developersforfuture/registry/app-production:0.1.23 \
+      image.version=0.2.0 \
+      image.tag=registry.gitlab.com/developersforfuture/registry/app-production \
       image.scm.commit=$commit \
       image.scm.url=git@github.com:developersforfuture/website.git \
       image.author="Maximilian Berghoff <maximilian.berghoff@gmx.de>"
