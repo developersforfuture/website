@@ -1,4 +1,4 @@
-.PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, before_release, release,
+.PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, release, dobi.yaml
 unit_test:
 	@echo "+++ Unit tests +++"
 
@@ -52,8 +52,6 @@ release:
 	$(if $(args),,$(error: set project version string, when calling this task))
 	@echo "Release next version: $(VERSION_TAG)"
 	@echo $(VERSION_TAG) > ./VERSION
-	@make kubernetes/app.production.yaml
-	@make Dockerfile
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
