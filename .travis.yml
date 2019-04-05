@@ -1,0 +1,85 @@
+env:
+  - REGISTRY_USER=electricmaxxx
+  - REGISTRY_PASSWORD=ABC
+  - REGISTRY=registry.gitlab.com
+  - REPOSITORY_PATH=developersforfuture/registry
+  - COMPOSE_PROJECT_NAME=defelopersforfuture
+  - CONTAINER_IMAGE=${REGISTRY}/${REPOSITORY_PATH}/app
+  - RUNTIME=production
+language: php
+services:
+  - docker
+cache:
+  directories:
+    - vendor
+    - node_modules
+    - npm
+    - composer
+
+stages:
+  - name: prepare
+    if: ag IS blank
+  - name: test
+    if: ag IS blank
+  - name: build
+    if: ag IS blank
+  - name: deploy
+    if: tag IS present
+jobs:
+  include:
+    - name: prepare_ci_release
+      before_script: .travis/build_before_script.sh
+      install: .travis/build_install.sh
+      script: .travis/build_script.sh
+      after_script: .travis/build_after_script.sh
+      stage: prepare
+      env:
+        - RUNTIME='ci'
+        - BUILD_ARGS='--build-arg composer_dev=1'
+        - CONTEXT_PATH='./'
+    - name:  test_unit
+      stage: test
+      env:
+        - RUNTIME=ci
+        - DB_ROOT_PW=root
+        - DB_DATABASE=developeers
+        - DB_HOST=mysql
+        - DB_USER=developeers
+        - DB_PASSWORD=developeers
+        - APP_DEBUG=0
+        - APP_ENV=test
+        - SYMFONY_ENV=test
+      before_script: .travis/test_before_script.sh
+      install: .travis/test_install.sh
+      script: .travis/test_script.sh
+    - name: build_production
+      stage: build
+      env:
+        - RUNTIME='production'
+        - CONTEXT_PATH='./'
+    - name: build_development
+      before_script: .travis/build_before_script.sh
+      install: .travis/build_install.sh
+      script: .travis/build_script.sh
+      after_script: .travis/build_after_script.sh
+      stage: build
+      env:
+        - RUNTIME='development'
+        - CONTEXT_PATH='./'
+        - BUILD_ARGS='--build-arg composer_dev=1 --build-arg db_play_dump=1'
+    - name: build_staging
+      before_script: .travis/build_before_script.sh
+      install: .travis/build_install.sh
+      script: .travis/build_script.sh
+      after_script: .travis/build_after_script.sh
+      stage: build
+      env:
+        - RUNTIME='staging'
+        - CONTEXT_PATH='./'
+        - BUILD_ARGS="--build-arg db_play_dump=1q"
+    - name: deploy_production
+      stage: deploy
+      install: .travis/deploy_install.sh
+      script: .travis/deploy_script.sh
+      env:
+        - RUNTIME=production
