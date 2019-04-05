@@ -1,3 +1,4 @@
 .env
 dobi.yaml
 Dockerfile
+.dobi

@@ -1,11 +1,4 @@
-env:
-  - REGISTRY_USER=electricmaxxx
-  - REGISTRY_PASSWORD=ABC
-  - REGISTRY=registry.gitlab.com
-  - REPOSITORY_PATH=developersforfuture/registry
-  - COMPOSE_PROJECT_NAME=defelopersforfuture
-  - CONTAINER_IMAGE=${REGISTRY}/${REPOSITORY_PATH}/app
-  - RUNTIME=production
+env: REGISTRY_USER=electricmaxxx REGISTRY_PASSWORD=ABC REGISTRY=registry.gitlab.com REPOSITORY_PATH=developersforfuture/registry COMPOSE_PROJECT_NAME=defelopersforfuture CONTAINER_IMAGE=${REGISTRY}/${REPOSITORY_PATH}/app RUNTIME=production
 language: php
 services:
   - docker
@@ -56,4 +49,3 @@ jobs:
       install: .travis/deploy_install.sh
       script: .travis/deploy_script.sh
       env: RUNTIME=production
-
