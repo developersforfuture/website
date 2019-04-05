@@ -19,11 +19,11 @@ cache:
 
 stages:
   - name: prepare
-    if: ag IS blank
+    if: tag IS blank
   - name: test
-    if: ag IS blank
+    if: tag IS blank
   - name: build
-    if: ag IS blank
+    if: tag IS blank
   - name: deploy
     if: tag IS present
 jobs:
