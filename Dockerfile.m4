@@ -48,7 +48,7 @@ WORKDIR /app/src
 
 LABEL image.name=m4ProjectName() \
       image.version=m4ProjectVersion() \
-      image.tag=m4BaseImage() \
+      image.tag=m4ReleaseImage() \
       image.scm.commit=$commit \
       image.scm.url=m4GitOriginUrl() \
       image.author="Maximilian Berghoff <maximilian.berghoff@gmx.de>"

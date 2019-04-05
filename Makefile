@@ -1,5 +1,3 @@
-include Makefile.docker
-
 .PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, before_release, release,
 unit_test:
 	@echo "+++ Unit tests +++"
@@ -11,8 +9,11 @@ override gitOriginUrl = $(shell git config --get remote.origin.url)
 override projectName=frontend
 override projectRegistry=$(REGISTRY)
 override projectPath=$(REPOSITORY_PATH)
-override baseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
+override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
+
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
+override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
+dobiTargets = shell build push autoclean
 
 # helper macros
 override getImage = $(firstword $(subst :, ,$1))
@@ -23,8 +24,8 @@ override M4_OPTS = \
 	--define m4ProjectName=$(projectName) \
 	--define m4ProjectVersion=$(projectVersion) \
 	--define m4GitOriginUrl=$(gitOriginUrl) \
-	--define m4BaseImage=$(baseImage) \
-	--define m4BaseImageTag=$(projectVersion) \
+	--define m4ReleaseImage=$(call getImage, $(releaseImage)) \
+	--define m4ReleaseImageTag=$(call getImageTag, $(releaseImage),latest) \
 	--define m4ContainerBasePath=$(containerBasePath)
 
 
@@ -35,6 +36,15 @@ kubernetes/app.production.yaml: $(projectRootDir)/kubernetes/app.production.m4.y
 Dockerfile: Dockerfile.m4
 	@echo @m4 "$(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile"
 	@m4 $(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile
+
+dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
+	@m4 $(M4_OPTS) dobi.yaml.m4 > dobi.yaml
+
+$(dobiTargets): $(dobiDeps)
+	@dobi $@
+
+clean: | autoclean
+	-@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml
 
 args=$(filter-out $@,$(MAKECMDGOALS))
 VERSION_TAG=$(args)
@@ -49,3 +59,11 @@ release:
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
 	@git push --tags origin master
 
+
+docker_login:
+	@echo "+ + + Login into registry: $(REGISTRY) with user $(REGISTRY_USER):$(REGISTRY_PASSWORD) +  +  + "
+	@docker login -p$(REGISTRY_PASSWORD) -u$(REGISTRY_USER) $(REGISTRY)
+
+docker_logout:
+	@echo "+ + + Logout from registry: $(REGISTRY) +  +  + "
+	@docker logout $(REGISTRY)
