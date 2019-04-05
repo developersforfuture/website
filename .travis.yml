@@ -23,7 +23,7 @@ stages:
   - name: test
     if: tag IS blank
   - name: build
-    if: tag IS blank
+    if: tag IS present
   - name: deploy
     if: tag IS present
 jobs:
@@ -34,53 +34,26 @@ jobs:
       script: .travis/build_script.sh
       after_script: .travis/build_after_script.sh
       stage: prepare
-      env:
-        - RUNTIME='ci'
-        - BUILD_ARGS='--build-arg composer_dev=1'
-        - CONTEXT_PATH='./'
+      env: RUNTIME='ci' BUILD_ARGS='--build-arg composer_dev=1' CONTEXT_PATH='./'
     - name:  test_unit
       stage: test
-      env:
-        - RUNTIME=ci
-        - DB_ROOT_PW=root
-        - DB_DATABASE=developeers
-        - DB_HOST=mysql
-        - DB_USER=developeers
-        - DB_PASSWORD=developeers
-        - APP_DEBUG=0
-        - APP_ENV=test
-        - SYMFONY_ENV=test
+      env: RUNTIME=ci DB_ROOT_PW=root DB_DATABASE=developeers DB_HOST=mysql DB_USER=developeers DB_PASSWORD=developeers APP_DEBUG=0 APP_ENV=test SYMFONY_ENV=test
       before_script: .travis/test_before_script.sh
       install: .travis/test_install.sh
       script: .travis/test_script.sh
     - name: build_production
       stage: build
-      env:
-        - RUNTIME='production'
-        - CONTEXT_PATH='./'
+      env: RUNTIME='production' CONTEXT_PATH='./'
     - name: build_development
       before_script: .travis/build_before_script.sh
       install: .travis/build_install.sh
       script: .travis/build_script.sh
       after_script: .travis/build_after_script.sh
       stage: build
-      env:
-        - RUNTIME='development'
-        - CONTEXT_PATH='./'
-        - BUILD_ARGS='--build-arg composer_dev=1 --build-arg db_play_dump=1'
-    - name: build_staging
-      before_script: .travis/build_before_script.sh
-      install: .travis/build_install.sh
-      script: .travis/build_script.sh
-      after_script: .travis/build_after_script.sh
-      stage: build
-      env:
-        - RUNTIME='staging'
-        - CONTEXT_PATH='./'
-        - BUILD_ARGS="--build-arg db_play_dump=1q"
+      env: RUNTIME='development' CONTEXT_PATH='./' BUILD_ARGS='--build-arg composer_dev=1 --build-arg db_play_dump=1'
     - name: deploy_production
       stage: deploy
       install: .travis/deploy_install.sh
       script: .travis/deploy_script.sh
-      env:
-        - RUNTIME=production
+      env: RUNTIME=production
+
