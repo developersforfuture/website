@@ -40,7 +40,7 @@ spec:
       app.kubernetes.io/name: developers-web
       app.kubernetes.io/instance: developers-web-v1
       app.kubernetes.io/version: "v1"
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       name: developers-web-v1
