@@ -40,11 +40,11 @@ class LoadStaticPages extends AbstractPageLoader
         $parent = $this->manager->find(null, $basepath);
         foreach ($data['static'] as $overview) {
             $page = $this->loadStaticPageData($overview, $basepath, $parent);
-        }
 
-        if (isset($overview['blocks'])) {
-            foreach ($overview['blocks'] as $name => $block) {
-                $this->loadBlock($page, $name, $block);
+            if (isset($overview['blocks']) && is_array($overview['blocks'])) {
+                foreach ($overview['blocks'] as $name => $block) {
+                    $this->loadBlock($page, $name, $block);
+                }
             }
         }
 
