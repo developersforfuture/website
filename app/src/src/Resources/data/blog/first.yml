@@ -1,0 +1,56 @@
+name: motivation-to-start-organisation
+title: Motivation to start the organisation
+body: ''
+description: Why is he doing this? Why did he start that organisation? Why does every part of our society starts implementing those supporting organisations?
+class: \App\Document\BlogPage
+blocks:
+  additionalInfoBlock:
+    class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+    children:
+      firstRowBlock:
+        class: App\Document\FeatureBlock
+        children:
+          firstBlock:
+            class: App\Document\IconBlock
+            properties:
+              iconClass: note
+              tileLength: 12
+              body: |
+                <p>
+                  Some might wonder why the next organization to support the FridaysForFuture movement is coming along.
+                  But maybe not before Greta, but already before the start of the demonstrations in Germany, Jan Henne and I have found
+                  a spicy topic for a panel discussion at the CodeTalks (conference in Hamburg for developers):
+                  <a target="_blank" href="https://www.youtube.com/watch?v=vBhXDnZAg4c">Everything you code is killing the Planet</a>
+                </p>
+                <p>
+                  As early as October 2018, we were thinking about what part we could play as software developers
+                  in combating the climate crisis. Although we left the discussion with more questions than answers,
+                  the topic should not stay that way.
+                  <br />
+                  It took almost half a year for me to feel a heart under the impression of the demonstrations and to
+                  set up this organization. It coincidentally coincided that Jan also devoted himself to the topic again:
+                  <a target="_blank" href="https://commerce.codetalks.de/speakers#talk-522?event=2">Code is killing the Planet</a>
+                </p>
+                <p>
+                  In the following we will sharpen the goals and get more developers on board.
+                  This should enable us to support the kids in their networking and communication. But basically this should not be the only goal. We are looking for an open dialogue with the scientists to answer the questions from our discussion. This means to provide our own industry with the necessary information to tackle the climate crisis from all sides.
+                </p>
+      speakerRow:
+        class: App\Document\FeatureBlock
+        children:
+          communicationBlock:
+            class: App\Document\IconBlock
+            properties:
+              iconClass: pencil
+              tileLength: 12
+              title: "The Author"
+              body: |
+                <ul>
+                  <li>Name::&nbsp;Maximilian Berghoff</li>
+                  <li>Twitter:&nbsp;<a href="https://twitter.com/ElectricMaxxx">ElectricMaxxx</a></li>
+                  <li>
+                    I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                    free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                    watching Game of Thrones.
+                  </li>
+                </ul>
