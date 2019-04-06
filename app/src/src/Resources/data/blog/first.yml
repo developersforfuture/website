@@ -18,7 +18,8 @@ blocks:
               body: |
                 <p>
                   Some might wonder why the next organization to support the FridaysForFuture movement is coming along.
-                  But maybe not before Greta, but already before the start of the demonstrations in Germany, Jan Henne and I have found
+                  But maybe not before Greta, but already before the start of the demonstrations in Germany,
+                  <a target="_blank" href="https://twitter.com/jthenne">Jan Henne</a> and I have found
                   a spicy topic for a panel discussion at the CodeTalks (conference in Hamburg for developers):
                   <a target="_blank" href="https://www.youtube.com/watch?v=vBhXDnZAg4c">Everything you code is killing the Planet</a>
                 </p>
