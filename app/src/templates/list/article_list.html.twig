@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    <section class="container">
+        <div class="columns features">
+            {% for article in articles %}
+            <div class="column is-4">
+                <div class="card is-shady">
+                    <div class="card-image has-text-centered">
+                        <i class="fa fa-note"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h1>{{ article.title }}</h1>
+                            <p>{{ article.description }}</p>
+                            <p><a href="{{ url(article) }}">read on</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

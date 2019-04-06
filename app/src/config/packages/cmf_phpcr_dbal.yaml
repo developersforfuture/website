@@ -14,6 +14,7 @@ cmf_routing:
     dynamic:
         route_collection_limit: 10
         templates_by_class:
+            App\Document\BlogPage: static_content/article.html.twig
             App\Document\StaticPage: static_content/index.html.twig
 
 cmf_core:

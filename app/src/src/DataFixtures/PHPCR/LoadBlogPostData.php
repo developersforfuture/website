@@ -3,12 +3,16 @@
 namespace App\DataFixtures\PHPCR;
 
 use App\Controller\BlogListController;
+use App\Document\BlogPage;
+use App\Document\Speaker;
 use App\Document\StaticPage;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
+use PHPCR\NodeInterface;
 use PHPCR\Util\NodeHelper;
+use Symfony\Cmf\Bundle\RoutingAutoBundle\Tests\Fixtures\App\Document\Blog;
 use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,25 +22,14 @@ use Symfony\Component\Yaml\Parser;
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class LoadBlogPostData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
+class LoadBlogPostData extends AbstractPageLoader
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
-     * Sets the container.
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
-
     /**
      * Load data fixtures with the passed EntityManager
      *
      * @param ObjectManager|DocumentManager $manager
+     *
+     * @throws \Exception
      */
     public function load(ObjectManager $manager)
     {
@@ -45,24 +38,28 @@ class LoadBlogPostData implements FixtureInterface, OrderedFixtureInterface, Con
 
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
+        $this->manager = $manager;
 
-        $session = $manager->getPhpcrSession();
+        $session = $this->manager->getPhpcrSession();
         $contentBasePath = $this->container->getParameter('cmf_content.persistence.phpcr.content_basepath');
-        $routesBasePath = $this->container->getParameter('cmf_content.persistence.phpcr.routes_basepath');
+        $routesBasePaths = $this->container->getParameter('cmf_routing.dynamic.persistence.phpcr.route_basepaths');
+        $routesBasePath = array_shift($routesBasePaths);
         $blogBasePath = $contentBasePath . '/blog';
         NodeHelper::createPath($session, $blogBasePath);
-        $blogParentNode = $manager->find(null, $blogBasePath);
+        $blogParentNode = $this->manager->find(null, $blogBasePath);
+        $blogParentRouteNode = $this->manager->find(null, $routesBasePath);
 
-        $blogRoutesBasePaht = $routesBasePath.'/blog';
         $blogParentRoute = new Route();
         $blogParentRoute->setName('blog');
-        $blogParentRoute->setDefault('controller', BlogListController::class.'::index');
-        $manager->persist($blogParentRoute);
+        $blogParentRoute->setParentDocument($blogParentRouteNode);
+        $blogParentRoute->setDefault('_controller', BlogListController::class.'::indexAction');
+        $this->manager->persist($blogParentRoute);
 
         $finder = new Finder();
         $finder->files()->in(__DIR__ . '/../../Resources/data/blog/');
         // check if there are any search results
         if (!$finder->hasResults()) {
+            print("found no files for blog data");
             return;
         }
 
@@ -70,10 +67,22 @@ class LoadBlogPostData implements FixtureInterface, OrderedFixtureInterface, Con
             $fileNameWithExtension = $file->getRelativePathname();
 
             $yaml = new Parser();
-            $data = $yaml->parse(file_get_contents($fileNameWithExtension));
+            $data = $yaml->parse(file_get_contents($file->getPath().'/'.$fileNameWithExtension));
+            /** @var BlogPage $page */
+            $page = $this->loadStaticPageData($data, $contentBasePath, $blogParentNode);
 
-            $this->loadBlogData($manager, $data, $blogParentNode);
+            if (isset($data['blocks'])) {
+                foreach ($data['blocks'] as $name => $block) {
+                    $this->loadBlock($page, $name, $block);
+                }
+            }
+
+            if (isset($overview['speaker'])) {
+                $this->loadSpeakerData($page, $data['speaker']);
+            }
         }
+
+        $this->manager->flush();
     }
 
     /**
@@ -86,11 +95,17 @@ class LoadBlogPostData implements FixtureInterface, OrderedFixtureInterface, Con
         return 30;
     }
 
-    private function loadBlogData(DocumentManager $manager, array $data, $blogParentNode)
+    private function loadSpeakerData(BlogPage $page, $data): BlogPage
     {
-        $blogPage = new StaticPage();
-        $blogPage->setParentDocument($blogParentNode);
-        $blogPage->setTitle($data['title']);
-        $blogPage->setBody($data['body']);
+        $speaker = new Speaker();
+        $speaker->setSpeakerName(isset($data['name']) ? $data['name'] : null);
+        $speaker->setTwitter(isset($data['twitter']) ? $data['twitter'] : null);
+        $speaker->setImage(isset($data['image']) ? $data['image'] : null);
+        $speaker->setBio(isset($data['bio']) ? $data['bio'] : null);
+        $speaker->setParentDocument($page);
+
+        $page->setSpeaker($speaker);
+
+        return $page;
     }
 }
