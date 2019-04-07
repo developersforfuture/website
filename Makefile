@@ -1,10 +1,10 @@
-.PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, release, dobi.yaml
+.PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, release, dobi.yaml, push_tag
 unit_test:
 	@echo "+++ Unit tests +++"
 
 override projectRootDir = ./
 override projectVersionFile = VERSION
-override projectVersion = $(VERSION_TAG)
+override projectVersion = $(shell head -n1 $(projectVersionFile))
 override gitOriginUrl = $(shell git config --get remote.origin.url)
 override projectName=frontend
 override projectRegistry=$(REGISTRY)
@@ -12,7 +12,7 @@ override projectPath=$(REPOSITORY_PATH)
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
+override dobiDeps = push_tag kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
@@ -50,8 +50,10 @@ args=$(filter-out $@,$(MAKECMDGOALS))
 VERSION_TAG=$(args)
 release:
 	$(if $(args),,$(error: set project version string, when calling this task))
-	@echo "Release next version: $(VERSION_TAG)"
+	@echo "Set next version: $(VERSION_TAG)"
 	@echo $(VERSION_TAG) > ./VERSION
+
+push_tag:
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
