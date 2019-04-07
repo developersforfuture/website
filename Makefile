@@ -30,11 +30,11 @@ override M4_OPTS = \
 
 
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml
-	@echo @m4 "$(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml"
+	@echo "\n + + + Build Kubernetes app yml + + + "
 	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
 
 Dockerfile: Dockerfile.m4
-	@echo @m4 "$(M4_OPTS) Dockerfile.m4 > Dockerfile"
+	@echo "\n + + + Build Dockerfile + + + "
 	@m4 $(M4_OPTS) Dockerfile.m4 > Dockerfile
 
 dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
@@ -50,10 +50,11 @@ args=$(filter-out $@,$(MAKECMDGOALS))
 VERSION_TAG=$(args)
 release:
 	$(if $(args),,$(error: set project version string, when calling this task))
-	@echo "Set next version: $(VERSION_TAG)"
+	@echo "\n + + + Set next version: $(VERSION_TAG) + + + "
 	@echo $(VERSION_TAG) > ./VERSION
 
 push_tag:
+	@echo "\n + + + Push tags to repository + + + "
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
@@ -61,9 +62,9 @@ push_tag:
 
 
 docker_login:
-	@echo "+ + + Login into registry: $(REGISTRY) with user $(REGISTRY_USER):$(REGISTRY_PASSWORD) +  +  + "
+	@echo "\n + + + Login into registry: $(REGISTRY) with user $(REGISTRY_USER):$(REGISTRY_PASSWORD) +  +  + "
 	@docker login -p$(REGISTRY_PASSWORD) -u$(REGISTRY_USER) $(REGISTRY)
 
 docker_logout:
-	@echo "+ + + Logout from registry: $(REGISTRY) +  +  + "
+	@echo "\n + + + Logout from registry: $(REGISTRY) +  +  + "
 	@docker logout $(REGISTRY)
