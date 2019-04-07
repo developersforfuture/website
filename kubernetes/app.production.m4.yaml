@@ -125,12 +125,3 @@ spec:
             limits:
               memory: "248Mi"
               cpu: "250m"
-          livenessProbe:
-            httpGet:
-              path: /home
-              port: 80
-              httpHeaders:
-                - name: Status
-                  value: 200
-            initialDelaySeconds: 3
-            periodSeconds: 5
