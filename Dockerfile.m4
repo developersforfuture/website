@@ -46,6 +46,7 @@ RUN apk update \
 
 WORKDIR /app/src
 
+env VERSION_TAG m4ProjectVersion()
 LABEL image.name=m4ProjectName() \
       image.version=m4ProjectVersion() \
       image.tag=m4ReleaseImage() \

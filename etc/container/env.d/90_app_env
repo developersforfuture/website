@@ -1,17 +1,9 @@
 #!/usr/bin/env sh
 
-export APP_ENV=${APP_ENV:-"dev"}
-export SYMFONY_ENV=${SYMFONY_ENV:-"dev"}
-export DB_URL=${DB_URL:-"mysql://froscon:froscon@mysql:3306/froscon"}
-export DB_LEGACY_URL=${DB_LEGACY_URL:-"mysql://web79:Av9voo?x@mysql_old:3306/usr_web79_1"}
-export LEGACY_PUBLIC_FOLDER=${LEGACY_PUBLIC_FOLDER:-"/data/images/"}
-export MAIL_HOST=${MAIL_HOST:-"mail"}
-export MAIL_USER=${MAIL_USER:-"mail"}
-export MAIL_PASSWORD=${MAIL_PASSWORD:-"mail"}
-export BASE_URL=${BASE_URL:-"https://0.0.0.0:9092"}
-export PHPCR_WORKSPACE=${PHPCR_WORKSPACE:-"froscon"}
-export PHPCR_USER=${PHPCR_USER:-"admin"}
-export PHPCR_PASSWORD=${PHPCR_PASSWORD:-"admin"}
+export APP_ENV=${APP_ENV:-"prod"}
+export SYMFONY_ENV=${SYMFONY_ENV:-"prod"}
+export DB_URL=${DB_URL:-"mysql://developers:developers@mysql:3306/developers"}
 export APP_WEBROOT=${APP_WEBROOT:-"/app/src/web"}
-export DB_DATABASE=${DB_DATABASE:-"froscon"}
+export DB_DATABASE=${DB_DATABASE:-"developers"}
 export DB_PLAY_DUMP=${DB_PLAY_DUMP-0}
+export VERSION_TAG=${VERSION_TAG-0}
