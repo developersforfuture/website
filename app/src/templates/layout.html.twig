@@ -59,110 +59,76 @@
     </script>
     <!-- End Matomo Code -->
 </head>
-<body class="bg-green">
-<section class="hero is-medium is-bold bg-green-light font-light">
-    <div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="{{ url('home_redirect') }}">
-                        <img src="/img/logo.png" alt="Logo">
-                    </a>
-                    <span class="navbar-burger burger" data-target="navbarMenu">
-                                <span><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></span>
-                                <span><a href="{{ url('/cms/routes/blog') }}">Articles</a></span>
-                                <span></span>
-                            </span>
-                </div>
-                <div id="navbarMenu" class="navbar-menu">
-                    <div class="navbar-end">
+<body class="bg-light-gray">
+<header class="bg-medium-green">
+    <a id="header-logo-space" href="{{ url('home_redirect') }}">
+        <div id="header-logo"></div>
+        <div id="header-logo-title">Developers for Future</div>
+    </a>
+    <nav>
+        <ul>
+            <li><a href="{{ url('/cms/routes/home') }}">Home</a></li>
+            <li><a href="{{ url('/cms/routes/blog') }}">Articles</a></li>
+            <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
+        </ul>
+        <div><button class="view-source-button">View Source on GitHub</button></div>
+    </nav>
+</header>
 
-                        <div class="tabs is-right">
-                            <ul>
-                                <li><a href="{{ url('/cms/routes/blog') }}">Articles</a></li>
-                                <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
-                            </ul>
-                            &nbsp;
-                            <span class="navbar-item">
-                                        <a class="button is-white is-outlined" href="https://github.com/developersforfuture/website">
-                                            <span class="icon">
-                                                <i class="fa fa-github"></i>
-                                            </span>
-                                            <span title="Hello from the other side">View Source</span>
-                                        </a>
-                                    </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
+<main>
+    <content>
+    {% block content %}
 
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title">
-                Developers For Future
-            </h1>
-            <h2 class="subtitle">
-                Support the movement, evaluate a climate friendly development workflow.
-            </h2>
-        </div>
-    </div>
-</section>
-<div class="box cta">
-    <p class="has-text-centered">
-        <span class="tag is-primary">New</span> Let's experience something different. Stay tuned.
-    </p>
-</div>
-
-{% block content %}
-
-{% endblock %}
+    {% endblock %}
+    </content>
+    <aside>
+        {% include 'includes/sidebar.html.twig.html' %}
+    </aside>
+</main>
 <br>
-<footer class="footer bg-green font-light">
+<footer class="bg-medium-green">
     <div class="container">
         <div class="columns">
-            <div class="column is-3 is-offset-2"></div>
+            <div class="column is-3 is-offset-2">
+                <h3><strong>Contact</strong></h3>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/DevsForFuture">
+                                Twitter: &nbsp;
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@developersforfuture@gmx.net">
+                                Mail: &nbsp;
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             <div class="column is-3">
-                <h2><strong>Other</strong></h2>
-                <ul>
+                <h3><strong>Other</strong></h3>
+                <nav>
                     <ul>
                         <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
                     </ul>
-                </ul>
+                </nav>
             </div>
             <div class="column is-4">
-                <h2><strong>Legals</strong></h2>
-                <ul>
+                <h3><strong>Legals</strong></h3>
+                <nav>
                     <ul>
                         <li><a href="{{ url('/cms/routes/impressum') }}">Impressum</a></li>
                         <li><a href="{{ url('/cms/routes/data-policy') }}">Data Policy</a></li>
                     </ul>
-                </ul>
-            </div>
-        </div>
-        <div class="content has-text-centered">
-            <p>
-                Contact:&nbsp;
-                <a class="icon" href="https://twitter.com/DevsForFuture">
-                    <i class="fa fa-twitter"></i>
-                </a>&nbsp;
-                <a class="icon" href="mailto:info@developersforfuture@gmx.net">
-                    <i class="fa fa-envelope"></i>
-                </a>
-            </p>
-
-            <div class="control level-item">
-                <a href="https://github.com/dansup/bulma-templates">
-                    <div class="tags has-addons">
-                        <span class="tag is-dark">Bulma Templates</span>
-                        <span class="tag is-info">MIT license</span>
-                    </div>
-                </a>
+                </nav>
             </div>
         </div>
     </div>
     <script src="/build/app.js"></script>
 </footer>
+
 </body>
 </html>

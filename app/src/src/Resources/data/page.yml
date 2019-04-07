@@ -305,25 +305,7 @@ static:
   - name: 'organisation'
     title: 'Organisation of the organisation'
     description: 'Page to hold all places and links, where to find relevant things'
-    body: |
-      <section class="container">
-              <div class="columns features">
-                  <div class="column is-12 bg-beige-light">
-                      <div class="card is-shady">
-                          <div class="card-image has-text-centered">
-                              <i class="fa fa-note"></i>
-                          </div>
-                          <div class="card-content">
-                              <div class="content">
-                                  <p>To get an overview of the location of tools for our code and communication,
-                                  this collection should give a hand.
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-      </section>
+    body: ''
     blocks:
       additionalInfoBlock:
         class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
