@@ -46,8 +46,9 @@ RUN apk update \
 
 WORKDIR /app/src
 
+ENV VERSION_TAG 3.3.9
 LABEL image.name=frontend \
-      image.version=0.2.0 \
+      image.version=3.3.9 \
       image.tag=registry.gitlab.com/developersforfuture/registry/app-production \
       image.scm.commit=$commit \
       image.scm.url=git@github.com:developersforfuture/website.git \
