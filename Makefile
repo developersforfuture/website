@@ -12,7 +12,7 @@ override projectPath=$(REPOSITORY_PATH)
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = push_tag kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
+override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile push_tag docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
