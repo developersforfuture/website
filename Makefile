@@ -3,7 +3,7 @@ unit_test:
 	@echo "+++ Unit tests +++"
 
 override projectRootDir = ./
-override projectVersionFile = $(projectRootDir)/VERSION
+override projectVersionFile = VERSION
 override projectVersion = $(shell head -n1 $(projectVersionFile))
 override gitOriginUrl = $(shell git config --get remote.origin.url)
 override projectName=frontend
@@ -29,13 +29,13 @@ override M4_OPTS = \
 	--define m4ContainerBasePath=$(containerBasePath)
 
 
-kubernetes/app.production.yaml: $(projectRootDir)/kubernetes/app.production.m4.yaml
-	@echo @m4 "$(M4_OPTS) $(projectRootDir)/kubernetes/app.production.m4.yaml > $(projectRootDir)/kubernetes/app.production.yaml"
-	@m4 $(M4_OPTS) $(projectRootDir)/kubernetes/app.production.m4.yaml > $(projectRootDir)/kubernetes/app.production.yaml
+kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml
+	@echo @m4 "$(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml"
+	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
 
 Dockerfile: Dockerfile.m4
-	@echo @m4 "$(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile"
-	@m4 $(M4_OPTS) $(projectRootDir)/Dockerfile.m4 > $(projectRootDir)/Dockerfile
+	@echo @m4 "$(M4_OPTS) Dockerfile.m4 > Dockerfile"
+	@m4 $(M4_OPTS) Dockerfile.m4 > Dockerfile
 
 dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
 	@m4 $(M4_OPTS) dobi.yaml.m4 > dobi.yaml
@@ -52,6 +52,7 @@ release:
 	$(if $(args),,$(error: set project version string, when calling this task))
 	@echo "Release next version: $(VERSION_TAG)"
 	@echo $(VERSION_TAG) > ./VERSION
+	@make kubernetes/app.production.yaml
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
