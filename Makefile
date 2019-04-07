@@ -52,7 +52,7 @@ release:
 	$(if $(args),,$(error: set project version string, when calling this task))
 	@echo "\n + + + Set next version: $(VERSION_TAG) + + + "
 	@echo $(VERSION_TAG) > ./VERSION
-	@echo make kubernetes/app.production.yaml
+	@make kubernetes/app.production.yaml
 	@echo "\n + + + Push tags to repository + + + "
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
