@@ -12,7 +12,7 @@ override projectPath=$(REPOSITORY_PATH)
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile push_tag docker_login
+override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
@@ -29,7 +29,7 @@ override M4_OPTS = \
 	--define m4ContainerBasePath=$(containerBasePath)
 
 
-kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml
+kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
 	@echo "\n + + + Build Kubernetes app yml + + + "
 	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
 
@@ -52,8 +52,7 @@ release:
 	$(if $(args),,$(error: set project version string, when calling this task))
 	@echo "\n + + + Set next version: $(VERSION_TAG) + + + "
 	@echo $(VERSION_TAG) > ./VERSION
-
-push_tag:
+	@echo make kubernetes/app.production.yaml
 	@echo "\n + + + Push tags to repository + + + "
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
