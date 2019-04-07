@@ -5,8 +5,6 @@
         {{ cmfMainContent.body|raw }}
     {% endif %}
     {% if cmfMainContent.additionalInfoBlock  %}
-    <section class="container">
         {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
-    </section>
     {% endif %}
 {% endblock %}

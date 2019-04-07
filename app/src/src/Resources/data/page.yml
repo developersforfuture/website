@@ -4,7 +4,7 @@ static:
     title: 'Impressum'
     body: |
       <section class="container">
-          <div class="columns features">
+          <div class="columns">
               <div class="column is-12">
                   <div class="card is-shady">
                       <div class="card-image has-text-centered">
@@ -82,7 +82,7 @@ static:
     title: 'Data policy'
     body: |
       <section class="container">
-              <div class="columns features">
+              <div class="columns">
                   <div class="column is-12">
                       <div class="card is-shady">
                           <div class="card-image has-text-centered">

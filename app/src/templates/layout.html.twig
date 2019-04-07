@@ -49,12 +49,16 @@
 		_paq.push(["setCookieDomain", "*.developersforfuture.org"]);
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
-		(function() {
-			var u="//piwik.prberghoff.de/";
-			_paq.push(['setTrackerUrl', u+'matomo.php']);
+		(function () {
+			var u = "//piwik.prberghoff.de/";
+			_paq.push(['setTrackerUrl', u + 'matomo.php']);
 			_paq.push(['setSiteId', '3']);
-			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+			var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+			g.type = 'text/javascript';
+			g.async = true;
+			g.defer = true;
+			g.src = u + 'matomo.js';
+			s.parentNode.insertBefore(g, s);
 		})();
     </script>
     <!-- End Matomo Code -->
@@ -71,64 +75,34 @@
             <li><a href="{{ url('/cms/routes/blog') }}">Articles</a></li>
             <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
         </ul>
-        <div><button class="view-source-button">View Source on GitHub</button></div>
+        <div>
+            <button class="view-source-button">View Source on GitHub</button>
+        </div>
     </nav>
 </header>
 
 <main>
-    <content>
-    {% block content %}
-
-    {% endblock %}
-    </content>
-    <aside>
-        {% include 'includes/sidebar.html.twig.html' %}
-    </aside>
-</main>
-<br>
-<footer class="bg-medium-green">
     <div class="container">
         <div class="columns">
-            <div class="column is-3 is-offset-2">
-                <h3><strong>Contact</strong></h3>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="https://twitter.com/DevsForFuture">
-                                Twitter: &nbsp;
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:info@developersforfuture@gmx.net">
-                                Mail: &nbsp;
-                                <i class="fa fa-envelope"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="column is-3">
-                <h3><strong>Other</strong></h3>
-                <nav>
-                    <ul>
-                        <li><a href="{{ url('/cms/routes/organisation') }}">Organisation</a></li>
-                    </ul>
-                </nav>
+            <div class="column is-8">
+                <content>
+                    {% block content %}
+
+                    {% endblock %}
+                </content>
             </div>
             <div class="column is-4">
-                <h3><strong>Legals</strong></h3>
-                <nav>
-                    <ul>
-                        <li><a href="{{ url('/cms/routes/impressum') }}">Impressum</a></li>
-                        <li><a href="{{ url('/cms/routes/data-policy') }}">Data Policy</a></li>
-                    </ul>
-                </nav>
+                <aside class="is-mobile">
+                    {% include 'includes/sidebar.html.twig.html' %}
+                </aside>
             </div>
         </div>
     </div>
-    <script src="/build/app.js"></script>
-</footer>
 
+</main>
+
+{% include "includes/footer.html.twig" %}
+
+<script src="/build/app.js"></script>
 </body>
 </html>
