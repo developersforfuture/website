@@ -132,5 +132,5 @@ spec:
               httpHeaders:
                 - name: Status
                   value: 200
-              initialDelaySeconds: 3
-              periodSeconds: 5
+            initialDelaySeconds: 3
+            periodSeconds: 5

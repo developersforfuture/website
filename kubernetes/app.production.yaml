@@ -113,7 +113,7 @@ spec:
             - name: VERSION_TAG
             - name: XDEBUG_ENABLED
               value: "1"
-          image: registry.gitlab.com/developersforfuture/registry/app-production:3.3.10
+          image: registry.gitlab.com/developersforfuture/registry/app-production:3.3.11
           name: developers-web
           ports:
             - containerPort: 80
@@ -132,5 +132,5 @@ spec:
               httpHeaders:
                 - name: Status
                   value: 200
-              initialDelaySeconds: 3
-              periodSeconds: 5
+            initialDelaySeconds: 3
+            periodSeconds: 5
