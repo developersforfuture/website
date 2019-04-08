@@ -53,6 +53,8 @@ spec:
         - name: regcred
       containers:
         - env:
+            - name: VERSION_TAG
+              value: 3.4.0
             - name: APP_BASEDIR_LOG
               value: /app/log
             - name: APP_BASEDIR_SRC
@@ -113,7 +115,7 @@ spec:
             - name: VERSION_TAG
             - name: XDEBUG_ENABLED
               value: "1"
-          image: registry.gitlab.com/developersforfuture/registry/app-production:3.3.13
+          image: registry.gitlab.com/developersforfuture/registry/app-production:3.4.0
           name: developers-web
           ports:
             - containerPort: 80

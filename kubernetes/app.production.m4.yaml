@@ -53,6 +53,8 @@ spec:
         - name: regcred
       containers:
         - env:
+            - name: VERSION_TAG
+              value: m4ReleaseImageTag()
             - name: APP_BASEDIR_LOG
               value: /app/log
             - name: APP_BASEDIR_SRC

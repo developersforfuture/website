@@ -1,0 +1,17 @@
+docs:
+  - title: 'Energy Consumption in Cloud Computing Data Centers'
+    link: 'https://www.researchgate.net/publication/263580831_Energy_Consumption_in_Cloud_Computing_Data_Centers'
+    description: 'Calculates energy consumption in cloud data centers, done by three scientist, all of them not in twitter'
+    categories: ['scientist', 'paper' ]
+  - title: 'The Energy and Carbon Footprint of the Global ICT and E&M Sectors 2010–2015'
+    link: 'https://www.mdpi.com/2071-1050/10/9/3027'
+    categories: ['scientist', 'paper']
+    description: 'Faktencheck: Ökobilanz von Suchmaschinen'
+  - title: 'The Energy and Carbon Footprint of the Global ICT and E&M Sectors 2010–2015'
+    link: 'https://www.swr.de/wissen/20-jahre-google-umweltfacts-zu-suchmaschinen/-/id=253126/did=22378814/nid=253126/d2azhl/index.html'
+    categories: ['mainstream', 'tv']
+    description: 'German TV production. Also offers numbers for german energy consumption'
+  - title: 'Sustainable Software Processes, Episode 2: Green Software Engineering with Agile Methods'
+    link: 'https://sustainablesoftware.blogspot.com/2015/02/sustainable-software-processes-episode.html'
+    categories: ['blog']
+    description: 'Blog post about sustainable software development by agile methods.'

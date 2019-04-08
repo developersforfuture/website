@@ -87,3 +87,13 @@ services:
         class: App\Controller\BlogListController
         arguments:
             $repository: "@app.repository.article"
+
+    app.repository.docs:
+        class: App\Repository\DocsRepository
+        arguments:
+            $documentManager: "@doctrine_phpcr.odm.default_document_manager"
+
+    app.controller.docs_list:
+        class: App\Controller\DocsListController
+        arguments:
+            $repository: "@app.repository.docs"
