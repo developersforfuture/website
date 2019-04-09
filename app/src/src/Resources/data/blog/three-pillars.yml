@@ -1,11 +1,11 @@
-name: three-bases
+name: three-pillars
 title: One of three pillars - ways of support FridaysForFuture
 body: ''
 publishable: true
 publishStartDate: 2019-04-09 T10:00:00
 description: |
-  First blog post that roughly describes the goals of the organization. Divided on three pillars,
-  I see possibilities where FridaysForFuture can be helped and where a little bit can be found against climate change.
+  Our kick off blog post, which outlines goals of DevsForFuture. To support Fridays for future - our efforts can be split into three pillars,
+  where every effort is a step in the direction of a greener, less poluted future.
 class: \App\Document\BlogPage
 blocks:
   additionalInfoBlock:
@@ -20,8 +20,10 @@ blocks:
               tileLength: 12
               body: |
                 <p>
-                  One would think "The IT department, this is the future, there are no starting points to do anything about climate change".
-                  But this is a misbelief. In addition to the major social tasks, each and every industry must question itself. Reality seems different:
+                  One could think "The IT department, this is the future, why should we start here to change the way we work".
+                  Because this is what we can do best. We have the ability to change things rapdily like no other industry.
+                  In addition to the minor adjustement in private life, each and every industry has to rethink processes to tackle climate change..
+                  Reality seems different:
                 </p>
 
       introductionQuote:
@@ -45,11 +47,10 @@ blocks:
               tileLength: 12
               body: |
                 <p>
-                  These figures need to be checked and refined. If one reads the large number, then here is a large lever, where one can make a large
-                  contribution by savings or by 100% renewable energies. I see it as a refinement that every developer,
-                  every IT company but also every user can make a contribution here. <br />
-                  Together with the fact that we mostly like Open-Soure in software development,
-                  the following three pillars result, which we can see as a guideline for our work at DevelopersForFuture.
+                  These figures need to be checked and reviewed. If one reads the article above, then here is a large lever, where one can make a big
+                  contribution by rethinking code switching to more efficient computing power, which ideally is powered by 100% renewables. We have the ability see it as a refinement that every developer,
+                  company and individual can make.<br />
+                  Like our love for open-soure the following three pillars can be seen as guidelines for our work at DevsForFuture.
                 </p>
 
       sustainableDevelopmentRow:
@@ -62,24 +63,25 @@ blocks:
               body: |
                 <h3>1. Support of FridaysForFuture</h3>
                 <p>
-                  There is already a small team of students who form a software team within the FridaysForFuture organization.
-                  Together they make sure that the website runs and help to set up tools that help the organization as a whole to come together and make decisions.<br />
-                  But there is also a badarf of support, as there are many ideas how FridaysForFuture can be supported by small tools of its own.
-                  The aim is to build up the democratic process within and above all to make it fast. Groups about Facebook and the tools bound in
-                  it turned out already at the beginning of the year as not helpful. That's why it's important to set up your own tools here.
-                  The whole thing should of course be done hand in hand with your own developers. But there can also be some support via point 2 (Education).
+                  There is already a small team of students who form a development team within FridaysForFuture.
+                  They make sure that the website is up and running, help to set up tools that support workflows.<br />
+                  As usual they lack support to integrate, develop and build more tools which would rapidly help FridaysForFuture to gain momentum.
+                  The aim is to support the creation of digitalized democratic processes within FridaysForFuture, to gather all expertise and use them where needed most. This will also help to elect delegates, which will act as the spearhead of communications accross all organizations.
+                  Platforms like facebook groups and such do not help in the process as they're biased and easily occupied.
+                  This is why it's important to work together on current and upcoming tasks that might occur, but more important than is are the ideas everyone is invited to contribute.
+                  We can do this with our teams and developers, help of friends and of course by education ( pillar 2 ).
                 </p>
                 <h4>Proposals for cooperation</h4>
                 <p>
-                  As software developers we are accustomed to working on clearly defined tasks on a ticket board. At least you can force better and more focused results. Of course, there are also procedures in this segment that could speed up or channel this work, but I assume that we are developers with different backgrounds at the beginning. That's why I'd like to make the following proposal:
+                  As software developers we are accustomed to working on clearly defined tasks on a ticket board. At least you can achieve better and more focused results. Of course, there are also procedures in this segment that could speed up or channel this work, but I assume that we are developers with different backgrounds at the beginning. That's why I'd like to make the following proposal:
                   <ul>
                     <li>We make sure that we can discuss the ideas and wishes of FridaysForFuture globally in issues on Github. I have already created a single repository including issues and project board. -</li>
-                    <li>Together with contact persons at FriddaysForFuture, we discuss the implementation and hold short feedback loops to discuss this implementation again and again.</li>
-                    <li>Each project is maintained on Github as a public project with the idea of open source, which means it also gets an open source license (that means that internal data is not accessible in a public place). </li>
-                    <li>We take care of the respective infrastructure and its procurement.</li>
-                    <li>By appointing a maintainer, problems and new requirements are also tackled after completion.</li>
-                    <li>Weekly votes of the developers of DevelopersForFuture ensure the greatest possible transparency and exchange of experience. Establishment of a joint chat provides for short-term exchange.</li>
-                    <li>All these points can be questioned and adapted at any time.</li>
+                    <li>Together with team members at FridaysForFuture, we implement and iterate.</li>
+                    <li>Each project will be a public, open source  project on Github (it'll get an open source license - meaning that internal data can't be publicly accessed). </li>
+                    <li>We'll take care of the respective infrastructure and its procurement.</li>
+                    <li>A maintainer for each repositpry would be ideal to handle pull-requests, problems and new requirements.</li>
+                    <li>Weekly votes of the developers of DevelopersForFuture ensure the greatest possible transparency and exchange of experience.</li>
+                    <li>Nothing is set in stone and can be changed by the community at any time.</li>
                   </ul>
                 </p>
 
@@ -92,10 +94,10 @@ blocks:
               tileLength: 12
               body: |
                 <p>
-                  With the first of three pillars I try to roughly suggest an idea approach. More important than the rules is the common goal and working together.
+                  With the first of three I suggest an approach. More important than the rules is the common goal and working together.
                   That's why we shouldn't be so much concerned with questions about choosing the right programming language,
                   but should simply start where each individual feels most comfortable. <br />
-                  There's plenty to do. And together we can create a community that takes the climate a significant step further.
+                  There's lots of projects for everyone and together we build a community that is able to mitigate climate change.
                 </p>
 
       upcommingRow:
@@ -107,9 +109,8 @@ blocks:
               tileLength: 12
               body: |
                 <p>
-                  Of course, that was only one of three points. That's why this post can be seen as the start of a series.
-                  The next one will be about the possibilities of education or training that we can provide through our work.
-                  In the last post we will focus on our efforts for a more sustainable software development.
+                  Second pillar will be about education.
+                  Third pillar will be about sutainable software development.
                 </p>
       speakerRow:
         class: App\Document\Block\FeatureBlock
