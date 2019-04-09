@@ -5,6 +5,6 @@ App\Document\StaticPage:
         title: [content_method, {method: getName }]
 App\Document\BlogPage:
     definitions:
-        - { uri_schema: '/blog/{title}' }
+        - { uri_schema: '/blog/{name}' }
     token_providers:
-        title: [content_method, {method: getTitle }]
+        name: [content_method, {method: getName }]

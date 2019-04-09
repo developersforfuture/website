@@ -92,6 +92,8 @@ services:
         class: App\Repository\ArticleRepository
         arguments:
             $documentManager: "@doctrine_phpcr.odm.default_document_manager"
+            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+
     app.controller.articl_list:
         class: App\Controller\BlogListController
         arguments:

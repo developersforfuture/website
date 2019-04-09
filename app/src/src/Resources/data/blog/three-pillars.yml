@@ -1,0 +1,134 @@
+name: three-pillars
+title: One of three pillars - ways of support FridaysForFuture
+body: ''
+publishable: true
+publishStartDate: 2019-04-09 T08:00:00
+description: |
+  Our kick off blog post, which outlines goals of DevsForFuture. To support Fridays for future - our efforts can be split into three pillars,
+  where every effort is a step in the direction of a greener, less poluted future.
+class: \App\Document\BlogPage
+blocks:
+  additionalInfoBlock:
+    class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+    children:
+      introductionRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\TextBlock
+            properties:
+              tileLength: 12
+              body: |
+                <p>
+                  One could think "The IT department, this is the future, why should we start here to change the way we work".
+                  Because this is what we can do best. We have the ability to change things rapdily like no other industry.
+                  In addition to the minor adjustement in private life, each and every industry has to rethink processes to tackle climate change..
+                  Reality seems different:
+                </p>
+
+      introductionQuote:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionQuote:
+            class: App\Document\Block\QuoteBlock
+            properties:
+              tileLength: 12
+              source: https://www.swr.de/wissen/20-jahre-google-umweltfacts-zu-suchmaschinen/-/id=253126/did=22378814/nid=253126/d2azhl/index.html
+              body: |
+                Der Energiebedarf von Rechenzentren in Deutschland liegt momentan ungefähr bei 10 bis 15 TWh. In CO2-Äquivalente umgerechnet,
+                entspricht das ungefähr den CO2-Emissionen, die wir im Flugverkehr in Deutschland haben.
+
+      introductionClosingRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\TextBlock
+            properties:
+              tileLength: 12
+              body: |
+                <p>
+                  These figures need to be checked and reviewed. If one reads the article above, then here is a large lever, where one can make a big
+                  contribution by rethinking code switching to more efficient computing power, which ideally is powered by 100% renewables. We have the ability see it as a refinement that every developer,
+                  company and individual can make.<br />
+                  Like our love for open-soure the following three pillars can be seen as guidelines for our work at DevsForFuture.
+                </p>
+
+      sustainableDevelopmentRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\TextBlock
+            properties:
+              tileLength: 12
+              body: |
+                <h3>1. Support of FridaysForFuture</h3>
+                <p>
+                  There is already a small team of students who form a development team within FridaysForFuture.
+                  They make sure that the website is up and running, help to set up tools that support workflows.<br />
+                  As usual they lack support to integrate, develop and build more tools which would rapidly help FridaysForFuture to gain momentum.
+                  The aim is to support the creation of digitalized democratic processes within FridaysForFuture, to gather all expertise and use them where needed most. This will also help to elect delegates, which will act as the spearhead of communications accross all organizations.
+                  Platforms like facebook groups and such do not help in the process as they're biased and easily occupied.
+                  This is why it's important to work together on current and upcoming tasks that might occur, but more important than is are the ideas everyone is invited to contribute.
+                  We can do this with our teams and developers, help of friends and of course by education ( pillar 2 ).
+                </p>
+                <h4>Proposals for cooperation</h4>
+                <p>
+                  As software developers we are accustomed to working on clearly defined tasks on a ticket board. At least you can achieve better and more focused results. Of course, there are also procedures in this segment that could speed up or channel this work, but I assume that we are developers with different backgrounds at the beginning. That's why I'd like to make the following proposal:
+                  <ul>
+                    <li>We make sure that we can discuss the ideas and wishes of FridaysForFuture globally in issues on Github. I have already created a single repository including issues and project board. -</li>
+                    <li>Together with team members at FridaysForFuture, we implement and iterate.</li>
+                    <li>Each project will be a public, open source  project on Github (it'll get an open source license - meaning that internal data can't be publicly accessed). </li>
+                    <li>We'll take care of the respective infrastructure and its procurement.</li>
+                    <li>A maintainer for each repositpry would be ideal to handle pull-requests, problems and new requirements.</li>
+                    <li>Weekly votes of the developers of DevelopersForFuture ensure the greatest possible transparency and exchange of experience.</li>
+                    <li>Nothing is set in stone and can be changed by the community at any time.</li>
+                  </ul>
+                </p>
+
+      closingRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\TextBlock
+            properties:
+              tileLength: 12
+              body: |
+                <p>
+                  With the first of three I suggest an approach. More important than the rules is the common goal and working together.
+                  That's why we shouldn't be so much concerned with questions about choosing the right programming language,
+                  but should simply start where each individual feels most comfortable. <br />
+                  There's lots of projects for everyone and together we build a community that is able to mitigate climate change.
+                </p>
+
+      upcommingRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\TextBlock
+            properties:
+              tileLength: 12
+              body: |
+                <p>
+                  Second pillar will be about education.
+                  Third pillar will be about sutainable software development.
+                </p>
+      speakerRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          communicationBlock:
+            class: App\Document\Block\IconBlock
+            properties:
+              iconClass: pencil
+              tileLength: 12
+              title: "The Author"
+              body: |
+                <ul>
+                  <li>Name:&nbsp;Maximilian Berghoff</li>
+                  <li>Twitter:&nbsp;<a href="https://twitter.com/ElectricMaxxx">ElectricMaxxx</a></li>
+                  <li>Github:&nbsp;<a href="https://github.com/ElectricMaxxx">ElectricMaxxx</a></li>
+                  <li>
+                    I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                    free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                    watching Game of Thrones.
+                  </li>
+                </ul>
