@@ -76,8 +76,8 @@ class LoadDocsData implements FixtureInterface, OrderedFixtureInterface, Contain
             $document->setParentDocument($docsParentNode);
             $document->setName(Utils::createSeoUrl($docData['title']));
             $document->setTitle($docData['title']);
-            $document->setLink($docData['title']);
-            $document->setDescription($docData['title']);
+            $document->setLink($docData['link']);
+            $document->setDescription($docData['description']);
             $document->setCategories($docData['categories']);
             $document->setBody("");
             $manager->persist($document);
