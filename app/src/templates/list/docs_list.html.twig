@@ -15,7 +15,9 @@
                 <tbody>
                 {% for doc in docs %}
                     <tr>
-                        <td><a href="{{ doc.link }}" target="_blank">{{ doc.title }}</a></td>
+                        <td>
+                            <a href="{{ doc.link|raw }}" target="_blank">{{ doc.title }}</a>
+                        </td>
                         <td>{{ doc.description }}<br /><b>Categories:</b>&nbsp;{% for cat in doc.categories %}{{ cat }}&nbsp;{% endfor %}</p></td>
                     </tr>
                 {% endfor %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Document;
+namespace App\Document\Block;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock;

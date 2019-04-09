@@ -78,6 +78,15 @@ services:
             $dm: '@doctrine_phpcr.odm.document_manager'
             $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
         tags: [{name: 'sonata.block'}]
+    app.blocks.quote:
+        class: 'App\Block\QuoteBlockService'
+        public: true
+        arguments:
+            $name: 'app.blocks.quote'
+            $templating: '@templating'
+            $dm: '@doctrine_phpcr.odm.document_manager'
+            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+        tags: [{name: 'sonata.block'}]
 
     app.repository.article:
         class: App\Repository\ArticleRepository

@@ -15,3 +15,7 @@ docs:
     link: 'https://sustainablesoftware.blogspot.com/2015/02/sustainable-software-processes-episode.html'
     categories: ['blog']
     description: 'Blog post about sustainable software development by agile methods.'
+  - title: 'AWS und Nachhaltigkeit'
+    link: 'https://sustainablesoftware.blogspot.com/2015/02/sustainable-software-processes-episode.html'
+    categories: ['german', 'advertising']
+    description: '[German] Own advertising of AWS. Declaration of intent of Amazon to use 100% renewable. Must be confirmed.'

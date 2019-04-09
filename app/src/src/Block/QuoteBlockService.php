@@ -18,9 +18,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class TextBlockService extends AbstractBlockService implements BlockServiceInterface
+class QuoteBlockService extends AbstractBlockService implements BlockServiceInterface
 {
-    protected $template = 'blocks/text_block.html.twig';
+    protected $template = 'blocks/quote_block.html.twig';
     protected $dm;
     protected $publishWorkflowChecker;
 
@@ -77,10 +77,7 @@ class TextBlockService extends AbstractBlockService implements BlockServiceInter
      */
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-                                   'template' => $this->template,
-                                   'maxItems' => 10,
-                               ));
+        $resolver->setDefaults([]);
     }
 
     /**

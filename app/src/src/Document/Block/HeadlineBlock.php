@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Document;
+namespace App\Document\Block;
 
-use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\StringBlock;
 
 /**
@@ -17,7 +16,7 @@ class HeadlineBlock extends StringBlock
 
     public function getType()
     {
-        return 'app.blocks.text';
+        return 'app.blocks.headline';
     }
 
     /**

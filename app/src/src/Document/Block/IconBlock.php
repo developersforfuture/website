@@ -1,18 +1,23 @@
 <?php
 
-namespace App\Document;
+namespace App\Document\Block;
 
-use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\StringBlock;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
+use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock;
 
 /**
  * @PHPCRODM\Document(referenceable=true, translator="child")
  *
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class TextBlock extends StringBlock
+class IconBlock extends SimpleBlock
 {
-
+    /**
+     * @var string
+     *
+     * @PHPCRODM\Field(property="icon_class")
+     */
+    private $iconClass;
     /**
      * @var string
      *
@@ -22,7 +27,23 @@ class TextBlock extends StringBlock
 
     public function getType()
     {
-        return 'app.blocks.text';
+        return 'app.blocks.icon';
+    }
+
+    /**
+     * @return string
+     */
+    public function getIconClass(): string
+    {
+        return $this->iconClass;
+    }
+
+    /**
+     * @param string $iconClass
+     */
+    public function setIconClass(string $iconClass): void
+    {
+        $this->iconClass = $iconClass;
     }
 
     /**

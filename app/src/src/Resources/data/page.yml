@@ -311,10 +311,10 @@ static:
         class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
         children:
           firstRowBlock:
-            class: App\Document\FeatureBlock
+            class: App\Document\Block\FeatureBlock
             children:
               communicationBlock:
-                class: App\Document\IconBlock
+                class: App\Document\Block\IconBlock
                 properties:
                   iconClass: envelope
                   tileLength: 6
@@ -325,7 +325,7 @@ static:
                       <li>Mail:&nbsp;<a href="developersforfuture@gmx.net">developersforfuture@gmx.net</a></li>
                     </ul>
               codeBlock:
-                class: App\Document\IconBlock
+                class: App\Document\Block\IconBlock
                 properties:
                   iconClass: code
                   tileLength: 6
@@ -346,10 +346,10 @@ static:
         class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
         children:
           headBlock:
-            class: App\Document\FeatureBlock
+            class: App\Document\Block\FeatureBlock
             children:
               headIconBlock:
-                class: App\Document\IconBlock
+                class: App\Document\Block\IconBlock
                 properties:
                   iconClass: note
                   tileLength: 12
@@ -357,10 +357,10 @@ static:
                     In many countries around the globe, students have been gathering on Fridays
                     to demonstrate for a future worth living. We as developers want to support this movement.
           taskCollection:
-            class: App\Document\FeatureBlock
+            class: App\Document\Block\FeatureBlock
             children:
               supportBlock:
-                class: App\Document\IconBlock
+                class: App\Document\Block\IconBlock
                 properties:
                   iconClass: hand-o-left
                   tileLength: 4
@@ -368,7 +368,7 @@ static:
                   body: |
                     Without influencing the kids in their work, we can help them create the software they need to network, communicate, and document their work.
               educationBlock:
-                class: App\Document\IconBlock
+                class: App\Document\Block\IconBlock
                 properties:
                   iconClass: book
                   tileLength: 4
@@ -377,7 +377,7 @@ static:
                     Striking during school doesn't mean that the kids neglect their education here. We can take the kids much closer to
                     the real world of software development with small workshops, hacking sessions or even simple code reviews than school would ever be able to.
               ownGoalsBlock:
-                class: App\Document\IconBlock
+                class: App\Document\Block\IconBlock
                 properties:
                   iconClass: globe
                   tileLength: 4

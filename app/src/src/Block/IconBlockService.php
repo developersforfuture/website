@@ -2,7 +2,7 @@
 
 namespace App\Block;
 
-use App\Document\IconBlock;
+use App\Document\Block\IconBlock;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;

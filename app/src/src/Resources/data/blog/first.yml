@@ -8,10 +8,10 @@ blocks:
     class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
     children:
       firstRowBlock:
-        class: App\Document\FeatureBlock
+        class: App\Document\Block\FeatureBlock
         children:
           firstBlock:
-            class: App\Document\IconBlock
+            class: App\Document\Block\IconBlock
             properties:
               iconClass: note
               tileLength: 12
@@ -37,17 +37,17 @@ blocks:
                   This should enable us to support the kids in their networking and communication. But basically this should not be the only goal. We are looking for an open dialogue with the scientists to answer the questions from our discussion. This means to provide our own industry with the necessary information to tackle the climate crisis from all sides.
                 </p>
       speakerRow:
-        class: App\Document\FeatureBlock
+        class: App\Document\Block\FeatureBlock
         children:
           communicationBlock:
-            class: App\Document\IconBlock
+            class: App\Document\Block\IconBlock
             properties:
               iconClass: pencil
               tileLength: 12
               title: "The Author"
               body: |
                 <ul>
-                  <li>Name::&nbsp;Maximilian Berghoff</li>
+                  <li>Name:&nbsp;Maximilian Berghoff</li>
                   <li>Twitter:&nbsp;<a href="https://twitter.com/ElectricMaxxx">ElectricMaxxx</a></li>
                   <li>
                     I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
