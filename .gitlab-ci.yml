@@ -1,0 +1,145 @@
+image: docker:stable
+
+services:
+  - node:9.11
+  - docker:dind,;
+
+variables:
+  DOCKER_DRIVER: overlay2
+  REGISTRY: registry.gitlab.com
+  REGISTRY_USER: gitlab-ci-token
+  REGISTRY_PASSWORD: $CI_JOB_TOKEN
+  REPOSITORY_PATH: developersforfuture/registry
+  CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
+  COMPOSE_PROJECT_NAME: developers
+
+stages:
+  - prepare
+  - test
+  - release
+  - deploy
+
+.cache_template:
+  cache: &cache_definition
+    key: "$CI_PROJECT_ID"
+    paths:
+      - vendor
+      - web/build
+      - node_modules
+      - $HOME/.composer
+.build_service_template: &build_service
+  cache: *cache_definition
+  before_script:
+    - apk add --no-cache python3 curl git
+    - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
+    - docker login -u$REGISTRY_USER -p$REGISTRY_PASSWORD $REGISTRY
+  script:
+    - export VERSION_TAG=$(git describe --abbrev=0 --tags)
+    - make build
+    - make push
+  after_script:
+    - docker logout ${REGISTRY}
+
+prepare_ci_release:
+  <<: *build_service
+  stage: prepare
+  except: [tags]
+  variables:
+    RUNTIME: 'ci'
+    BUILD_ARGS: '--build-arg composer_dev=1'
+    CONTEXT_PATH: './'
+
+test_unit:
+  cache: *cache_definition
+  stage: test
+  except: [tags]
+  variables:
+    DOCKER_DRIVER: overlay2
+    RUNTIME: ci
+    DB_ROOT_PW: root
+    DB_DATABASE: developers
+    DB_HOST: mysql
+    DB_USER: developers
+    DB_PASSWORD: developers
+    APP_DEBUG: 0
+    APP_ENV: test
+    SYMFONY_ENV: test
+  before_script:
+    - apk add --update --no-cache python3 m4 curl git make
+    - pip3 install docker-compose
+    - docker login -u$REGISTRY_USER -p$REGISTRY_PASSWORD $REGISTRY
+  script:
+    - export TAG=$(git describe --abbrev=0 --tags)
+    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - make ci_pull
+    - make ci_up
+    - make ci_logs > logs_script_before.txt &
+    - make unit_test
+    - make ci_logs > logs_script_afteer.txt &
+  artifacts:
+    untracked: true
+    when: on_failure
+    expire_in: 3 days
+
+build_production:
+  <<: *build_service
+  stage: release
+  only: [tags]
+  variables:
+    RUNTIME: 'production'
+    CONTEXT_PATH: './'
+
+build_development:
+  <<: *build_service
+  stage: release
+  when: manual
+  variables:
+    RUNTIME: 'development'
+    CONTEXT_PATH: './'
+    BUILD_ARGS: '--build-arg composer_dev=1 --build-arg db_play_dump=1'
+
+build_staging:
+  <<: *build_service
+  stage: release
+  only: [branches, tags]
+  variables:
+    RUNTIME: 'staging'
+    CONTEXT_PATH: './'
+    BUILD_ARGS: "--build-arg db_play_dump=1q"
+
+.deploy_template: &deploy_job
+  stage: deploy
+  script:
+    - echo " + + + We would deplyo ${RUNTIME} now + + + "
+
+deploy_staging_as_branch:
+  <<: *deploy_job
+  only: ["branches"]
+  except: ["master"]
+  variables:
+    RUNTIME: staging
+    COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+  environment:
+    name: runtime/${RUNTIME}
+    url: https://staging.developersforfuture.org
+
+deploy_staging_as_master:
+  <<: *deploy_job
+  only: [master, tags]
+  when: manual
+  variables:
+    RUNTIME: staging
+    COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+  environment:
+    name: runtime/${RUNTIME}
+    url: https://staging.developersforfuture.org
+
+deploy_production:
+  <<: *deploy_job
+  only: [tags]
+  variables:
+    RUNTIME: production
+    COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+  environment:
+    name: runtime/${RUNTIME}
+    url: https://developersforfuture.org
