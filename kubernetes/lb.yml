@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: lb-developers-web
+spec:
+  selector:
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/version: "v1"
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: developers
+    app.kubernetes.io/managed-by: max
+  ports:
+    - protocol: TCP
+      port: 80
+      name: http
+    - protocol: TCP
+      port: 443
+      name: https
+  type: LoadBalancer

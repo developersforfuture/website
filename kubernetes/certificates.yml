@@ -1,0 +1,31 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: developersfor-org
+spec:
+  organisation: DevelopersForFuture
+  secretName: developersfor-org-tls
+  renewBefore: 360h # 15d
+  commonName: developersforfuture.org
+  dnsNames:
+    - developersforfuture.org
+    - www.developersforfuture.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: developers4-org
+spec:
+  organisation: DevelopersForFuture
+  secretName: developers4-org-tls
+  renewBefore: 360h # 15d
+  commonName: developers4future.org
+  dnsNames:
+    - developers4future.org
+    - www.developers4future.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
