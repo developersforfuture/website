@@ -341,21 +341,18 @@ static:
     title: 'Homepage'
     description: 'Homepage'
     body: ''
+    class: App\Document\HomePage
     blocks:
       additionalInfoBlock:
         class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
         children:
-          headBlock:
-            class: App\Document\Block\FeatureBlock
-            children:
-              headIconBlock:
-                class: App\Document\Block\IconBlock
-                properties:
-                  iconClass: note
-                  tileLength: 12
-                  body: |
-                    In many countries around the globe, students have been gathering on Fridays
-                    to demonstrate for a future worth living. We as developers want to support this movement.
+          headIconBlock:
+            class: App\Document\Block\IconBlock
+            properties:
+              iconClass: test01
+              tileLength: 12
+              body: |
+                <img src="https://labcode.de/imgs/background-sky.jpg" width="100%"/>
           taskCollection:
             class: App\Document\Block\FeatureBlock
             children:

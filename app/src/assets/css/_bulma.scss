@@ -1,0 +1,56 @@
+@import "variables";
+
+// Import only what you need from Bulma
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/form.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+
+.bg-light-green {
+  background-color: $light-green;
+}
+
+.bg-white-green {
+  background-color: $white-green;
+}
+
+.bg-dark-green {
+  background-color: $dark-green;
+}
+
+.bg-medium-green {
+  background-color: $medium-green;
+}
+
+.bg-light-gray {
+  background-color: $light-gray;
+}
+
+
+.bg-light-beige {
+  background-color: $light-beige;
+}
+
+.bg-light-blue {
+  background-color: $light-blue;
+}
+
+.bg-light-blue {
+  background-color: $light-blue;
+}
+
+.font-light {
+  color: $light-gray !important;
+}
+
+.navbar-item {
+  color: #FFFFFF;
+  &:hover {
+
+  }
+}

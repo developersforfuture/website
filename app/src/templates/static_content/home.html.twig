@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="page-home">
+        {% if cmfMainContent.body  %}
+            {{ cmfMainContent.body|raw }}
+        {% endif %}
+        {% if cmfMainContent.additionalInfoBlock  %}
+            {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
+        {% endif %}
+    </div>
+{% endblock %}
