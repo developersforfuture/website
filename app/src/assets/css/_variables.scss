@@ -1,0 +1,29 @@
+// Set your brand colors
+$dark-green: #1B7340;
+$medium-green: #1DA64A;
+$light-green: #E1F2E7;
+$white-green: #F4F9F6;
+$black: #000000;
+$light-blue: #90D3ED;
+$gray: #565656;
+$light-gray: #EFEFEF;
+$light-beige: #FFFFFF;
+
+// Update Bulma's global variables
+$family-sans-serif: Merriweather Sans, Lato, Cantarell, sans-serif;
+$grey-dark: $black;
+$grey-light: $light-gray;
+$primary: $dark-green;
+$link: $light-blue;
+
+$tablet-enabled: true;
+$widescreen-enabled: true;
+$fullhd-enabled: true;
+
+$family-primary: Merriweather Sans, Lato, Cantarell, sans-serif;
+
+// Update some of Bulma's component variables
+$body-background-color: $light-beige;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;

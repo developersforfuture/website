@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    <div class="enable-header-scroll_effect">
+        {% include 'includes/header.html.twig' %}
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="page-home">
+        {% if cmfMainContent.body  %}
+            {{ cmfMainContent.body|raw }}
+        {% endif %}
+        {% if cmfMainContent.additionalInfoBlock  %}
+            {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
+        {% endif %}
+    </div>
+{% endblock %}

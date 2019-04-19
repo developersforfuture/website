@@ -1,18 +1,18 @@
-{% extends 'layout.html.twig' %}
+{% extends 'normal-page.html.twig' %}
 
 {% block content %}
     {% if cmfMainContent.title %}
-    <div class="columns">
-        <div class="column is-12">
-        <div class="card-image has-text-centered">
-        </div>
-            <div class="card-content">
-                <div class="content">
-                    <h1>{{ cmfMainContent.title }}</h1>
+        <div class="columns">
+            <div class="column is-12">
+                <div class="card-image has-text-centered">
+                </div>
+                <div class="card-content">
+                    <div class="content">
+                        <h1>{{ cmfMainContent.title }}</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endif %}
     {% if cmfMainContent.body  %}
         <div class="columns">

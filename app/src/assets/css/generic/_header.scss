@@ -1,0 +1,108 @@
+@import "../variables";
+
+header {
+  font-size: 16px;
+
+  nav {
+    -webkit-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    transition: background-color .5s;
+    background-color: $medium-green !important;
+
+    .navbar-brand {
+      a.navbar-item {
+        .logo {
+          color: $light-beige;
+          background-image: url(../developers-for-future-logo.png);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+        }
+
+        .logo-title {
+          margin-left: 16px;
+
+        }
+
+        &:hover {
+          color: $light-beige;
+        }
+
+        @media screen and (min-width: 1088px) {
+          .logo {
+            width: 40px;
+            height: 40px;
+          }
+        }
+        @media screen and (max-width: 1087px) {
+          height: 3.25rem;
+          .logo {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+        }
+      }
+
+      .navbar-burger {
+        color: $light-beige !important;
+
+        &:hover {
+          color: $light-beige !important
+        }
+      }
+    }
+
+    .navbar-menu {
+      @media screen and (min-width: 1088px) {
+        a.navbar-item {
+          color: $light-beige;
+
+          &:hover {
+            color: $light-beige;
+            background-color: $dark-green !important;
+          }
+        }
+      }
+      @media screen and (max-width: 1087px) {
+        a.navbar-item {
+          color: $grey-dark;
+
+          &:hover {
+            color: $grey-dark;
+            background-color: $light-green !important;
+          }
+        }
+      }
+
+      .view-source-button {
+        color: $light-beige;
+        background-color: transparent;
+        border: 2px solid $light-beige;
+
+        &:hover {
+          background-color: $dark-green;
+          border: 2px solid transparent;
+        }
+      }
+    }
+
+    //a::after {
+    //  height: 4px;
+    //  background-color: $light-beige;
+    //}
+  }
+}
+
+.enable-header-scroll_effect {
+  header {
+    nav {
+      &.not-scrolled {
+        background-color: transparent !important;
+      }
+    }
+  }
+}

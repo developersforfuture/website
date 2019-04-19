@@ -14,8 +14,9 @@ cmf_routing:
     dynamic:
         route_collection_limit: 10
         templates_by_class:
-            App\Document\BlogPage: static_content/article.html.twig
-            App\Document\StaticPage: static_content/index.html.twig
+            App\Document\BlogPage: pages/static_content/article.html.twig
+            App\Document\StaticPage: pages/static_content/index.html.twig
+            App\Document\HomePage: pages/static_content/home.html.twig
 
 cmf_core:
     # content-bundle, menu-bundle, block-bundle and routing-bundle will get same persistence configduration as core

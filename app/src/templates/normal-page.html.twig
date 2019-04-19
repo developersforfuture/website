@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<div class="container">
+    <div class="columns">
+        <div class="column is-8">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        <div class="column is-4">
+            <aside class="is-mobile">
+                {% include 'includes/sidebar.html.twig.html' %}
+            </aside>
+        </div>
+    </div>
+</div>
+{% endblock %}

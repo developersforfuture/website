@@ -340,50 +340,59 @@ static:
   - name: 'home'
     title: 'Homepage'
     description: 'Homepage'
-    body: ''
+    body: ""
+    class: App\Document\HomePage
     blocks:
       additionalInfoBlock:
         class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
         children:
-          headBlock:
+          headTextBlock:
+            class: App\Document\Block\TextBlock
+            properties:
+              tileLength: 12
+              tileClass: section01
+              body: |
+                <div class="section01-imageWrapper">
+                  <div class="section01-imageAlignHelper">
+                    <img src="/build/images/developers-for-future-logo.902296d2.png" />
+                  </div>
+                </div>
+                <div class="section01-scroll-down-icon">
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+          infoCollection:
             class: App\Document\Block\FeatureBlock
             children:
-              headIconBlock:
-                class: App\Document\Block\IconBlock
+              aboutBlock:
+                class: App\Document\Block\CardTextBlock
                 properties:
-                  iconClass: note
-                  tileLength: 12
-                  body: |
-                    In many countries around the globe, students have been gathering on Fridays
-                    to demonstrate for a future worth living. We as developers want to support this movement.
-          taskCollection:
-            class: App\Document\Block\FeatureBlock
-            children:
-              supportBlock:
-                class: App\Document\Block\IconBlock
-                properties:
-                  iconClass: hand-o-left
                   tileLength: 4
-                  title: Pure Support
-                  body: |
-                    Without influencing the kids in their work, we can help them create the software they need to network, communicate, and document their work.
-              educationBlock:
-                class: App\Document\Block\IconBlock
-                properties:
-                  iconClass: book
-                  tileLength: 4
-                  title: Education
-                  body: |
-                    Striking during school doesn't mean that the kids neglect their education here. We can take the kids much closer to
-                    the real world of software development with small workshops, hacking sessions or even simple code reviews than school would ever be able to.
-              ownGoalsBlock:
-                class: App\Document\Block\IconBlock
-                properties:
-                  iconClass: globe
-                  tileLength: 4
-                  title: Own Goal
+                  tileClass: infoAboutBlock
+                  cardTitle: What is Developers For Future?
+                  buttonText: read on
+                  buttonLink: test #TODO: Add Link to about-page
                   body: |
                     Joining the movement also means thinking about one's own footprint in climate change.
-                    As developers it has become a matter of course that we have many computers running,
-                    for example that a CI pipeline takes over every small task for us. But what does that cost in terms of electricity?
-                    Therefore it will also be our task to question our own process and to provide new solutions if necessary.
+                    As developers it has become a matter of course that we have many computers running, ...
+              blogEntryOneBlock:
+                class: App\Document\Block\CardTextBlock
+                properties:
+                  tileLength: 4
+                  tileClass: infoBlogBlock
+                  cardTitle: Motivation to start the organization
+                  buttonText: read on
+                  buttonLink: /blog/motivation-to-start-organisation
+                  body: |
+                    Some might wonder why the next organization to support the FridaysForFuture movement is coming along.
+                    But maybe not before Greta, but already before the start of the demonstrations in Germany ...
+              blogEntryTwoBlock:
+                class: App\Document\Block\CardTextBlock
+                properties:
+                  tileLength: 4
+                  tileClass: infoBlogBlock
+                  cardTitle: One of three pillars - ways to support Fridays for Future
+                  buttonLink: /blog/three-pillars
+                  buttonText: read on
+                  body: |
+                    One could think "The IT department, this is the future, why should we start here to change the way we work".
+                    Because this is what we can do best ...
