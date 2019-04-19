@@ -18,7 +18,6 @@ main .page-home {
           vertical-align: middle;
           width: 100%;
           img {
-            height: 50vh;
             width: 50vh;
             margin: auto;
           }
@@ -31,6 +30,7 @@ main .page-home {
         i {
           @extend .animated, .bounce, .infinite, .delay-1s;
           font-size: 1.75rem;
+          color: $light-gray;
         }
       }
     }
