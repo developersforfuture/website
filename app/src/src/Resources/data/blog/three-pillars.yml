@@ -16,6 +16,7 @@ blocks:
             class: App\Document\Block\TextBlock
             properties:
               tileLength: 12
+              tileClass: mainintroduction
               body: |
                 <p>
                   One could think "The IT department, this is the future, why should we start here to change the way we work".
@@ -31,6 +32,7 @@ blocks:
             class: App\Document\Block\QuoteBlock
             properties:
               tileLength: 12
+              tileClass: introductionQuote
               source: https://www.swr.de/wissen/20-jahre-google-umweltfacts-zu-suchmaschinen/-/id=253126/did=22378814/nid=253126/d2azhl/index.html
               body: |
                 Der Energiebedarf von Rechenzentren in Deutschland liegt momentan ungefähr bei 10 bis 15 TWh. In CO2-Äquivalente umgerechnet,
@@ -43,6 +45,7 @@ blocks:
             class: App\Document\Block\TextBlock
             properties:
               tileLength: 12
+              tileClass: closingIntroduction
               body: |
                 <p>
                   These figures need to be checked and reviewed. If one reads the article above, then here is a large lever, where one can make a big
@@ -58,6 +61,7 @@ blocks:
             class: App\Document\Block\TextBlock
             properties:
               tileLength: 12
+              tileClass: sustinableDevelopmentIntroduction
               body: |
                 <h3>1. Support of FridaysForFuture</h3>
                 <p>
@@ -90,6 +94,7 @@ blocks:
             class: App\Document\Block\TextBlock
             properties:
               tileLength: 12
+              tileClass: closingRowIntroduction
               body: |
                 <p>
                   With the first of three I suggest an approach. More important than the rules is the common goal and working together.
@@ -105,6 +110,7 @@ blocks:
             class: App\Document\Block\TextBlock
             properties:
               tileLength: 12
+              tileClass: upcomingRowIntroduction
               body: |
                 <p>
                   Second pillar will be about education.

@@ -18,6 +18,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "animate.css": "^3.7.0",
         "bulma": "^0.7.2",
         "jquery": "^3.4.0",
         "semver": "^5.6.0"

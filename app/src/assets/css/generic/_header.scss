@@ -1,16 +1,20 @@
-@import "variables";
+@import "../variables";
 
 header {
   font-size: 16px;
 
   nav {
+    -webkit-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    transition: background-color .5s;
     background-color: $medium-green !important;
 
     .navbar-brand {
       a.navbar-item {
         .logo {
           color: $light-beige;
-          background-image: url(developers-for-future-logo.png);
+          background-image: url(../developers-for-future-logo.png);
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
@@ -23,6 +27,7 @@ header {
           margin-left: 16px;
 
         }
+
         &:hover {
           color: $light-beige;
         }
@@ -40,11 +45,13 @@ header {
             height: 2.5rem;
           }
         }
+      }
 
-        .navbar-burger {
-          &:hover {
-            color: $light-beige
-          }
+      .navbar-burger {
+        color: $light-beige !important;
+
+        &:hover {
+          color: $light-beige !important
         }
       }
     }
@@ -87,5 +94,15 @@ header {
     //  height: 4px;
     //  background-color: $light-beige;
     //}
+  }
+}
+
+.enable-header-scroll_effect {
+  header {
+    nav {
+      &.not-scrolled {
+        background-color: transparent !important;
+      }
+    }
   }
 }

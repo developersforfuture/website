@@ -16,9 +16,17 @@ class TextBlock extends StringBlock
     /**
      * @var string
      *
-     * @PHPCRODM\Field(property="tile_lenght")
+     * @PHPCRODM\Field(property="tile_length")
      */
     private $tileLength;
+
+    /**
+     * @var string
+     *
+     * @PHPCRODM\Field(property="tile_class")
+     */
+    private $tileClass;
+
 
     public function getType()
     {
@@ -39,5 +47,21 @@ class TextBlock extends StringBlock
     public function setTileLength(string $tileLength): void
     {
         $this->tileLength = $tileLength;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTileClass(): string
+    {
+        return $this->tileClass;
+    }
+
+    /**
+     * @param string $tileClass
+     */
+    public function setTileClass(string $tileClass): void
+    {
+        $this->tileClass = $tileClass;
     }
 }

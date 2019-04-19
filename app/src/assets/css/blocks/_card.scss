@@ -1,0 +1,9 @@
+@import "../variables";
+.card {
+  .card-footer {
+    .card-footer-item {
+      background-color: $light-blue;
+      color: $black;
+    }
+  }
+}
