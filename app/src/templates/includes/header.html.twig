@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar is-fixed-top">
+    <nav class="navbar is-fixed-top not-scrolled">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url('/cms/routes/home') }}">
                 <div class="logo"></div>
@@ -16,7 +16,9 @@
                 <a class="navbar-item" href="{{ url('/cms/routes/blog') }}">Articles</a>
                 <a class="navbar-item" href="{{ url('/cms/routes/organisation') }}">Organisation</a>
                 <a class="navbar-item" href="{{ url('/cms/routes/docs') }}">Docs</a>
-                <a class="button view-source-button" href="https://github.com/DevelopersForFuture/website" target="_blank">View Source on GitHub</a>
+                <div class="navbar-item">
+                    <a class="button view-source-button" href="https://github.com/DevelopersForFuture/website" target="_blank">View Source on GitHub</a>
+                </div>
             </div>
         </div>
     </nav>

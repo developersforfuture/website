@@ -1,7 +1,6 @@
-@import "variables";
+@import "../variables";
 :root {
   font-family: Merriweather Sans, Lato, Cantarell, sans-serif;
-  font-size: 14px;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -13,31 +12,9 @@ body {
 }
 
 
-p {
-  margin: 20px;
-}
-
 h1, h2, h3 {
   font-family: "Jost Semi", Lato, Cantarell, sans-serif;
   text-transform: uppercase;
-}
-
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin: 40px 20px 20px 20px;
-}
-
-h2 {
-  font-size: 20px;
-  text-align: center;
-  margin: 30px 20px 20px 20px;
-}
-
-h3 {
-  font-size: 18px;
-  text-align: center;
-  margin: 30px 20px 20px 20px;
 }
 
 .button-container {
@@ -48,28 +25,28 @@ h3 {
   justify-content: center;
 }
 
-button,
-.button {
-  height: 40px;
-  font-size: inherit;
-  font-family: inherit;
-  padding: 0 16px;
-  color: #000000;
-  border: 0;
-  border-radius: 5px;
-  margin: 10px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
-button:hover,
-.button:hover {
-  color: $light-beige;
-}
+//button,
+//.button {
+//  height: 40px;
+//  font-size: inherit;
+//  font-family: inherit;
+//  padding: 0 16px;
+//  color: #000000;
+//  border: 0;
+//  border-radius: 5px;
+//  margin: 10px;
+//  cursor: pointer;
+//  display: flex;
+//  flex-direction: row;
+//  align-items: center;
+//  justify-content: space-between;
+//  box-sizing: border-box;
+//}
+//
+//button:hover,
+//.button:hover {
+//  color: $light-beige;
+//}
 
 a {
   text-decoration: none;
@@ -128,20 +105,15 @@ footer {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  position: sticky;
-  bottom: 0;
 }
 
 main {
   height: auto;
-  padding: 0 10px 60px 10px;
-  display: flex;
+  display: block;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   box-sizing: border-box;
-  margin-bottom: 60px;
-  margin-top: 10px;
 }
 
 content {

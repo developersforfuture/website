@@ -1,4 +1,4 @@
-
+@import "../variables";
 #blog-overview {
   width: 100%;
   position: relative;
@@ -7,7 +7,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   box-sizing: border-box;
-  overflow: no-scroll;
+  overflow: hidden;
 }
 
 #blog-overview-contain {
@@ -18,7 +18,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   box-sizing: border-box;
-  overflow: no-scroll;
+  overflow: hidden;
   transition-property: margin-left;
   transition-duration: 0.6s;
   transition-timing-function: ease;

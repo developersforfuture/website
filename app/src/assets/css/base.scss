@@ -1,4 +1,11 @@
-@import "bulma";
-@import "general";
-@import "header";
-@import "blog";
+// General CSS
+@import "generic/bulma";
+@import "generic/general";
+@import "generic/header";
+
+// CSS for specific block types
+@import "blocks/card";
+
+// Special CSS for pages
+@import "pages/blog";
+@import "pages/home";

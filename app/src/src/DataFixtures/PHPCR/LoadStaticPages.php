@@ -35,7 +35,7 @@ class LoadStaticPages extends AbstractPageLoader
         NodeHelper::createPath($session, $basepath);
 
         $yaml = new Parser();
-        $data = $yaml->parse(file_get_contents(__DIR__ . '/../../Resources/data/page.yml'));
+        $data = $yaml->parse(file_get_contents(__DIR__ . '/../../Resources/data/static_pages.yml'));
 
         $parent = $this->manager->find(null, $basepath);
         foreach ($data['static'] as $overview) {
