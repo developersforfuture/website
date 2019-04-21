@@ -1,7 +1,5 @@
-<div class="container">
-    <div class="columns">
-        {% for icon in icons %}
-            {{ sonata_block_render(icon) }}
-        {% endfor %}
-    </div>
+<div class="columns">
+    {% for childBlock in childBlocks %}
+        {{ sonata_block_render(childBlock) }}
+    {% endfor %}
 </div>

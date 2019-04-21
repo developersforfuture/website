@@ -361,7 +361,7 @@ static:
                   <i class="fas fa-chevron-down"></i>
                 </div>
           infoCollection:
-            class: App\Document\Block\FeatureBlock
+            class: App\Document\Block\ContainerBlock
             children:
               aboutBlock:
                 class: App\Document\Block\CardTextBlock

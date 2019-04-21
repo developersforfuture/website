@@ -59,7 +59,15 @@ services:
             $dm: '@doctrine_phpcr.odm.document_manager'
             $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
         tags: [{name: 'sonata.block'}]
-
+    app.blocks.container:
+        class: 'App\Block\ContainerBlockService'
+        public: true
+        arguments:
+            $name: 'app.blocks.container'
+            $templating: '@templating'
+            $dm: '@doctrine_phpcr.odm.document_manager'
+            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+        tags: [{name: 'sonata.block'}]
     app.blocks.icon:
         class: 'App\Block\IconBlockService'
         public: true
@@ -83,6 +91,15 @@ services:
         public: true
         arguments:
             $name: 'app.blocks.cardText'
+            $templating: '@templating'
+            $dm: '@doctrine_phpcr.odm.document_manager'
+            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+        tags: [{name: 'sonata.block'}]
+    app.blocks.cardOnlyContent:
+        class: 'App\Block\CardOnlyContentBlockService'
+        public: true
+        arguments:
+            $name: 'app.blocks.cardOnlyContent'
             $templating: '@templating'
             $dm: '@doctrine_phpcr.odm.document_manager'
             $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'

@@ -9,11 +9,11 @@ blocks:
   additionalInfoBlock:
     class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
     children:
-      introductionRow:
+      blogArticle:
         class: App\Document\Block\FeatureBlock
         children:
           introductionBlock:
-            class: App\Document\Block\TextBlock
+            class: App\Document\Block\CardOnlyContentBlock
             properties:
               tileLength: 12
               tileClass: mainintroduction
@@ -24,45 +24,16 @@ blocks:
                   In addition to the minor adjustement in private life, each and every industry has to rethink processes to tackle climate change..
                   Reality seems different:
                 </p>
-
-      introductionQuote:
-        class: App\Document\Block\FeatureBlock
-        children:
-          introductionQuote:
-            class: App\Document\Block\QuoteBlock
-            properties:
-              tileLength: 12
-              tileClass: introductionQuote
-              source: https://www.swr.de/wissen/20-jahre-google-umweltfacts-zu-suchmaschinen/-/id=253126/did=22378814/nid=253126/d2azhl/index.html
-              body: |
-                Der Energiebedarf von Rechenzentren in Deutschland liegt momentan ungefähr bei 10 bis 15 TWh. In CO2-Äquivalente umgerechnet,
-                entspricht das ungefähr den CO2-Emissionen, die wir im Flugverkehr in Deutschland haben.
-
-      introductionClosingRow:
-        class: App\Document\Block\FeatureBlock
-        children:
-          introductionBlock:
-            class: App\Document\Block\TextBlock
-            properties:
-              tileLength: 12
-              tileClass: closingIntroduction
-              body: |
+                <blockquote>
+                  Der Energiebedarf von Rechenzentren in Deutschland liegt momentan ungefähr bei 10 bis 15 TWh. In CO2-Äquivalente umgerechnet entspricht das ungefähr den CO2-Emissionen, die wir im Flugverkehr in Deutschland haben.
+                </blockquote>
+                <p> Source: <a href="https://www.swr.de/wissen/20-jahre-google-umweltfacts-zu-suchmaschinen/-/id=253126/did=22378814/nid=253126/d2azhl/index.html">https://www.swr.de/wissen/20-jahre-google-umweltfacts-zu-suchmaschinen/-/id=253126/did=22378814/nid=253126/d2azhl/index.html</a> </p>
                 <p>
                   These figures need to be checked and reviewed. If one reads the article above, then here is a large lever, where one can make a big
                   contribution by rethinking code switching to more efficient computing power, which ideally is powered by 100% renewables. We have the ability see it as a refinement that every developer,
                   company and individual can make.<br />
                   Like our love for open-soure the following three pillars can be seen as guidelines for our work at DevsForFuture.
                 </p>
-
-      sustainableDevelopmentRow:
-        class: App\Document\Block\FeatureBlock
-        children:
-          introductionBlock:
-            class: App\Document\Block\TextBlock
-            properties:
-              tileLength: 12
-              tileClass: sustinableDevelopmentIntroduction
-              body: |
                 <h3>1. Support of FridaysForFuture</h3>
                 <p>
                   There is already a small team of students who form a development team within FridaysForFuture.
@@ -86,32 +57,12 @@ blocks:
                     <li>Nothing is set in stone and can be changed by the community at any time.</li>
                   </ul>
                 </p>
-
-      closingRow:
-        class: App\Document\Block\FeatureBlock
-        children:
-          introductionBlock:
-            class: App\Document\Block\TextBlock
-            properties:
-              tileLength: 12
-              tileClass: closingRowIntroduction
-              body: |
                 <p>
                   With the first of three I suggest an approach. More important than the rules is the common goal and working together.
                   That's why we shouldn't be so much concerned with questions about choosing the right programming language,
                   but should simply start where each individual feels most comfortable. <br />
                   There's lots of projects for everyone and together we build a community that is able to mitigate climate change.
                 </p>
-
-      upcommingRow:
-        class: App\Document\Block\FeatureBlock
-        children:
-          introductionBlock:
-            class: App\Document\Block\TextBlock
-            properties:
-              tileLength: 12
-              tileClass: upcomingRowIntroduction
-              body: |
                 <p>
                   Second pillar will be about education.
                   Third pillar will be about sutainable software development.
@@ -119,20 +70,16 @@ blocks:
       speakerRow:
         class: App\Document\Block\FeatureBlock
         children:
-          communicationBlock:
-            class: App\Document\Block\IconBlock
+          authorBlock:
+            class: App\Document\Block\CardTextBlock
             properties:
-              iconClass: pencil
               tileLength: 12
-              title: "The Author"
+              tileClass: blog-author-card
+              cardTitle: Author
+              buttonText: Twitter
+              buttonLink: https://twitter.com/ElectricMaxxx
               body: |
-                <ul>
-                  <li>Name:&nbsp;Maximilian Berghoff</li>
-                  <li>Twitter:&nbsp;<a href="https://twitter.com/ElectricMaxxx">ElectricMaxxx</a></li>
-                  <li>Github:&nbsp;<a href="https://github.com/ElectricMaxxx">ElectricMaxxx</a></li>
-                  <li>
-                    I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
-                    free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
-                    watching Game of Thrones.
-                  </li>
-                </ul>
+                <h4 class="author-name">Maximilian Berghoff</h5>
+                <p>I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                watching Game of Thrones.</p>

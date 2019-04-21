@@ -1,33 +1,27 @@
 {% extends 'normal-page.html.twig' %}
 
 {% block content %}
-    {% if cmfMainContent.title %}
-        <div class="columns">
-            <div class="column is-12">
-                <div class="card-image has-text-centered">
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <h1>{{ cmfMainContent.title }}</h1>
+    <div class="article-page">
+        {% if cmfMainContent.title %}
+            <div class="has-text-centered">
+                <h2 class="has-text-weight-light">{{ cmfMainContent.title }}</h2>
+            </div>
+        {% endif %}
+        {% if cmfMainContent.body %}
+            <div class="columns">
+                <div class="column is-12">
+                    <div class="card is-shady">
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ cmfMainContent.body|raw }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endif %}
-    {% if cmfMainContent.body  %}
-        <div class="columns">
-            <div class="column is-12">
-                <div class="card is-shady">
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        {{ cmfMainContent.body|raw }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-    {% if cmfMainContent.additionalInfoBlock  %}
-        {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
-    {% endif %}
+        {% endif %}
+        {% if cmfMainContent.additionalInfoBlock %}
+            {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
+        {% endif %}
+    </div>
 {% endblock %}
