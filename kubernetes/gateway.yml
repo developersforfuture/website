@@ -39,7 +39,7 @@ spec:
     - hosts:
         - developers4future.org
         - www.developers4future.org
-      secretName: developersfor-org-tls
+      secretName: developers4-org-tls
   rules:
     - host: www.developers4future.org
       http:

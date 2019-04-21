@@ -125,3 +125,17 @@ spec:
             limits:
               memory: "248Mi"
               cpu: "250m"
+          readinessProbe:
+            httpGet:
+              path: /home
+              port: 80
+            initialDelaySeconds: 200
+            timeoutSeconds: 1
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /home
+              port: 80
+            initialDelaySeconds: 200
+            timeoutSeconds: 1
+            periodSeconds: 15

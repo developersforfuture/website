@@ -1,8 +1,4 @@
-image: docker:stable
-
-services:
-  - node:9.11
-  - docker:dind,;
+image: php
 
 variables:
   DOCKER_DRIVER: overlay2
@@ -12,9 +8,10 @@ variables:
   REPOSITORY_PATH: developersforfuture/registry
   CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
   COMPOSE_PROJECT_NAME: developers
+  VERSION_TAG: ${CI_COMMIT_REF_NAME}
 
 stages:
-  - prepare
+  -  build-ci
   - test
   - release
   - deploy
@@ -29,33 +26,33 @@ stages:
       - $HOME/.composer
 .build_service_template: &build_service
   cache: *cache_definition
+  image: docker:latest
+  services:
+    - docker:dind
   before_script:
-    - apk add --no-cache python3 curl git
+    - apk add --no-cache python3 curl git make m4
     - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
-    - docker login -u$REGISTRY_USER -p$REGISTRY_PASSWORD $REGISTRY
+    - make docker_login
   script:
-    - export VERSION_TAG=$(git describe --abbrev=0 --tags)
+    - if [[ "${RUNTIME"} === "productio" ]]; then export VERSION_TAG=${CI_COMMIT_TAG};  fi;
     - make build
     - make push
   after_script:
-    - docker logout ${REGISTRY}
+    - make docker_logout
 
-prepare_ci_release:
+build-image.ci:
   <<: *build_service
-  stage: prepare
+  stage:  build-ci
   except: [tags]
   variables:
     RUNTIME: 'ci'
-    BUILD_ARGS: '--build-arg composer_dev=1'
-    CONTEXT_PATH: './'
 
 test_unit:
   cache: *cache_definition
+  image: ${CONTAINER_IMAGE}-ci:${VERSION_TAG}
   stage: test
   except: [tags]
   variables:
-    DOCKER_DRIVER: overlay2
-    RUNTIME: ci
     DB_ROOT_PW: root
     DB_DATABASE: developers
     DB_HOST: mysql
@@ -64,55 +61,48 @@ test_unit:
     APP_DEBUG: 0
     APP_ENV: test
     SYMFONY_ENV: test
-  before_script:
-    - apk add --update --no-cache python3 m4 curl git make
-    - pip3 install docker-compose
-    - docker login -u$REGISTRY_USER -p$REGISTRY_PASSWORD $REGISTRY
   script:
-    - export TAG=$(git describe --abbrev=0 --tags)
-    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
-    - make ci_pull
-    - make ci_up
-    - make ci_logs > logs_script_before.txt &
-    - make unit_test
-    - make ci_logs > logs_script_afteer.txt &
+    - vendor/bin/phpunit
   artifacts:
-    untracked: true
-    when: on_failure
-    expire_in: 3 days
+    name: "${CI_JOB_NAME}_${CI_JOB_ID}"
+    expire_in: 1 week
+    when: always
+    paths:
+      - ./coverage/
+      - ./unittests.xml
+    reports:
+      junit: ./unittests.xml
+  coverage: '/^\s*Lines:\s*(\d+(?:\.\d+)?%)/'
 
-build_production:
+build-image.production:
   <<: *build_service
   stage: release
   only: [tags]
   variables:
     RUNTIME: 'production'
-    CONTEXT_PATH: './'
 
-build_development:
+build-image.development:
   <<: *build_service
   stage: release
   when: manual
   variables:
     RUNTIME: 'development'
-    CONTEXT_PATH: './'
-    BUILD_ARGS: '--build-arg composer_dev=1 --build-arg db_play_dump=1'
 
-build_staging:
+build-image.staging:
   <<: *build_service
   stage: release
-  only: [branches, tags]
+  only: [branches]
+  except: [tags]
   variables:
     RUNTIME: 'staging'
     CONTEXT_PATH: './'
-    BUILD_ARGS: "--build-arg db_play_dump=1q"
 
 .deploy_template: &deploy_job
   stage: deploy
   script:
     - echo " + + + We would deplyo ${RUNTIME} now + + + "
 
-deploy_staging_as_branch:
+deploy-as-branch.staging:
   <<: *deploy_job
   only: ["branches"]
   except: ["master"]
@@ -123,9 +113,10 @@ deploy_staging_as_branch:
     name: runtime/${RUNTIME}
     url: https://staging.developersforfuture.org
 
-deploy_staging_as_master:
+deploy-as-master.staging:
   <<: *deploy_job
-  only: [master, tags]
+  only: [master]
+  except: [tags]
   when: manual
   variables:
     RUNTIME: staging
@@ -134,7 +125,7 @@ deploy_staging_as_master:
     name: runtime/${RUNTIME}
     url: https://staging.developersforfuture.org
 
-deploy_production:
+deploy.production:
   <<: *deploy_job
   only: [tags]
   variables:

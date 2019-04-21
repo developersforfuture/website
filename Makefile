@@ -9,6 +9,7 @@ override gitOriginUrl = $(shell git config --get remote.origin.url)
 override projectName=frontend
 override projectRegistry=$(REGISTRY)
 override projectPath=$(REPOSITORY_PATH)
+override baseContainerPath=registry.gitlab.com/froscon/php-track-web
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
@@ -26,7 +27,8 @@ override M4_OPTS = \
 	--define m4GitOriginUrl=$(gitOriginUrl) \
 	--define m4ReleaseImage=$(call getImage, $(releaseImage)) \
 	--define m4ReleaseImageTag=$(call getImageTag, $(releaseImage),latest) \
-	--define m4ContainerBasePath=$(containerBasePath)
+	--define m4ContainerBasePath=$(containerBasePath) \
+	--define m4BaseContainerPath=$(baseContainerPath)
 
 
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
@@ -67,3 +69,4 @@ docker_login:
 docker_logout:
 	@echo "\n + + + Logout from registry: $(REGISTRY) +  +  + "
 	@docker logout $(REGISTRY)
+
