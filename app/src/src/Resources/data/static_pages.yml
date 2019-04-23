@@ -303,7 +303,7 @@ static:
       </section>
 
   - name: 'organisation'
-    title: 'Organisation of the organisation'
+    title: 'Organisation'
     description: 'Page to hold all places and links, where to find relevant things'
     body: ''
     blocks:
@@ -314,28 +314,31 @@ static:
             class: App\Document\Block\FeatureBlock
             children:
               communicationBlock:
-                class: App\Document\Block\IconBlock
+                class: App\Document\Block\CardTextWithoutFooterBlock
                 properties:
-                  iconClass: envelope
                   tileLength: 6
-                  title: "Communication"
+                  tileClass: organisationBlock
+                  cardTitle: "Communication"
                   body: |
-                    <ul>
-                      <li>Twitter:&nbsp;<a href="">DevsForFuture</a></li>
-                      <li>Mail:&nbsp;<a href="developersforfuture@gmx.net">developersforfuture@gmx.net</a></li>
-                    </ul>
+                    <p>
+                      Twitter: <a href="https://twitter.com/devsforfuture">@DevsForFuture</a>
+                      <br>
+                      Mail: <a href="mailto:developersforfuture@gmx.net">developersforfuture@gmx.net</a>
+                    </p>
               codeBlock:
-                class: App\Document\Block\IconBlock
+                class: App\Document\Block\CardTextWithoutFooterBlock
                 properties:
-                  iconClass: code
                   tileLength: 6
-                  title: "Code"
+                  tileClass: organistationBlock
+                  cardTitle: "Code"
                   body: |
-                    <ul>
-                      <li>Github:&nbsp;<a href="https://github.com/developersforfuture">General Organisation</a></li>
-                      <li>Github:&nbsp;<a href="https://github.com/developersforfuture/website">Website Repository</a></li>
-                      <li>Github:&nbsp;<a href="https://github.com/developersforfuture/developersforfuture">General issues, Wiki</a></li>
-                    </ul>
+                    <p>
+                      GitHub: <a href="https://github.com/developersforfuture">General Organisation</a>
+                      <br>
+                      GitHub: <a href="https://github.com/developersforfuture/website">Website Repository</a>
+                      <br>
+                      GitHub: <a href="https://github.com/developersforfuture/developersforfuture">General issues, Wiki</a>
+                    </p>
 
   - name: 'home'
     title: 'Homepage'

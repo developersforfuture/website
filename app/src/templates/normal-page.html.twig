@@ -4,6 +4,11 @@
 <div class="container">
     <div class="columns">
         <div class="column is-8">
+            {% if cmfMainContent is defined %}
+            <div class="has-text-centered">
+                <h2 class="has-text-weight-light">{{ cmfMainContent.title }}</h2>
+            </div>
+            {% endif %}
             {% block content %}
 
             {% endblock %}
