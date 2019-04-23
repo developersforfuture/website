@@ -1,0 +1,17 @@
+@import "../variables";
+section.event-section {
+  .card.main-event-section-card {
+    margin-top: 2.37333rem;
+    .card-header {
+      h6.card-header-title {
+        margin: 0;
+      }
+    }
+    .card.event-card {
+      cursor: pointer;
+      &:hover {
+        background-color: $light-blue;
+      }
+    }
+  }
+}
