@@ -10,7 +10,7 @@ section.event-section {
     .card.event-card {
       cursor: pointer;
       &:hover {
-        background-color: $light-blue;
+        background-color: #eef8fc;  // Lighter Blue 85% lighter than $light-blue
       }
     }
   }
