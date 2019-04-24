@@ -7,9 +7,6 @@
 # for their specific configuration
 
 cmf_routing:
-    persistence:
-        phpcr:
-            enabled: true
     chain:
         routers_by_id:
             cmf_routing.dynamic_router: 20

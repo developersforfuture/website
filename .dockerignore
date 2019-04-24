@@ -1,0 +1,8 @@
+app/src/var/*
+app/src/vendor/
+
+dobi.yaml
+dobi.yaml.m4
+.env.dist
+Makefile
+README.md
