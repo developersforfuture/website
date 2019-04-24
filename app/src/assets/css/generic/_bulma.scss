@@ -40,7 +40,11 @@
 
 .navbar-item {
   color: #FFFFFF;
-  &:hover {
+}
+a {
+  color: $medium-green;
+}
 
-  }
+a:hover {
+  color: $dark-green;
 }

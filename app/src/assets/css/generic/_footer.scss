@@ -11,6 +11,12 @@ main {
 footer {
   margin-top: 50px;
   background-color: $medium-green;
+  min-height: 50px;
+  color: $light-beige;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  align-items: center;
   a {
     color: $light-gray;
     &:hover {
