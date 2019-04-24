@@ -17,6 +17,7 @@ cmf_routing:
             App\Document\BlogPage: pages/static_content/article.html.twig
             App\Document\StaticPage: pages/static_content/index.html.twig
             App\Document\HomePage: pages/static_content/home.html.twig
+            App\Document\LegalPage: pages/static_content/legal.html.twig
 
 cmf_core:
     # content-bundle, menu-bundle, block-bundle and routing-bundle will get same persistence configduration as core

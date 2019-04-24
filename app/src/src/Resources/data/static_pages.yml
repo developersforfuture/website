@@ -1,306 +1,274 @@
 static:
-  - name: 'impressum'
+  - name: 'Imprint'
     description: 'page for legal information'
-    title: 'Impressum'
-    body: |
-      <section class="container">
-          <div class="columns">
-              <div class="column is-12">
-                  <div class="card is-shady">
-                      <div class="card-image has-text-centered">
-                          <i class="fa fa-note"></i>
-                      </div>
-                      <div class="card-content">
-                          <div class="content">
-                              <h4>Impressum</h4>
-                              <p>
-                                  Maximilian Berghoff<br>
-                                  Rosestraße 7<br>
-                                  91617 Oberdachstetten<br>
-                                  E-Mail maximilian.berghoff@gmx.de<br>
-                                  <br>
-                                  <br>
-                              </p>
-                              <h3>Disclaimer:</h3>
-                              <p>
-                                  Liability for contents
-                                  The contents of our pages were created with the greatest care. For the correctness, completeness and topicality of the contents we can take
-                                  over however no guarantee. As a service provider we are responsible according to § 7 Abs.1 TMG for our own contents on these pages according
-                                  to the general laws. According to §§ 8 to 10 TMG we are not obliged as a service provider to monitor transmitted or stored third-party information
-                                  or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information in accordance with
-                                  general laws remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a concrete
-                                  violation of the law. As soon as we become aware of such infringements, we will remove the content immediately.
-                              </p>
-                              <h3>Liability for links</h3>
-                              <p>
-                                  Our offer contains links to external websites of third parties, on whose contents we have no influence.
-                                  Therefore, we cannot assume any liability for these external contents. For the contents of the linked
-                                  The respective provider or operator of the pages is always responsible for the content of these pages. The linked pages
-                                  were checked for possible violations of the law at the time of linking. Illegal contents were
-                                  not recognizable at the time of linking. A permanent control of the contents of the linked pages is not possible.
-                                  pages is not reasonable without concrete evidence of an infringement. On becoming known
-                                  of law breakings we will remove such links immediately.
-                              </p>
-                              <h3>Copyright</h3>
-                              <p>
-                                  The contents and works on these pages created by the site operators are subject to the copyright of their respective owners.
-                                  German copyright law. The duplication, treatment, spreading and each kind of the utilization
-                                  outside the limits of copyright law require the written consent of the respective author
-                                  or creator. Downloads and copies of this site are only for private, non-commercial use.
-                                  Use permitted. As far as the contents on this side were not provided by the operator, we are not liable for any postings or messages published by users of discussion boards, guestbooks or mailinglists provided on our page.
-                                  the copyrights of third parties. In particular, contents of third parties are marked as such.
-                                  Should you nevertheless become aware of an infringement of copyright, we ask you to send us an e-mail.
-                                  corresponding note. If we become aware of infringements of the law, we will not be held liable for such content.
-                                  immediately.
-                              </p>
-                              <h3>Data Policy</h3>
-                              <p>
-                                  The use of our website is generally possible without providing personal data.
-                                  As far as on our pages personal data (such as name, address or e-mail addresses)
-                                  this is always done on a voluntary basis as far as possible. This data is collected without
-                                  Your express consent will not be disclosed to third parties.
-                              </p>
-                              <p>
-                                  We would like to point out that data transmission via the Internet (e.g. communication by e-mail) is not permitted without the express written consent of the respective party.
-                                  security vulnerabilities. A complete protection of the data from the access by third parties is
-                                  not possible.
-                              </p>
-                              <p>
-                                  The use of published postal addresses, telephone or fax numbers and email addresses for marketing purposes is prohibited, offenders sending unwanted spam messages will be punished.
-                                  The sending of unsolicited advertising and information material is hereby prohibited.
-                                  expressly contradicted. The operators of the pages expressly reserve the right to take legal action against the visitors of this website.
-                                  in the case of the unsolicited sending of advertising information, such as spam mails.
-                              </p>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
+    title: 'Imprint'
+    class: App\Document\LegalPage
+    body: ''
+    blocks:
+      additionalInfoBlock:
+        class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+        children:
+          contentWrapperBlock:
+            class: App\Document\Block\FeatureBlock
+            children:
+              mainContentBlock:
+                class: App\Document\Block\CardOnlyContentBlock
+                properties:
+                  tileLength: 12
+                  tileClass: legalBlock
+                  body: |
+                    <p>
+                        Maximilian Berghoff<br>
+                        Rosestraße 7<br>
+                        91617 Oberdachstetten<br>
+                        E-Mail: <a href="mailto:maximilian.berghoff@gmx.de">maximilian.berghoff@gmx.de</a>
+                    </p>
+                    <h3>Disclaimer:</h3>
+                    <p>
+                        Liability for contents
+                        The contents of our pages were created with the greatest care. For the correctness, completeness and topicality of the contents we can take
+                        over however no guarantee. As a service provider we are responsible according to § 7 Abs.1 TMG for our own contents on these pages according
+                        to the general laws. According to §§ 8 to 10 TMG we are not obliged as a service provider to monitor transmitted or stored third-party information
+                        or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information in accordance with
+                        general laws remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a concrete
+                        violation of the law. As soon as we become aware of such infringements, we will remove the content immediately.
+                    </p>
+                    <h3>Liability for links</h3>
+                    <p>
+                        Our offer contains links to external websites of third parties, on whose contents we have no influence.
+                        Therefore, we cannot assume any liability for these external contents. For the contents of the linked
+                        The respective provider or operator of the pages is always responsible for the content of these pages. The linked pages
+                        were checked for possible violations of the law at the time of linking. Illegal contents were
+                        not recognizable at the time of linking. A permanent control of the contents of the linked pages is not possible.
+                        pages is not reasonable without concrete evidence of an infringement. On becoming known
+                        of law breakings we will remove such links immediately.
+                    </p>
+                    <h3>Copyright</h3>
+                    <p>
+                        The contents and works on these pages created by the site operators are subject to the copyright of their respective owners.
+                        German copyright law. The duplication, treatment, spreading and each kind of the utilization
+                        outside the limits of copyright law require the written consent of the respective author
+                        or creator. Downloads and copies of this site are only for private, non-commercial use.
+                        Use permitted. As far as the contents on this side were not provided by the operator, we are not liable for any postings or messages published by users of discussion boards, guestbooks or mailinglists provided on our page.
+                        the copyrights of third parties. In particular, contents of third parties are marked as such.
+                        Should you nevertheless become aware of an infringement of copyright, we ask you to send us an e-mail.
+                        corresponding note. If we become aware of infringements of the law, we will not be held liable for such content.
+                        immediately.
+                    </p>
+                    <h3>Data Policy</h3>
+                    <p>
+                        The use of our website is generally possible without providing personal data.
+                        As far as on our pages personal data (such as name, address or e-mail addresses)
+                        this is always done on a voluntary basis as far as possible. This data is collected without
+                        Your express consent will not be disclosed to third parties.
+                    </p>
+                    <p>
+                        We would like to point out that data transmission via the Internet (e.g. communication by e-mail) is not permitted without the express written consent of the respective party.
+                        security vulnerabilities. A complete protection of the data from the access by third parties is
+                        not possible.
+                    </p>
+                    <p>
+                        The use of published postal addresses, telephone or fax numbers and email addresses for marketing purposes is prohibited, offenders sending unwanted spam messages will be punished.
+                        The sending of unsolicited advertising and information material is hereby prohibited.
+                        expressly contradicted. The operators of the pages expressly reserve the right to take legal action against the visitors of this website.
+                        in the case of the unsolicited sending of advertising information, such as spam mails.
+                    </p>
   - name: 'data-policy'
     description: 'page for legal information for data policy'
     title: 'Data policy'
-    body: |
-      <section class="container">
-              <div class="columns">
-                  <div class="column is-12">
-                      <div class="card is-shady">
-                          <div class="card-image has-text-centered">
-                              <i class="fa fa-note"></i>
-                          </div>
-                          <div class="card-content">
-                              <div class="content">
-                                  <h4>Data policy</h4>
-                                 <h2>Privacy Policy</h2>
-                                     <h3 id="dsg-general-intro"></h3>
-                                     <p>
-                                         This privacy policy clarifies the nature, scope and purpose of the processing of personal data
-                                         (hereinafter referred to as "data") within our online offer and the related websites, functions and contents as well as external online presences, e.g. our social
-                                         Media Profile (collectively referred to as the "Online Offering"). With regard to the terminology used, e.g. "Processing" or "Responsible"
-                                         We refer to the definitions in Article 4 of the General Data Protection Regulation (GDPR).<br>
-                                         <br>
-                                     </p>
-                                     <h3 id="dsg-general-controller">Responsible</h3>
-                                     <p><span class="tsmcontroller">Maximilian Berghoff<br>
-                                         Rosestraße 7<br>
-                                         91617 Oberdachstetten<br>
-                                         Deutschland<br>
-                                         Mail info@developersforfuture.org<br>
-                                         Impressum https://developersforfuture.org/impressum</span>
-                                     </p>
-                                     <h3 id="dsg-general-datatype">Types of processed data:</h3>
-                                     <p>
-                                         - Usage data (e.g., websites visited, interest in content, access times).<br>
-                                         - Meta / communication data (e.g., device information, IP addresses).<br>
-                                     </p>
-                                     <h3 id="dsg-general-datasubjects">Kategorien betroffener Personen</h3>
-                                     <p>
-                                         Visitors and users of the online offer (hereinafter we refer to the persons concerned
-                                         in summary, as a "user").<br>
-                                     </p>
-                                     <h3 id="dsg-general-purpose">Purpose of processing</h3>
-                                     <p>
-                                         - Providing the online offer, its features and content. <br>
-                                         - Security measures. <br>
-                                         - Reach Measurement / Marketing <br>
-                                         <span class="tsmcom"></span>
-                                     </p>
-                                     <h3 id="dsg-general-terms">Used terms</h3>
-                                     <p>
-                                         "Personal information" is all information that relates to one
-                                             Identified or identifiable natural person (hereinafter referred to as "affected person"); a natural person is considered to be identifiable, directly or indirectly
-                                             indirectly, in particular by means of assignment to an identifier such as a name, to an identification number, to location data, to an online identifier (for example a
-                                         cookie) or to an or Several specific features can be identified, expressing the physical, physiological, genetic, mental, economic, cultural or social
-                                         Identity of this natural person are
-                                         <br>
-                                         "Processing" means any process performed with or without the aid of automated procedures or any such process associated with personal data. Of the
-                                          Term goes far and includes virtually every deal with data. <br>
-                                          <br>
-                                             "Pseudonymisation" means the processing of personal data in such a way that the personal data is no longer one without additional information
-                                             specific person may be assigned, provided that such additional information is kept separate and technical and organizational measures
-                                             ensuring that your personal information is not assigned to an identified or identifiable natural person. <br>
-                                             <br>
-                                             "Profiling" means any kind of automated processing of personal data that consists in using that personal information to obtain certain personal information
-                                             To assess aspects relating to a natural person, in particular aspects of work performance, economic situation, health, personal preferences,
-                                             To analyze or predict interests, reliability, behavior, whereabouts or location of this natural person. <br>
-                                             <br>
-                                             "Responsible" is the natural or legal person, authority, institution or other body, alone or in concert with others over the purposes and means
-                                             decides the processing of personal data. <br>
-                                             <br>
-                                             "Processor" means a natural or legal person, public authority, agency or other body providing personal data on behalf of the controller
-                                             processed. <br>
-                                     </p>
-                                     <h3 id="dsg-general-legal-basis"> Relevant legal bases </h3>
-                                     <p>
-                                         In accordance with Art. 13 GDPR, we inform you about the legal basis of our data processing. Provided
-                                             The legal basis for obtaining consent is Article 6 (1) lit. a and Art. 7
-                                             DSGVO, the legal basis for the processing for the performance of our services and the execution of contractual measures as well as the answer to inquiries is Art. 6
-                                         para. 1
-                                         lit.
-                                             b DSGVO, the legal basis for processing in order to fulfill our legal obligations is Art. 6 (1) lit. c DSGVO, and the legal basis for processing
-                                             To safeguard our legitimate interests, Art. 6 para. 1 lit. f DSGVO. In the event that vital interests of the person concerned or another natural
-                                             The person requiring the processing of personal data, Art. 6 (1) lit. d DSGVO as legal basis.
-                                     </p>
-                                     <h3 id="dsg-general-securitymeasures">Safety measures</h3>
-                                     <p>
-                                         In accordance with Art. 32 GDPR, we take into account the state of the art, the costs of implementation and the type and scope of the
-                                             Circumstances and purposes of the processing and the different likelihood and severity of the risk to the rights and freedoms of natural persons;
-                                             appropriate technical and organizational measures to ensure a level of protection commensurate with the risk. <br>
-                                             <br>
-                                             In particular, measures include ensuring the confidentiality, integrity and availability of data through the control of physical access to the data, as well as
-                                             access, input, disclosure, availability and separation. Furthermore, we have set up procedures that have a perception
-                                             of data subject rights, erasure of data and reaction to data threats. We also take into account the protection of personal data already at the
-                                             Development, or selection of hardware, software and procedures, according to the principle of data protection through technology design and privacy-friendly
-                                             Presettings (Article 25 DSGVO). <br>
-                                     </p>
-                                     <h3 id="dsg-general-coprocessing">Collaboration with contract processors and third parties </h3>
-                                     <p>
-                                         Unless we provide data to other persons in the course of our processing and
-                                             To disclose, transmit to, or otherwise grant access to the data to any entity (processor or third party), this will only be done on the basis of a
-                                         statutory permission (for example, if a transmission of the data to third parties, such as payment service providers, pursuant to Article 6 (1) (b) GDPR is required to
-                                         fulfill the contract),
-                                             You have consented to a legal obligation or on the basis of our legitimate interests (such as the use of agents, web hosts, etc.).
-                                             <br>
-                                             <br>
-                                             If we commission third parties to process data on the basis of a so-called "contract processing contract", this is done on the basis of Art. 28 GDPR.
-                                     </p>
-                                     <h3 id="dsg-general-thirdparty"> Submissions to Third Countries </h3>
-                                     <p>
-                                         If we have data in a third country (ie outside the European Union (EU) or the European Union)
-                                             Economic Area (EEA)) or in the context of the use of third party services or disclosure, or transmission of data to third parties, this is done
-                                             only if it is to fulfill our (pre) contractual obligations, based on your consent, due to a legal obligation or based on our
-                                             legitimate interests happens. Subject to legal or contractual permissions, we process or disclose the data in a third country only if the
-                                             special requirements of Art. 44 et seq. DSGVO. That the processing is e.g. based on specific guarantees, such as the officially recognized finding
-                                             a level of data protection appropriate to the EU (eg for the USA through the "Privacy Shield") or observance of officially recognized special contractual obligations
-                                         (see
-                                         above)
-                                             "standard contractual clauses"). </p>
-                                     <h3 id="dsg-general-rightssubject"> Rights of data subjects </h3>
-                                     <p>
-                                         You have the right to ask for confirmation
-                                             whether relevant data are processed and for information about this data as well as for further information and a copy of the data according to Art. 15 GDPR. <br>
-                                             <br>
-                                             You have accordingly. Art. 16 DSGVO the right to demand the completion of the data concerning you or the correction of the incorrect data concerning you. <br>
-                                             <br>
-                                             In accordance with Art. 17 GDPR, they have the right to demand that the relevant data be deleted immediately or, alternatively, in accordance with Art. 18 GDPR
-                                             To require restriction of the processing of the data. <br>
-                                             <br>
-                                             You have the right to demand that the data relating to you, which you have provided to us, be obtained in accordance with Art. 20 GDPR and transmitted to others
-                                             Responsible ones to demand. <br>
-                                             <br>
-                                             You have gem. Art. 77 DSGVO the right to file a complaint with the competent supervisory authority.
-                                     </p>
-                                         <h3 id="dsg-general-revokeconsent"> Right of Withdrawal </h3>
-                                     <p>
-                                             You have the right to grant consent in accordance with. Art. 7 para. 3 DSGVO with effect for the future
-                                     </p>
-                                     <h3 id="dsg-general-object"> right of objection </h3>
-                                     <p>
-                                             You can object to the future processing of your data in accordance with Art. 21 GDPR at any time. The opposition may be in particular against the processing
-                                             for direct marketing purposes.
-                                     </p>
-                                     <h3 id="dsg-general-cookies"> Cookies and Right to Oppose Direct Mail </h3>
-                                     <p>
-                                         "Cookies" are small files,
-                                             which are stored on users' computers. Different information can be stored within the cookies. A cookie is primarily used to provide information about one
-                                             To save users (or the device on which the cookie is stored) during or after their visit to an online offer. As temporary cookies, resp.
-                                             "Session cookies" or "transient cookies" are cookies that are deleted after a user leaves an online offer and closes his browser. In one
-                                             such cookie can e.g. the contents of a shopping cart in an online shop or a login status are saved. "Permanent" or "persistent" means cookies,
-                                             which remain saved even after closing the browser. Thus, e.g. the login status will be saved if users visit it after several days. As well
-                                             In such a cookie the interests of the users used for range measurement or marketing purposes can be stored. Become a third-party cookie
-                                             Cookies are offered by providers other than the person responsible for providing the online offer (otherwise, if only they are cookies)
-                                             one of "First-Party Cookies"). <br>
-                                             <br>
-                                             We can use temporary and permanent cookies and clarify this in the context of our privacy policy. <br>
-                                             <br>
-                                             If users do not want cookies stored on their computer, they will be asked to select the appropriate option in the system settings of their browser
-                                             deactivate. Saved cookies can be deleted in the system settings of the browser. The exclusion of cookies may result in functional limitations of this
-                                             Online offer. <br>
-                                             <br>
-                                         A general contradiction against the use of the cookies used for the purposes of online marketing can in a variety of services, especially in the case of tracking over
-                                             the US <a href="http://www.aboutads.info/choices/"> http://www.aboutads.info/choices/ </a> or the EU page <a href=" http://www.youronlinechoices.com/">http://www.youronlinechoices.com/ </a>
-                                             be explained. Furthermore, the storage of cookies can be achieved by switching them off in the settings of the browser. Please note that then
-                                             If necessary, not all functions of this online offer can be used.
-                                     </p>
-                                     <h3 id="dsg-general-erasure"> Deleting data</h3>
-                                     <p>
-                                         The data processed by us
-                                             are deleted or limited in their processing in accordance with Articles 17 and 18 GDPR. Unless explicitly stated in this Privacy Policy,
-                                             the data stored with us are deleted, as soon as they are no longer necessary for their purpose and the deletion no legal storage obligations
-                                             conflict. Unless the data is deleted because it is required for other and legitimate purposes, its processing will be restricted. That the
-                                             Data is blocked and not processed for other purposes. This applies, for example for data that needs to be kept for commercial or tax reasons. <br>
-                                             <br>
-                                             According to legal requirements in Germany, the storage takes place in particular for 10 years according to §§ 147 Abs. 1 AO, 257 Abs. 1 Nr. 1 and 4, Abs. 4 HGB
-                                         (Bücher,
-                                             Records, management reports, accounting documents, trading books, documents relevant to taxation, etc.) and 6 years pursuant to § 257 (1) nos. 2 and 3, para. 4 HGB
-                                             (Business letters). <br>
-                                             <br>
-                                             According to legal regulations in Austria the storage takes place in particular for 7 J according to § 132 Abs. 1 BAO (accounting documents, documents / invoices,
-                                         accounts,
-                                         vouchers,
-                                             Business papers, statement of income and expenses, etc.), for 22 years in connection with land and for 10 years in documents related to electronic
-                                             provided services, telecommunications, broadcasting and television services provided to non-entrepreneurs in EU Member States and for which the Mini-One-Stop-Shop
-                                             (MOSS).
-                                     </p>
-                                         <p></p>
-                                     <h3 id="dsg-hostingprovider"> Hosting and Emailing </h3>
-                                     <p></p>
-                                     <p>
-                                             <span class="ts-muster-content">
-                                             The hosting services we use are designed to provide the following services infrastructure and platform services, computing capacity, storage and database services, e-mail delivery, security and technical maintenance services, which we use for the purpose of operating this online offer. <br>
-                                             <br>
-                                             Here we, or our hosting provider, process inventory data, contact data, content data, contract data, usage data, meta and communication data of customers, interested parties and visitors to this online offer on the basis of our legitimate interests in an efficient and secure provision of this online offer acc. Art. 6 para. 1 lit. f DSGVO i.V.m. Art. 28 GDPR (conclusion of contract processing contract).
-                                         </span>
-                                     </p>
-                                     <p></p>
-                                     <h3 id="dsg-logfiles"> Collection of Access Data and Logfiles </h3>
-                                     <p></p>
-                                     <p>
-                                             <span class="ts-muster-content"> We, or our hosting provider, collects on the basis of our legitimate interests within the meaning of Art. 6 (1) lit. f. DSGVO Data on every access to the server on which this service is located (so-called server log files). The access data includes name of the retrieved web page, file, date and time of retrieval, amount of data transferred, message about successful retrieval, browser type and version, the user's operating system, referrer URL (the previously visited page), IP address and the requesting provider . <br>
-                                         <br>
-                                         Logfile information is stored for security purposes (for example, to investigate abusive or fraudulent activities) for a maximum of 7 days and then deleted. Data whose further storage is required for evidential purposes are excluded from the deletion until final clarification of the respective incident. </span>
-                                     </p>
-                                     <p></p>
-                                     <h3 id="dsg-matomo"> Range measurement with Matomo </h3>
-                                     <p></p>
-                                     <p>
-                                             <span class="ts-muster-content"> As part of Matomo's range analysis, based on our legitimate interests (ie interest in the analysis, optimization and economic operation of our online offer as defined in Art. 6 para. 1 lit. f. DSGVO) processes the following data the type of browser you use and the browser version, the operating system you are using, your country of origin, the date and time of the server request, the number of visits, your time spent on the website and the external links you have activated. The IP address of the users is anonymized before being saved. <br>
-                                         <br>
-                                         Matomo uses cookies that are stored on users' computers and that allow an analysis of how users use our online offerings. In this case, pseudonymous usage profiles of the users can be created from the processed data. The cookies have a retention period of one week. The information generated by the cookie about your use of this website will only be stored on our server and will not be disclosed to third parties. <br>
-                                         <br>
-                                         Users can object to the anonymized data collection by the program Matomo at any time with effect for the future by clicking on the link below. In this case, a so-called opt-out cookie is stored in your browser, with the result that Matomo no longer collects session data. However, if users delete their cookies, the result is that the opt-out cookie will also be deleted and therefore need to be re-enabled by users. <br>
-                                         <br>
-                                         The logs containing the users' data will be deleted after 6 months at the latest. <br>
-                                         <br>
-                                         <span style="color red! Iimportant;"> [Please insert the IFRAME from Matomo with the opt-out cookie (and enable IP anonymization in the settings area)] </ span>. </ span >
-                                     </p>
-                                     <a href="https://datenschutz-generator.de" class="dsg1-5" rel="nofollow" target="_blank"> Created with Datenschutz-Generator.de by RA Dr. med. Thomas Schwenke </a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-      </section>
+    class: App\Document\LegalPage
+    body: ''
+    blocks:
+      additionalInfoBlock:
+        class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+        children:
+          contentWrapperBlock:
+            class: App\Document\Block\FeatureBlock
+            children:
+              mainContentBlock:
+                class: App\Document\Block\CardOnlyContentBlock
+                properties:
+                  tileLength: 12
+                  tileClass: legalBlock
+                  body: |
+                    <h2>Privacy Policy</h2>
+                    <h3 id="dsg-general-intro"></h3>
+                    <p>
+                      This privacy policy clarifies the nature, scope and purpose of the processing of personal data
+                      (hereinafter referred to as "data") within our online offer and the related websites, functions and contents as well as external online presences, e.g. our social
+                      Media Profile (collectively referred to as the "Online Offering"). With regard to the terminology used, e.g. "Processing" or "Responsible"
+                      We refer to the definitions in Article 4 of the General Data Protection Regulation (GDPR).<br>
+                    </p>
+                    <h3 id="dsg-general-controller">Responsible</h3>
+                    <p>
+                      Maximilian Berghoff<br />
+                      Rosestraße 7<br>
+                      91617 Oberdachstetten<br />
+                      Deutschland<br />
+                      E-Mail: info@developersforfuture.org<br />
+                      Imprint: <a href="https://developersforfuture.org/imprint">https://developersforfuture.org/imprint</a>
+                    </p>
+                    <h3 id="dsg-general-datatype">Types of processed data:</h3>
+                    <p>
+                      - Usage data (e.g., websites visited, interest in content, access times).<br />
+                      - Meta / communication data (e.g., device information, IP addresses).<br />
+                    </p>
+                    <h3 id="dsg-general-datasubjects">Kategorien betroffener Personen</h3>
+                    <p>
+                      Visitors and users of the online offer (hereinafter we refer to the persons concerned
+                      in summary, as a "user").
+                    </p>
+                    <h3 id="dsg-general-purpose">Purpose of processing</h3>
+                    <p>
+                      - Providing the online offer, its features and content. <br />
+                      - Security measures. <br />
+                      - Reach Measurement / Marketing
+                    </p>
+                    <h3 id="dsg-general-terms">Used terms</h3>
+                    <p>
+                      "Personal information" is all information that relates to one
+                      Identified or identifiable natural person (hereinafter referred to as "affected person"); a natural person is considered to be identifiable, directly or indirectly
+                      indirectly, in particular by means of assignment to an identifier such as a name, to an identification number, to location data, to an online identifier (for example a
+                      cookie) or to an or Several specific features can be identified, expressing the physical, physiological, genetic, mental, economic, cultural or social
+                      Identity of this natural person are "Processing" means any process performed with or without the aid of automated procedures or any such process associated with personal data. Of the
+                      Term goes far and includes virtually every deal with data.
+                      <br />
+                      "Pseudonymisation" means the processing of personal data in such a way that the personal data is no longer one without additional information
+                      specific person may be assigned, provided that such additional information is kept separate and technical and organizational measures
+                      ensuring that your personal information is not assigned to an identified or identifiable natural person.
+                      <br />
+                      "Profiling" means any kind of automated processing of personal data that consists in using that personal information to obtain certain personal information
+                      To assess aspects relating to a natural person, in particular aspects of work performance, economic situation, health, personal preferences,
+                      To analyze or predict interests, reliability, behavior, whereabouts or location of this natural person.
+                      <br />
+                      "Responsible" is the natural or legal person, authority, institution or other body, alone or in concert with others over the purposes and means
+                      decides the processing of personal data. <br />
+                      "Processor" means a natural or legal person, public authority, agency or other body providing personal data on behalf of the controller
+                      processed.
+                    </p>
+                    <h3 id="dsg-general-legal-basis"> Relevant legal bases </h3>
+                    <p>
+                      In accordance with Art. 13 GDPR, we inform you about the legal basis of our data processing. Provided
+                      The legal basis for obtaining consent is Article 6 (1) lit. a and Art. 7
+                      DSGVO, the legal basis for the processing for the performance of our services and the execution of contractual measures as well as the answer to inquiries is Art. 6
+                      para. 1 lit. b DSGVO, the legal basis for processing in order to fulfill our legal obligations is Art. 6 (1) lit. c DSGVO, and the legal basis for processing
+                      To safeguard our legitimate interests, Art. 6 para. 1 lit. f DSGVO. In the event that vital interests of the person concerned or another natural
+                      The person requiring the processing of personal data, Art. 6 (1) lit. d DSGVO as legal basis.
+                    </p>
+                    <h3 id="dsg-general-securitymeasures">Safety measures</h3>
+                    <p>
+                      In accordance with Art. 32 GDPR, we take into account the state of the art, the costs of implementation and the type and scope of the
+                      Circumstances and purposes of the processing and the different likelihood and severity of the risk to the rights and freedoms of natural persons;
+                      appropriate technical and organizational measures to ensure a level of protection commensurate with the risk. <br>
+                      In particular, measures include ensuring the confidentiality, integrity and availability of data through the control of physical access to the data, as well as
+                      access, input, disclosure, availability and separation. Furthermore, we have set up procedures that have a perception
+                      of data subject rights, erasure of data and reaction to data threats. We also take into account the protection of personal data already at the
+                      Development, or selection of hardware, software and procedures, according to the principle of data protection through technology design and privacy-friendly
+                      Presettings (Article 25 DSGVO).
+                    </p>
+                    <h3 id="dsg-general-coprocessing">Collaboration with contract processors and third parties </h3>
+                    <p>
+                      Unless we provide data to other persons in the course of our processing and
+                      To disclose, transmit to, or otherwise grant access to the data to any entity (processor or third party), this will only be done on the basis of a
+                      statutory permission (for example, if a transmission of the data to third parties, such as payment service providers, pursuant to Article 6 (1) (b) GDPR is required to
+                      fulfill the contract),
+                      You have consented to a legal obligation or on the basis of our legitimate interests (such as the use of agents, web hosts, etc.).
+                      <br />
+                      If we commission third parties to process data on the basis of a so-called "contract processing contract", this is done on the basis of Art. 28 GDPR.
+                    </p>
+                    <h3 id="dsg-general-thirdparty"> Submissions to Third Countries </h3>
+                    <p>
+                      If we have data in a third country (ie outside the European Union (EU) or the European Union)
+                      Economic Area (EEA)) or in the context of the use of third party services or disclosure, or transmission of data to third parties, this is done
+                      only if it is to fulfill our (pre) contractual obligations, based on your consent, due to a legal obligation or based on our
+                      legitimate interests happens. Subject to legal or contractual permissions, we process or disclose the data in a third country only if the
+                      special requirements of Art. 44 et seq. DSGVO. That the processing is e.g. based on specific guarantees, such as the officially recognized finding
+                      a level of data protection appropriate to the EU (eg for the USA through the "Privacy Shield") or observance of officially recognized special contractual obligations (see above) "standard contractual clauses").
+                    </p>
+                    <h3 id="dsg-general-rightssubject"> Rights of data subjects </h3>
+                    <p>
+                      You have the right to ask for confirmation whether relevant data are processed and for information about this data as well as for further information and a copy of the data according to Art. 15 GDPR.
+                      <br />
+                      You have accordingly. Art. 16 DSGVO the right to demand the completion of the data concerning you or the correction of the incorrect data concerning you.
+                      <br />
+                      In accordance with Art. 17 GDPR, they have the right to demand that the relevant data be deleted immediately or, alternatively, in accordance with Art. 18 GDPR
+                      To require restriction of the processing of the data. <br />
+                      You have the right to demand that the data relating to you, which you have provided to us, be obtained in accordance with Art. 20 GDPR and transmitted to others
+                      Responsible ones to demand.
+                      <br />
+                      You have gem. Art. 77 DSGVO the right to file a complaint with the competent supervisory authority.
+                    </p>
+                    <h3 id="dsg-general-revokeconsent"> Right of Withdrawal </h3>
+                    <p>
+                      You have the right to grant consent in accordance with. Art. 7 para. 3 DSGVO with effect for the future
+                    </p>
+                    <h3 id="dsg-general-object"> right of objection </h3>
+                    <p>
+                      You can object to the future processing of your data in accordance with Art. 21 GDPR at any time. The opposition may be in particular against the processing
+                      for direct marketing purposes.
+                    </p>
+                    <h3 id="dsg-general-cookies"> Cookies and Right to Oppose Direct Mail </h3>
+                    <p>
+                      "Cookies" are small files, which are stored on users' computers. Different information can be stored within the cookies. A cookie is primarily used to provide information about one
+                      To save users (or the device on which the cookie is stored) during or after their visit to an online offer. As temporary cookies, resp.
+                      "Session cookies" or "transient cookies" are cookies that are deleted after a user leaves an online offer and closes his browser. In one
+                      such cookie can e.g. the contents of a shopping cart in an online shop or a login status are saved. "Permanent" or "persistent" means cookies,
+                      which remain saved even after closing the browser. Thus, e.g. the login status will be saved if users visit it after several days. As well
+                      In such a cookie the interests of the users used for range measurement or marketing purposes can be stored. Become a third-party cookie
+                      Cookies are offered by providers other than the person responsible for providing the online offer (otherwise, if only they are cookies)
+                      one of "First-Party Cookies").
+                      <br />
+                      We can use temporary and permanent cookies and clarify this in the context of our privacy policy.
+                      <br />
+                      If users do not want cookies stored on their computer, they will be asked to select the appropriate option in the system settings of their browser
+                      deactivate. Saved cookies can be deleted in the system settings of the browser. The exclusion of cookies may result in functional limitations of this
+                      Online offer.
+                      <br />
+                      A general contradiction against the use of the cookies used for the purposes of online marketing can in a variety of services, especially in the case of tracking over
+                      the US <a href="http://www.aboutads.info/choices/"> http://www.aboutads.info/choices/ </a> or the EU page <a href=" http://www.youronlinechoices.com/">http://www.youronlinechoices.com/ </a>
+                      be explained. Furthermore, the storage of cookies can be achieved by switching them off in the settings of the browser. Please note that then
+                      If necessary, not all functions of this online offer can be used.
+                    </p>
+                    <h3 id="dsg-general-erasure"> Deleting data</h3>
+                    <p>
+                      The data processed by us
+                      are deleted or limited in their processing in accordance with Articles 17 and 18 GDPR. Unless explicitly stated in this Privacy Policy,
+                      the data stored with us are deleted, as soon as they are no longer necessary for their purpose and the deletion no legal storage obligations
+                      conflict. Unless the data is deleted because it is required for other and legitimate purposes, its processing will be restricted. That the
+                      Data is blocked and not processed for other purposes. This applies, for example for data that needs to be kept for commercial or tax reasons.
+                      <br />
+                      According to legal requirements in Germany, the storage takes place in particular for 10 years according to §§ 147 Abs. 1 AO, 257 Abs. 1 Nr. 1 and 4, Abs. 4 HGB
+                      (Bücher, Records, management reports, accounting documents, trading books, documents relevant to taxation, etc.) and 6 years pursuant to § 257 (1) nos. 2 and 3, para. 4 HGB (Business letters).
+                      <br />
+                      According to legal regulations in Austria the storage takes place in particular for 7 J according to § 132 Abs. 1 BAO (accounting documents, documents / invoices, accounts,vouchers,
+                      Business papers, statement of income and expenses, etc.), for 22 years in connection with land and for 10 years in documents related to electronic
+                      provided services, telecommunications, broadcasting and television services provided to non-entrepreneurs in EU Member States and for which the Mini-One-Stop-Shop (MOSS).
+                    </p>
+                    <h3 id="dsg-hostingprovider"> Hosting and Emailing </h3>
+                    <p>
+                      The hosting services we use are designed to provide the following services infrastructure and platform services, computing capacity, storage and database services, e-mail delivery, security and technical maintenance services, which we use for the purpose of operating this online offer.
+                      <br />
+                      Here we, or our hosting provider, process inventory data, contact data, content data, contract data, usage data, meta and communication data of customers, interested parties and visitors to this online offer on the basis of our legitimate interests in an efficient and secure provision of this online offer acc. Art. 6 para. 1 lit. f DSGVO i.V.m. Art. 28 GDPR (conclusion of contract processing contract).
+                    </p>
+                    <h3 id="dsg-logfiles"> Collection of Access Data and Logfiles </h3>
+                    <p>
+                      We, or our hosting provider, collects on the basis of our legitimate interests within the meaning of Art. 6 (1) lit. f. DSGVO Data on every access to the server on which this service is located (so-called server log files). The access data includes name of the retrieved web page, file, date and time of retrieval, amount of data transferred, message about successful retrieval, browser type and version, the user's operating system, referrer URL (the previously visited page), IP address and the requesting provider.
+                      <br />
+                      Logfile information is stored for security purposes (for example, to investigate abusive or fraudulent activities) for a maximum of 7 days and then deleted. Data whose further storage is required for evidential purposes are excluded from the deletion until final clarification of the respective incident. </span>
+                    </p>
+                    <h3 id="dsg-matomo">Range measurement with Matomo</h3>
+                    <p>
+                      As part of Matomo's range analysis, based on our legitimate interests (ie interest in the analysis, optimization and economic operation of our online offer as defined in Art. 6 para. 1 lit. f. DSGVO) processes the following data the type of browser you use and the browser version, the operating system you are using, your country of origin, the date and time of the server request, the number of visits, your time spent on the website and the external links you have activated. The IP address of the users is anonymized before being saved.
+                      <br />
+                      Matomo uses cookies that are stored on users' computers and that allow an analysis of how users use our online offerings. In this case, pseudonymous usage profiles of the users can be created from the processed data. The cookies have a retention period of one week. The information generated by the cookie about your use of this website will only be stored on our server and will not be disclosed to third parties.
+                      <br />
+                      Users can object to the anonymized data collection by the program Matomo at any time with effect for the future by clicking on the link below. In this case, a so-called opt-out cookie is stored in your browser, with the result that Matomo no longer collects session data. However, if users delete their cookies, the result is that the opt-out cookie will also be deleted and therefore need to be re-enabled by users.
+                      <br />
+                      The logs containing the users' data will be deleted after 6 months at the latest.
+                      <br />
+                      <iframe src="https://piwik.prberghoff.de/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+                    </p>
+                    <a href="https://datenschutz-generator.de" class="dsg1-5" rel="nofollow" target="_blank"> Created with Datenschutz-Generator.de by RA Dr. med. Thomas Schwenke </a>
 
   - name: 'organisation'
     title: 'Organisation'
