@@ -307,6 +307,63 @@ static:
                       <br>
                       GitHub: <a href="https://github.com/developersforfuture/developersforfuture">General issues, Wiki</a>
                     </p>
+  - name: 'about'
+    title: 'About'
+    description: 'Page to show the purposes of D4F'
+    body: ''
+    blocks:
+      additionalInfoBlock:
+        class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+        children:
+          firstRowBlock:
+            class: App\Document\Block\FeatureBlock
+            children:
+              generalBlock:
+                class: App\Document\Block\CardOnlyContentBlock
+                properties:
+                  tileLength: 12
+                  tileClass: aboutBlock
+                  body: |
+                    <p>
+                      In many countries around the globe, students have been gathering on Fridays to demonstrate for a future worth living. We as developers want to support this movement.
+                    </p>
+          secondRowBlock:
+            class: App\Document\Block\FeatureBlock
+            children:
+              pureSupportBlock:
+                class: App\Document\Block\CardTextWithoutFooterBlock
+                properties:
+                  tileLength: 4
+                  tileClass: aboutBlock
+                  cardTitle: "Pure Support"
+                  body: |
+                    <p>
+                      Without influencing the kids in their work, we can help them create the software they need to network, communicate, and document their work.
+                    </p>
+              educationBlock:
+                class: App\Document\Block\CardTextWithoutFooterBlock
+                properties:
+                  tileLength: 4
+                  tileClass: aboutBlock
+                  cardTitle: "Education"
+                  body: |
+                    <p>
+                      Striking during school doesn't mean that the kids neglect their education here. We can take the kids much closer to
+                      the real world of software development with small workshops, hacking sessions or even simple code reviews than school would ever be able to.
+                    </p>
+              ownGoalBlock:
+                class: App\Document\Block\CardTextWithoutFooterBlock
+                properties:
+                  tileLength: 4
+                  tileClass: aboutBlock
+                  cardTitle: "Own Goal"
+                  body: |
+                    <p>
+                      Joining the movement also means thinking about one's own footprint in climate change.
+                      As developers it has become a matter of course that we have many computers running,
+                      for example that a CI pipeline takes over every small task for us. But what does that cost in terms of electricity?
+                      Therefore it will also be our task to question our own process and to provide new solutions if necessary.
+                    </p>
 
   - name: 'home'
     title: 'Homepage'
@@ -341,7 +398,7 @@ static:
                   tileClass: infoAboutBlock
                   cardTitle: What is Developers For Future?
                   buttonText: read on
-                  buttonLink: test #TODO: Add Link to about-page
+                  buttonLink: /about
                   body: |
                     Joining the movement also means thinking about one's own footprint in climate change.
                     As developers it has become a matter of course that we have many computers running, ...

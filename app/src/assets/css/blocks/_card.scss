@@ -1,9 +1,33 @@
 @import "../variables";
+// GENERAL
 .card {
   .card-footer {
     .card-footer-item {
       background-color: $light-blue;
       color: $black;
     }
+  }
+}
+// CARD TEXT BLOCK
+.card-text-block {
+  flex: 1;
+  .card {
+    height: 100%;
+    .card-content {
+      padding: 1.5rem 1.5rem 4.5rem 1.5rem
+    }
+    .card-footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+// CARD ONLY CONTENT, WITHOUT FOOTER
+.card-only-content, .card-text-without-footer {
+  flex: 1;
+  .card {
+    height: 100%;
   }
 }

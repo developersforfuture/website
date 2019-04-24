@@ -1,19 +1,5 @@
 @import "../variables";
 .blog-list-page {
-  .column.article-card {
-    flex: 1;
-    .card {
-      height: 100%;
-      .card-content {
-        padding: 1.5rem 1.5rem 4.5rem 1.5rem
-      }
-      .card-footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
-    }
-  }
 }
 
 .article-page {
