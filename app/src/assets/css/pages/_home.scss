@@ -5,7 +5,8 @@ main .page-home {
     height: 100vh;
     position: relative;
     top: -52px;
-    background-image: url("https://labcode.de/imgs/background-sky.jpg");
+    //background-image: url("https://labcode.de/imgs/background-sky.jpg");
+    background-color: $medium-green;
     width: 100%;
     .card, .card-content, .content {
       height: 100%;
