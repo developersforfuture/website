@@ -13,7 +13,7 @@ FROM registry.gitlab.com/froscon/php-track-web/alpine-php7.2-builder:1.0.0 as co
 ARG composer_cache_dir="/build_cache/composer/"
 ENV COMPOSER_HOME $composer_cache_dir
 WORKDIR /app/src/
-COPY /app/src/composer.json /app/src/
+COPY /app/src/composer.json /app/src/src/ /app/src/composer.lock /app/src/config/ /app/src/symfony.lock /app/src/
 
 RUN apk update \
     && apk add --no-cache \
