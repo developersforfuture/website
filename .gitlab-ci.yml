@@ -34,7 +34,7 @@ stages:
     - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
     - make docker_login
   script:
-    - if [[ "${RUNTIME"} === "productio" ]]; then export VERSION_TAG=${CI_COMMIT_TAG};  fi;
+    - if [[ "${RUNTIME}" === "production" ]]; then export VERSION_TAG=${CI_COMMIT_TAG};  fi;
     - make build
     - make push
   after_script:
