@@ -13,7 +13,7 @@ FROM m4BaseContainerPath()/alpine-php7.2-builder:1.0.0 as composer_builder
 ARG composer_cache_dir="/build_cache/composer/"
 ENV COMPOSER_HOME $composer_cache_dir
 WORKDIR /app/src/
-COPY /app/src/composer.json /app/src/
+COPY /app/src/ /app/src/
 
 RUN apk update \
     && apk add --no-cache \
@@ -35,6 +35,7 @@ RUN apk update \
             php7-bz2 \
             php7-opcache \
             php7-tokenizer && \
+            touch /app/src/.env && \
     /usr/local/bin/composer-install-wrapper.sh
 
 # Build the PHP container
