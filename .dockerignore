@@ -3,6 +3,7 @@ app/src/vendor/
 
 dobi.yaml
 dobi.yaml.m4
-.env.dist
+.env
+!.env.dist
 Makefile
 README.md

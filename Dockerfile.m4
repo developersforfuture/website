@@ -35,7 +35,7 @@ RUN apk update \
             php7-bz2 \
             php7-opcache \
             php7-tokenizer && \
-            touch /app/src/.env && \
+            cp /app/src/.env.dist /app/src/.env && \
     /usr/local/bin/composer-install-wrapper.sh
 
 # Build the PHP container
