@@ -2,7 +2,7 @@ FROM m4BaseContainerPath()/alpine-node-builder:1.0.0 as node_builder
 
 ENV NPM_CONFIG_CACHE /cache/npm
 
-COPY /app/src/.babelrc /app/src/package.json /app/src/webpack.config.js /app/src/
+COPY /app/src/package.json /app/src/webpack.config.js /app/src/
 WORKDIR /app/src/
 RUN yarn install
 COPY /app/src/assets/ /app/src/assets

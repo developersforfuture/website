@@ -6,7 +6,7 @@ COPY /app/src/package.json /app/src/webpack.config.js /app/src/
 WORKDIR /app/src/
 RUN yarn install
 COPY /app/src/assets/ /app/src/assets
-RUN yarn build
+RUN mkdir -p /app/src/public/build && yarn build
 
 FROM registry.gitlab.com/froscon/php-track-web/alpine-php7.2-builder:1.0.0 as composer_builder
 
