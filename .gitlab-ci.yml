@@ -100,7 +100,15 @@ build-image.staging:
 .deploy_template: &deploy_job
   stage: deploy
   script:
-    - echo " + + + We would deplyo ${RUNTIME} now + + + "
+.deploy_template: &deploy_definition
+  stage: deploy
+  script:
+    - kubectl config set-cluster k8s --server="${SERVER}"
+    - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
+    - kubectl config set-credentials gitlab --token="${USER_TOKEN}"
+    - kubectl config set-context default --cluster=k8s --user=gitlab
+    - kubectl config use-context default
+    - kubectl apply -f kubernetes/app.production.yaml
 
 deploy-as-branch.staging:
   <<: *deploy_job
