@@ -33,8 +33,7 @@ stages:
     - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
     - make docker_login
   script:
-    - export TAG=$(head -n1 ./VERSION)
-    - if [ "${RUNTIME}" == "production" ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - if [ ${RUNTIME} == 'production' ]; then export VERSION_TAG=$(git describe --abbrev=0 --tags); else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
     - echo " + + + Build Runtime '${RUNTIME}' and version '${VERSION_TAG}' + + + "
     - make build
     - make push
@@ -102,8 +101,7 @@ build-image.staging:
   stage: deploy
   image: dtzar/helm-kubectl
   script:
-    - export TAG=$(git describe --abbrev=0 --tags)
-    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - if [ ${RUNTIME} == 'production' ]; then export VERSION_TAG=$(git describe --abbrev=0 --tags); else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
     - kubectl config set-cluster k8s --server="${SERVER}"
     - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
     - kubectl config set-credentials gitlab --token="${USER_TOKEN}"
