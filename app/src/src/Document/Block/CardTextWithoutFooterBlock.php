@@ -8,9 +8,9 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 /**
  * @PHPCRODM\Document(referenceable=true, translator="child")
  *
- * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
+ * @author Leo Maroni <leo@labcode.de>
  */
-class TextBlock extends StringBlock
+class CardTextWithoutFooterBlock extends StringBlock
 {
 
     /**
@@ -27,10 +27,17 @@ class TextBlock extends StringBlock
      */
     private $tileClass;
 
+    /**
+     * @var string
+     *
+     * @PHPCRODM\Field(property="card_title")
+     */
+    private $cardTitle;
+
 
     public function getType()
     {
-        return 'app.blocks.text';
+        return 'app.blocks.cardTextWithoutFooter';
     }
 
     /**
@@ -63,5 +70,21 @@ class TextBlock extends StringBlock
     public function setTileClass(string $tileClass): void
     {
         $this->tileClass = $tileClass;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardTitle(): string
+    {
+        return $this->cardTitle;
+    }
+
+    /**
+     * @param string $cardTitle
+     */
+    public function setCardTitle(string $cardTitle): void
+    {
+        $this->cardTitle = $cardTitle;
     }
 }

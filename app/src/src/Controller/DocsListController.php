@@ -22,6 +22,6 @@ class DocsListController extends AbstractController
 
     public function indexAction()
     {
-        return $this->render('list/docs_list.html.twig', ['docs' => $this->repository->getAll()]);
+        return $this->render('pages/dynamic_content/docs_list.html.twig', ['docs' => $this->repository->getAll()]);
     }
 }

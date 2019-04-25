@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        {% if cmfMainContent is defined %}
+            <div class="has-text-centered">
+                <h2 class="has-text-weight-light">{{ cmfMainContent.title }}</h2>
+            </div>
+        {% endif %}
+        {% if cmfMainContent.body  %}
+            {{ cmfMainContent.body|raw }}
+        {% endif %}
+        {% if cmfMainContent.additionalInfoBlock  %}
+            {{ sonata_block_render({ 'name': 'additionalInfoBlock' }) }}
+        {% endif %}
+    </div>
+{% endblock %}

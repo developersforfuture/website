@@ -2,7 +2,6 @@
 
 namespace App\Block;
 
-use App\Document\Block\FeatureBlock;
 use App\Document\Block\IconBlock;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Sonata\BlockBundle\Block\BlockContextInterface;
@@ -17,11 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
+ * @author Leo Maroni <leo@labcode.de>
  */
-class FeatureBlockService extends AbstractBlockService implements BlockServiceInterface
+class CardTextBlockService extends AbstractBlockService implements BlockServiceInterface
 {
-    protected $template = 'blocks/feature_block.html.twig';
+    protected $template = 'blocks/card_text_block.html.twig';
     protected $dm;
     protected $publishWorkflowChecker;
 
@@ -63,17 +62,10 @@ class FeatureBlockService extends AbstractBlockService implements BlockServiceIn
         }
 
         if ($blockContext->getBlock()->getEnabled()) {
-            /** @var FeatureBlock $block */
+            /** @var IconBlock $block */
             $block = $blockContext->getBlock();
             if ($this->publishWorkflowChecker->isGranted(PublishWorkflowChecker::VIEW_ANONYMOUS_ATTRIBUTE, $block)) {
-                $childBlocks = [];
-                foreach($block->getChildren() as $childBlock) {
-                    if ($this->publishWorkflowChecker->isGranted(PublishWorkflowChecker::VIEW_ANONYMOUS_ATTRIBUTE, $block)) {
-                        $childBlocks[] = $childBlock;
-                    }
-                }
-
-                $response = $this->renderResponse($this->template, ['block' => $block, 'childBlocks' => $childBlocks], $response);
+                $response = $this->renderResponse($this->template, ['block' => $block], $response);
             }
         }
 

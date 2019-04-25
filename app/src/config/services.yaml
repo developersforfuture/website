@@ -4,107 +4,142 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    app_version: '%env(VERSION_TAG)%'
-    default_description: "Developers for Future"
-    default_title: ''
-    default_page_image: ''
-    database_driver: pdo_sqlite
-    database_host: localhost
-    database_port: null
-    database_name: developers
-    database_user: root
-    database_password: null
-    database_path: '%kernel.project_dir%/var/app.sqlite'
-    phpcr_user: developers
-    phpcr_pass: developers
-    phpcr_workspace: developers
-    phpcr_backend:
-        logging: true
-        profiling: true
-        type: doctrinedbal
-        connection: default
-        caches:
-            meta: doctrine_cache.providers.phpcr_meta
-            nodes: doctrine_cache.providers.phpcr_nodes
-        parameters:
-            jackalope.check_login_on_server: false
+  app_version: '%env(VERSION_TAG)%'
+  default_description: "Developers for Future"
+  default_title: ''
+  default_page_image: ''
+  database_driver: pdo_sqlite
+  database_host: localhost
+  database_port: null
+  database_name: developers
+  database_user: root
+  database_password: null
+  database_path: '%kernel.project_dir%/var/app.sqlite'
+  phpcr_user: developers
+  phpcr_pass: developers
+  phpcr_workspace: developers
+  phpcr_backend:
+    logging: true
+    profiling: true
+    type: doctrinedbal
+    connection: default
+    caches:
+      meta: doctrine_cache.providers.phpcr_meta
+      nodes: doctrine_cache.providers.phpcr_nodes
+    parameters:
+      jackalope.check_login_on_server: false
 
 
 services:
-    # default configuration for services in *this* file
-    _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+  App\:
+    resource: '../src/*'
+    exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
+  # controllers are imported separately to make sure services can be injected
+  # as action arguments even if you don't extend any base controller class
+  App\Controller\:
+    resource: '../src/Controller'
+    tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-    app.blocks.feature:
-        class: 'App\Block\FeatureBlockService'
-        public: true
-        arguments:
-            $name: 'app.blocks.feature'
-            $templating: '@templating'
-            $dm: '@doctrine_phpcr.odm.document_manager'
-            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
-        tags: [{name: 'sonata.block'}]
+  # add more service definitions when explicit configuration is needed
+  # please note that last definitions always *replace* previous ones
+  app.blocks.feature:
+    class: 'App\Block\FeatureBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.feature'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.container:
+    class: 'App\Block\ContainerBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.container'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.icon:
+    class: 'App\Block\IconBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.icon'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.text:
+    class: 'App\Block\TextBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.text'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.cardText:
+    class: 'App\Block\CardTextBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.cardText'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.cardTextWithoutFooter:
+    class: 'App\Block\CardTextWithoutFooterBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.cardTextWithoutFooter'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.cardOnlyContent:
+    class: 'App\Block\CardOnlyContentBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.cardOnlyContent'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
+  app.blocks.quote:
+    class: 'App\Block\QuoteBlockService'
+    public: true
+    arguments:
+      $name: 'app.blocks.quote'
+      $templating: '@templating'
+      $dm: '@doctrine_phpcr.odm.document_manager'
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+    tags: [{name: 'sonata.block'}]
 
-    app.blocks.icon:
-        class: 'App\Block\IconBlockService'
-        public: true
-        arguments:
-            $name: 'app.blocks.icon'
-            $templating: '@templating'
-            $dm: '@doctrine_phpcr.odm.document_manager'
-            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
-        tags: [{name: 'sonata.block'}]
-    app.blocks.text:
-        class: 'App\Block\TextBlockService'
-        public: true
-        arguments:
-            $name: 'app.blocks.text'
-            $templating: '@templating'
-            $dm: '@doctrine_phpcr.odm.document_manager'
-            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
-        tags: [{name: 'sonata.block'}]
-    app.blocks.quote:
-        class: 'App\Block\QuoteBlockService'
-        public: true
-        arguments:
-            $name: 'app.blocks.quote'
-            $templating: '@templating'
-            $dm: '@doctrine_phpcr.odm.document_manager'
-            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
-        tags: [{name: 'sonata.block'}]
+  app.repository.article:
+    class: App\Repository\ArticleRepository
+    arguments:
+      $documentManager: "@doctrine_phpcr.odm.default_document_manager"
+      $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
 
-    app.repository.article:
-        class: App\Repository\ArticleRepository
-        arguments:
-            $documentManager: "@doctrine_phpcr.odm.default_document_manager"
-            $publishWorkflowChecker: '@cmf_core.publish_workflow.checker'
+  app.controller.articl_list:
+    class: App\Controller\BlogListController
+    arguments:
+      $repository: "@app.repository.article"
 
-    app.controller.articl_list:
-        class: App\Controller\BlogListController
-        arguments:
-            $repository: "@app.repository.article"
+  app.repository.docs:
+    class: App\Repository\DocsRepository
+    arguments:
+      $documentManager: "@doctrine_phpcr.odm.default_document_manager"
 
-    app.repository.docs:
-        class: App\Repository\DocsRepository
-        arguments:
-            $documentManager: "@doctrine_phpcr.odm.default_document_manager"
-
-    app.controller.docs_list:
-        class: App\Controller\DocsListController
-        arguments:
-            $repository: "@app.repository.docs"
+  app.controller.docs_list:
+    class: App\Controller\DocsListController
+    arguments:
+      $repository: "@app.repository.docs"

@@ -22,6 +22,6 @@ class BlogListController extends AbstractController
 
     public function indexAction()
     {
-        return $this->render('list/article_list.html.twig', ['articles' => $this->repository->getAll()]);
+        return $this->render(   'pages/dynamic_content/article_list.html.twig', ['articles' => $this->repository->getAll()]);
     }
 }
