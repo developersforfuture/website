@@ -85,6 +85,7 @@ build-image.production:
 build-image.development:
   <<: *build_service
   stage: release
+  except: [ tags ]
   when: manual
   variables:
     RUNTIME: 'development'
@@ -99,13 +100,16 @@ build-image.staging:
 
 .deploy_template: &deploy_job
   stage: deploy
+  image: dtzar/helm-kubectl
   script:
+    - export TAG=$(git describe --abbrev=0 --tags)
+    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
     - kubectl config set-cluster k8s --server="${SERVER}"
     - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
     - kubectl config set-credentials gitlab --token="${USER_TOKEN}"
     - kubectl config set-context default --cluster=k8s --user=gitlab
     - kubectl config use-context default
-    - kubectl apply -f kubernetes/app.production.yaml
+    - kubectl apply -f kubernetes/app.${RUNTIME}.yaml
 
 deploy-as-branch.staging:
   <<: *deploy_job
