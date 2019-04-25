@@ -66,11 +66,11 @@ test_unit:
     APP_ENV: test
     SYMFONY_ENV: test
   before_script:
-    - cd /app/src/
     - apk add ${PHPIZE_DEPS} && pecl install xdebug-beta && docker-php-ext-enable xdebug
     - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
     - export HOMEDIR=$(pwd)
-    - sleep 15
+    - sleep 30
+    - cd app/src
     - composer --no-ansi install --dev
   script:
     - vendor/bin/phpunit -v --colors never --coverage-text --coverage-html "${HOMEDIR}/coverage/" --log-junit "${HOMEDIR}/unittests.xml"
