@@ -33,7 +33,8 @@ stages:
     - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
     - make docker_login
   script:
-    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${CI_COMMIT_TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - export TAG=$(git describe --abbrev=0 --tags)
+    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
     - echo " + + + Build Runtime '${RUNTIME}' and version '${VERSION_TAG}' + + + "
     - make build
     - make push
@@ -70,10 +71,10 @@ test_unit:
     - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
     - export HOMEDIR=$(pwd)
     - sleep 15
+    - cd app/src
     - composer --no-ansi install --dev
   script:
-#    - vendor/bin/phpunit -v --colors never --coverage-text --coverage-html "${HOMEDIR}/coverage/" --log-junit "${HOMEDIR}/unittests.xml"
-    - php bin/phpunit -v
+    - vendor/bin/phpunit -v --colors never --coverage-text --coverage-html "${HOMEDIR}/coverage/" --log-junit "${HOMEDIR}/unittests.xml"
 
 build-image.production:
   <<: *build_service
