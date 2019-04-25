@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-export APP_ENV=${APP_ENV:-"dev"}
-export SYMFONY_ENV=${SYMFONY_ENV:-"dev"}
+export APP_ENV=${APP_ENV:-"prod"}
+export SYMFONY_ENV=${SYMFONY_ENV:-"prod"}
 export DB_URL=${DB_URL:-"mysql://developers:developers@mysql:3306/developers"}
-export APP_WEBROOT=${APP_WEBROOT:-"/app/src/web"}
+export APP_WEBROOT=${APP_WEBROOT:-"/app/src/public"}
 export DB_DATABASE=${DB_DATABASE:-"developers"}
 export DB_PLAY_DUMP=${DB_PLAY_DUMP-0}
 export VERSION_TAG=${VERSION_TAG-0}
