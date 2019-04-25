@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 
-export APP_ENV=${APP_ENV:-"prod"}
-export SYMFONY_ENV=${SYMFONY_ENV:-"prod"}
+export APP_ENV=${APP_ENV:-"dev"}
+export SYMFONY_ENV=${SYMFONY_ENV:-"dev"}
 export DB_URL=${DB_URL:-"mysql://developers:developers@mysql:3306/developers"}
 export APP_WEBROOT=${APP_WEBROOT:-"/app/src/web"}
 export DB_DATABASE=${DB_DATABASE:-"developers"}
 export DB_PLAY_DUMP=${DB_PLAY_DUMP-0}
 export VERSION_TAG=${VERSION_TAG-0}
+export PHPCR_USER=${PHPCR_USER-admin}
+export PHPCR_PASSWORD=${PHPCR_PASSWORD-admin}
+export PHPCR_WORKSPACE=${PHPCR_WORKSPACE-default}

@@ -4,7 +4,7 @@ unit_test:
 
 override projectRootDir = ./
 override projectVersionFile = VERSION
-override projectVersion = $(shell head -n1 $(projectVersionFile))
+override projectVersion = $(VERSION_TAG)
 override gitOriginUrl = $(shell git config --get remote.origin.url)
 override projectName=frontend
 override projectRegistry=$(REGISTRY)
@@ -43,15 +43,16 @@ dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
 	@m4 $(M4_OPTS) dobi.yaml.m4 > dobi.yaml
 
 $(dobiTargets): $(dobiDeps)
+	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
+	@echo $(VERSION_TAG) > ./VERSION
+	@echo " + + + Do it with version $(VERSION_TAG) + + + "
 	@dobi $@
 
 clean: | autoclean
 	-@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml
 
-args=$(filter-out $@,$(MAKECMDGOALS))
-VERSION_TAG=$(args)
 release:
-	$(if $(args),,$(error: set project version string, when calling this task))
+	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
 	@echo "\n + + + Set next version: $(VERSION_TAG) + + + "
 	@echo $(VERSION_TAG) > ./VERSION
 	@make kubernetes/app.production.yaml
@@ -63,10 +64,22 @@ release:
 
 
 docker_login:
-	@echo "\n + + + Login into registry: $(REGISTRY) with user $(REGISTRY_USER):$(REGISTRY_PASSWORD) +  +  + "
+	@echo "\n + + + Login into registry: $(REGISTRY) +  +  + "
 	@docker login -p$(REGISTRY_PASSWORD) -u$(REGISTRY_USER) $(REGISTRY)
 
 docker_logout:
 	@echo "\n + + + Logout from registry: $(REGISTRY) +  +  + "
 	@docker logout $(REGISTRY)
 
+ci_up:
+	docker-compose -f docker-compose.ci.yml up -d
+
+ci_down:
+	docker-compose -f docker-compose.ci.yml down --rmi all
+	docker-compose -f docker-compose.ci.yml rm -v
+
+ci_logs:
+	docker-compose -f docker-compose.ci.yml logs -f --tail 1000
+
+ci_pull:
+	docker-compose -f docker-compose.ci.yml pull

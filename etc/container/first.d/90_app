@@ -20,7 +20,7 @@ else
 fi
 
 echo " + + + Composer install + + + "
-composer-install-wrapper.sh
+# composer-install-wrapper.sh is done on build
 echo " + + + Cache handling + + +"
 cd ${APP_BASEDIR_SRC}
 php -d memory_limit=-1 bin/console cache:clear

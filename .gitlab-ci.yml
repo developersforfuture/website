@@ -8,10 +8,9 @@ variables:
   REPOSITORY_PATH: developersforfuture/registry
   CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
   COMPOSE_PROJECT_NAME: developers
-  VERSION_TAG: ${CI_COMMIT_REF_NAME}
 
 stages:
-  -  build-ci
+  - build-ci
   - test
   - release
   - deploy
@@ -34,7 +33,8 @@ stages:
     - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
     - make docker_login
   script:
-    - if [[ "${CI_COMMIT_REF_NAME}" === "master" ]]; then export VERSION_TAG=${CI_COMMIT_TAG};  fi;
+    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${CI_COMMIT_TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - echo " + + + Build Runtime '${RUNTIME}' and version '${VERSION_TAG}' + + + "
     - make build
     - make push
   after_script:
@@ -49,7 +49,7 @@ build-image.ci:
 
 test_unit:
   cache: *cache_definition
-  image: ${CONTAINER_IMAGE}-ci:${VERSION_TAG}
+  image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}
   stage: test
   except: [tags]
   variables:
@@ -58,21 +58,22 @@ test_unit:
     DB_HOST: mysql
     DB_USER: developers
     DB_PASSWORD: developers
+    PHPCR_USER: admin
+    PHPCR_PASSWORD: admin
+    PHPCR_WORKSPACE: default
     APP_DEBUG: 0
     APP_ENV: test
     SYMFONY_ENV: test
+  before_script:
+    - cd /app/src/
+    - apk add ${PHPIZE_DEPS} && pecl install xdebug-beta && docker-php-ext-enable xdebug
+    - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
+    - export HOMEDIR=$(pwd)
+    - sleep 15
+    - composer --no-ansi install --dev
   script:
-    - vendor/bin/phpunit
-  artifacts:
-    name: "${CI_JOB_NAME}_${CI_JOB_ID}"
-    expire_in: 1 week
-    when: always
-    paths:
-      - ./coverage/
-      - ./unittests.xml
-    reports:
-      junit: ./unittests.xml
-  coverage: '/^\s*Lines:\s*(\d+(?:\.\d+)?%)/'
+#    - vendor/bin/phpunit -v --colors never --coverage-text --coverage-html "${HOMEDIR}/coverage/" --log-junit "${HOMEDIR}/unittests.xml"
+    - php bin/phpunit -v
 
 build-image.production:
   <<: *build_service
@@ -95,7 +96,6 @@ build-image.staging:
   except: [tags]
   variables:
     RUNTIME: 'staging'
-    CONTEXT_PATH: './'
 
 .deploy_template: &deploy_job
   stage: deploy
