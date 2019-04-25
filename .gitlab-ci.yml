@@ -100,9 +100,6 @@ build-image.staging:
 .deploy_template: &deploy_job
   stage: deploy
   script:
-.deploy_template: &deploy_definition
-  stage: deploy
-  script:
     - kubectl config set-cluster k8s --server="${SERVER}"
     - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
     - kubectl config set-credentials gitlab --token="${USER_TOKEN}"
