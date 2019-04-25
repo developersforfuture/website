@@ -34,7 +34,7 @@ stages:
     - make docker_login
   script:
     - export TAG=$(head -n1 ./VERSION)
-    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - if [ "${RUNTIME}" == "production" ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
     - echo " + + + Build Runtime '${RUNTIME}' and version '${VERSION_TAG}' + + + "
     - make build
     - make push
