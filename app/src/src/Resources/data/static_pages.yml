@@ -21,7 +21,7 @@ static:
                         Maximilian Berghoff<br>
                         Rosestraße 7<br>
                         91617 Oberdachstetten<br>
-                        E-Mail: <a href="mailto:maximilian.berghoff@gmx.de">maximilian.berghoff@gmx.de</a>
+                        E-Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
                     </p>
                     <h3>Disclaimer:</h3>
                     <p>
@@ -291,7 +291,7 @@ static:
                     <p>
                       Twitter: <a href="https://twitter.com/devsforfuture">@DevsForFuture</a>
                       <br>
-                      Mail: <a href="mailto:developersforfuture@gmx.net">developersforfuture@gmx.net</a>
+                      Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
                     </p>
               codeBlock:
                 class: App\Document\Block\CardTextWithoutFooterBlock
