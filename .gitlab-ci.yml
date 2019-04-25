@@ -70,8 +70,7 @@ test_unit:
     - apk add ${PHPIZE_DEPS} && pecl install xdebug-beta && docker-php-ext-enable xdebug
     - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
     - export HOMEDIR=$(pwd)
-    - sleep 45
-    - cd app/src
+    - sleep 15
     - composer --no-ansi install --dev
   script:
     - vendor/bin/phpunit -v --colors never --coverage-text --coverage-html "${HOMEDIR}/coverage/" --log-junit "${HOMEDIR}/unittests.xml"
