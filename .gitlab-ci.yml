@@ -73,7 +73,7 @@ test_unit:
     - cd app/src
     - composer --no-ansi install --dev
   script:
-    - vendor/bin/phpunit -v --colors never --coverage-text --coverage-html "${HOMEDIR}/coverage/" --log-junit "${HOMEDIR}/unittests.xml"
+    - bin/phpunit -v
 
 build-image.production:
   <<: *build_service
