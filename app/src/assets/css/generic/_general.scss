@@ -1,0 +1,24 @@
+@import "../variables";
+:root {
+  font-family: Merriweather Sans, Lato, Cantarell, sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  @media screen and (max-width: 1087px) {
+    max-width: 90%;
+    width: 90%;
+  }
+ }

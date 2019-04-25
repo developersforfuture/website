@@ -11,10 +11,10 @@ blocks:
         class: App\Document\Block\FeatureBlock
         children:
           firstBlock:
-            class: App\Document\Block\IconBlock
+            class: App\Document\Block\CardOnlyContentBlock
             properties:
-              iconClass: note
               tileLength: 12
+              tileClass: blog-entry
               body: |
                 <p>
                   Some might wonder why the next organization to support the FridaysForFuture movement is coming along.
@@ -39,19 +39,16 @@ blocks:
       speakerRow:
         class: App\Document\Block\FeatureBlock
         children:
-          communicationBlock:
-            class: App\Document\Block\IconBlock
+          authorBlock:
+            class: App\Document\Block\CardTextBlock
             properties:
-              iconClass: pencil
               tileLength: 12
-              title: "The Author"
+              tileClass: blog-author-card
+              cardTitle: Author
+              buttonText: Twitter
+              buttonLink: https://twitter.com/ElectricMaxxx
               body: |
-                <ul>
-                  <li>Name:&nbsp;Maximilian Berghoff</li>
-                  <li>Twitter:&nbsp;<a href="https://twitter.com/ElectricMaxxx">ElectricMaxxx</a></li>
-                  <li>
-                    I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
-                    free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
-                    watching Game of Thrones.
-                  </li>
-                </ul>
+                <h4 class="author-name">Maximilian Berghoff</h5>
+                <p>I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                watching Game of Thrones.</p>

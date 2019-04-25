@@ -8,9 +8,9 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 /**
  * @PHPCRODM\Document(referenceable=true, translator="child")
  *
- * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
+ * @author Leo Maroni <leo@labcode.de>
  */
-class TextBlock extends StringBlock
+class CardOnlyContentBlock extends StringBlock
 {
 
     /**
@@ -30,7 +30,7 @@ class TextBlock extends StringBlock
 
     public function getType()
     {
-        return 'app.blocks.text';
+        return 'app.blocks.cardOnlyContent';
     }
 
     /**

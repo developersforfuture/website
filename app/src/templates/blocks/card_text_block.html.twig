@@ -1,0 +1,17 @@
+<div class="column is-{{ block.tileLength }} {{ block.tileClass }} card-text-block">
+    <div class="card">
+        <div class="card-header">
+            <p class="card-header-title">
+                {{ block.cardTitle }}
+            </p>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                {{ block.body|raw }}
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ block.buttonLink }}" class="card-footer-item">{{ block.buttonText }}</a>
+        </div>
+    </div>
+</div>

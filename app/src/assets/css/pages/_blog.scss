@@ -1,0 +1,14 @@
+@import "../variables";
+.blog-list-page {
+}
+
+.article-page {
+  .blog-author-card {
+    .content {
+      .author-name {
+        margin-top: 0;
+        font-weight: 500;
+      }
+    }
+  }
+}
