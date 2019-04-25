@@ -60,7 +60,7 @@ release:
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
-	@git push --tags origin master
+	@git push --tags gitlab master
 
 
 docker_login:
