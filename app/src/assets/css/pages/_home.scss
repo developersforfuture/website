@@ -1,39 +1,43 @@
 @import "~animate.css";
 @import "../variables";
+
 main .page-home {
   .section01 {
     height: 100vh;
     position: relative;
     top: -52px;
+    padding: 0;
     //background-image: url("https://labcode.de/imgs/background-sky.jpg");
     background-color: $medium-green;
     width: 100%;
-    .card, .card-content, .content {
+    .section01-imageWrapper {
       height: 100%;
-      .section01-imageWrapper {
-        height: 100%;
-        display: table;
+      display: table;
+      width: 100%;
+      .section01-imageAlignHelper {
+        display: table-cell;
+        vertical-align: middle;
         width: 100%;
-        .section01-imageAlignHelper {
-          display: table-cell;
-          vertical-align: middle;
-          width: 100%;
-          img {
-            display: flex;
-            width: 50vh;
-            margin: auto;
-          }
+        img {
+          display: flex;
+          width: 50vh;
+          margin: auto;
         }
-      }
-      .section01-scroll-down-icon {
-        text-align: center;
-        position: relative;
-        bottom: 50px;
-        i {
-          @extend .animated, .bounce, .infinite, .delay-1s;
-          font-size: 1.75rem;
+        .join-us {
+          text-align: center;
           color: $light-gray;
         }
+      }
+    }
+    .section01-scroll-down-icon {
+      text-align: center;
+      position: relative;
+      bottom: 50px;
+
+      i {
+        @extend .animated, .bounce, .infinite, .delay-1s;
+        font-size: 1.75rem;
+        color: $light-gray;
       }
     }
   }
