@@ -8,6 +8,7 @@ variables:
   REPOSITORY_PATH: developersforfuture/registry
   CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
   COMPOSE_PROJECT_NAME: developers
+  KUBECONFIG: kubernetes/gitlab_kube_config
 
 stages:
   - build-ci
@@ -102,7 +103,6 @@ build-image.staging:
   image: dtzar/helm-kubectl
   script:
     - if [ ${RUNTIME} == 'production' ]; then export VERSION_TAG=$(git describe --abbrev=0 --tags); else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
-    - export KUBECONFIG=kubernetes/gitlab_kube_config
     - kubectl apply -n default -f kubernetes/app.${RUNTIME}.yaml
 
 deploy.staging:
