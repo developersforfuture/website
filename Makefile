@@ -73,16 +73,3 @@ docker_login:
 docker_logout:
 	@echo "\n + + + Logout from registry: $(REGISTRY) +  +  + "
 	@docker logout $(REGISTRY)
-
-ci_up:
-	docker-compose -f docker-compose.ci.yml up -d
-
-ci_down:
-	docker-compose -f docker-compose.ci.yml down --rmi all
-	docker-compose -f docker-compose.ci.yml rm -v
-
-ci_logs:
-	docker-compose -f docker-compose.ci.yml logs -f --tail 1000
-
-ci_pull:
-	docker-compose -f docker-compose.ci.yml pull

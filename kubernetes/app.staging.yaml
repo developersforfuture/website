@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: developers-web
+  name: developers-staging-web
   labels:
-    app.kubernetes.io/name: developers-web
-    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/name: developers-staging-web
+    app.kubernetes.io/instance: developers-staging-web-v1
     app.kubernetes.io/version: "v1"
     app.kubernetes.io/component: frontend
     app.kubernetes.io/part-of: developers
@@ -17,17 +17,17 @@ spec:
       targetPort: 80
       protocol: "TCP"
   selector:
-    app.kubernetes.io/name: developers-web
-    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/name: developers-staging-web
+    app.kubernetes.io/instance: developers-staging-web-v1
     app.kubernetes.io/version: "v1"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: developers-web-v1
+  name: developers-staging-web-v1
   labels:
-    app.kubernetes.io/name: developers-web
-    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/name: developers-staging-web
+    app.kubernetes.io/instance: developers-staging-web-v1
     app.kubernetes.io/version: "v1"
     app.kubernetes.io/component: frontend
     app.kubernetes.io/part-of: developers
@@ -35,16 +35,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: developers-web
-      app.kubernetes.io/instance: developers-web-v1
+      app.kubernetes.io/name: developers-staging-web
+      app.kubernetes.io/instance: developers-staging-web-v1
       app.kubernetes.io/version: "v1"
   replicas: 2
   template:
     metadata:
-      name: developers-web-v1
+      name: developers-staging-web-v1
       labels:
-        app.kubernetes.io/name: developers-web
-        app.kubernetes.io/instance: developers-web-v1
+        app.kubernetes.io/name: developers-staging-web
+        app.kubernetes.io/instance: developers-staging-web-v1
         app.kubernetes.io/version: "v1"
     spec:
       imagePullSecrets:
@@ -52,7 +52,7 @@ spec:
       containers:
         - env:
             - name: VERSION_TAG
-              value: 3.6.7
+              value: test
             - name: APP_BASEDIR_LOG
               value: /app/log
             - name: APP_BASEDIR_SRC
@@ -60,9 +60,9 @@ spec:
             - name: APP_BASEDIR_TMP
               value: /app/tmp
             - name: APP_DEBUG
-              value: "0"
+              value: "1"
             - name: APP_ENV
-              value: "prod"
+              value: "dev"
             - name: APP_GROUP_ID
               value: "1000"
             - name: APP_PHP_MODULE_DIRECTORY
@@ -72,7 +72,7 @@ spec:
             - name: APP_WEBROOT
               value: /app/src/public
             - name: BASE_URL
-              value: developersforfuture.org
+              value: developers.local.k8s
             - name: COMPOSER_CACHE_DIR
               value: /build/cache/composeer
             - name: CONTAINER_DEBUG
@@ -105,15 +105,15 @@ spec:
             - name: PHPCR_WORKSPACE
               value: developers
             - name: RUNTIME
-              value: production
+              value: development
             - name: SYMFONY_ENV
-              value: prod
+              value: dev
             - name: SYSTEM_APPUSER_NAME
               value: appuser
             - name: XDEBUG_ENABLED
-              value: "0"
-          image: registry.gitlab.com/developersforfuture/registry/app-production:3.6.7
-          name: developers-web
+              value: "1"
+          image: registry.gitlab.com/developersforfuture/registry/app-production:test
+          name: developers-staging-web
           ports:
             - containerPort: 80
               name: "http"
