@@ -301,11 +301,11 @@ static:
                   cardTitle: "Code"
                   body: |
                     <p>
-                      GitHub: <a href="https://github.com/developersforfuture">General Organisation</a>
+                      GitLab: <a target="_blank" href="https://gitlab.com/developersforfuture">General Organisation</a>
                       <br>
-                      GitHub: <a href="https://github.com/developersforfuture/website">Website Repository</a>
+                      GitLab: <a target="_blank" href="https://gitlab.com/developersforfuture/website">Website Repository</a>
                       <br>
-                      GitHub: <a href="https://github.com/developersforfuture/developersforfuture">General issues, Wiki</a>
+                      GitHub: <a target="_blank" href="https://github.com/developersforfuture/developersforfuture">General issues, Wiki</a>
                     </p>
   - name: 'about'
     title: 'About'
@@ -383,6 +383,7 @@ static:
                 <div class="section01-imageWrapper">
                   <div class="section01-imageAlignHelper">
                     <img src="/build/images/developers-for-future-logo.902296d2.png" />
+                    <a target="_blank" href="https://github.com/developersforfuture/developersforfuture/wiki/Communication"><h3 class="join-us">Join us!</h3></a>
                   </div>
                 </div>
                 <div class="section01-scroll-down-icon">
