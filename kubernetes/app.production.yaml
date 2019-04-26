@@ -52,7 +52,7 @@ spec:
       containers:
         - env:
             - name: VERSION_TAG
-              value: 3.6.8
+              value: test
             - name: APP_BASEDIR_LOG
               value: /app/log
             - name: APP_BASEDIR_SRC
@@ -72,7 +72,7 @@ spec:
             - name: APP_WEBROOT
               value: /app/src/public
             - name: BASE_URL
-              value: developers.local.k8s
+              value: developersforfuture.org
             - name: COMPOSER_CACHE_DIR
               value: /build/cache/composeer
             - name: CONTAINER_DEBUG
@@ -105,15 +105,14 @@ spec:
             - name: PHPCR_WORKSPACE
               value: developers
             - name: RUNTIME
-              value: development
+              value: production
             - name: SYMFONY_ENV
-              value: dev
+              value: prod
             - name: SYSTEM_APPUSER_NAME
-              value: appuser9
-            - name: VERSION_TAG
+              value: appuser
             - name: XDEBUG_ENABLED
-              value: "1"
-          image: registry.gitlab.com/developersforfuture/registry/app-production:3.6.8
+              value: "0"
+          image: //app-:test
           name: developers-web
           ports:
             - containerPort: 80

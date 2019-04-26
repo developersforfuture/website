@@ -47,6 +47,7 @@ build-image.ci:
   except: [tags]
   variables:
     RUNTIME: 'ci'
+    DOCKER_DRIVER: overlay2
 
 test_unit:
   cache: *cache_definition
@@ -81,6 +82,7 @@ build-image.production:
   only: [tags]
   variables:
     RUNTIME: 'production'
+    DOCKER_DRIVER: overlay2
 
 build-image.development:
   <<: *build_service
@@ -89,6 +91,7 @@ build-image.development:
   when: manual
   variables:
     RUNTIME: 'development'
+    DOCKER_DRIVER: overlay2
 
 build-image.staging:
   <<: *build_service
@@ -97,6 +100,7 @@ build-image.staging:
   except: [tags]
   variables:
     RUNTIME: 'staging'
+    DOCKER_DRIVER: overlay2
 
 .deploy_template: &deploy_job
   stage: deploy
@@ -112,6 +116,7 @@ deploy.staging:
   variables:
     RUNTIME: staging
     COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+    DOCKER_DRIVER: overlay2
   environment:
     name: runtime/${RUNTIME}
     url: https://staging.developersforfuture.org
@@ -122,6 +127,7 @@ deploy.production:
   variables:
     RUNTIME: production
     COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+    DOCKER_DRIVER: overlay2
   environment:
     name: runtime/${RUNTIME}
     url: https://developersforfuture.org
