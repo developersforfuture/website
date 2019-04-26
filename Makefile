@@ -13,7 +13,7 @@ override baseContainerPath=registry.gitlab.com/froscon/php-track-web
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
+override dobiDeps = kubernetes/app.production.yaml kubernetes/app.staging.yaml dobi.yaml Dockerfile docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
@@ -30,10 +30,13 @@ override M4_OPTS = \
 	--define m4ContainerBasePath=$(containerBasePath) \
 	--define m4BaseContainerPath=$(baseContainerPath)
 
-
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
-	@echo "\n + + + Build Kubernetes app yml + + + "
+	@echo "\n + + + Build Kubernetes production app in yml + + + "
 	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
+
+kubernetes/app.staging.yaml: kubernetes/app.staging.m4.yaml $(projectVersionFile) Makefile
+	@echo "\n + + + Build Kubernetes staging app in yml + + + "
+	@m4 $(M4_OPTS) kubernetes/app.staging.m4.yaml > kubernetes/app.staging.yaml
 
 Dockerfile: Dockerfile.m4
 	@echo "\n + + + Build Dockerfile + + + "
@@ -49,7 +52,7 @@ $(dobiTargets): $(dobiDeps)
 	@dobi $@
 
 clean: | autoclean
-	-@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml
+	-@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml kubernetes/app.staging.yaml
 
 release:
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
