@@ -109,22 +109,10 @@ build-image.staging:
     - kubectl config use-context default
     - kubectl apply -f kubernetes/app.${RUNTIME}.yaml
 
-deploy-as-branch.staging:
+deploy.staging:
   <<: *deploy_job
-  only: ["branches"]
-  except: ["master"]
-  variables:
-    RUNTIME: staging
-    COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
-  environment:
-    name: runtime/${RUNTIME}
-    url: https://staging.developersforfuture.org
-
-deploy-as-master.staging:
-  <<: *deploy_job
-  only: [master]
+  only: [branches]
   except: [tags]
-  when: manual
   variables:
     RUNTIME: staging
     COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
