@@ -40,16 +40,17 @@ Dockerfile: Dockerfile.m4
 	@m4 $(M4_OPTS) Dockerfile.m4 > Dockerfile
 
 dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
+	@echo "\n + + + Build dobi.yaml + + + "
 	@m4 $(M4_OPTS) dobi.yaml.m4 > dobi.yaml
 
 $(dobiTargets): $(dobiDeps)
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
 	@echo $(VERSION_TAG) > ./VERSION
-	@echo " + + + Do it with version $(VERSION_TAG) + + + "
+	@echo "\n + + + Do it with version $(VERSION_TAG) + + + "
 	@dobi $@
 
 clean: | autoclean
-	-@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml
+	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml
 
 release:
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
