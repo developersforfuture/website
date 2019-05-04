@@ -292,6 +292,8 @@ static:
                       Twitter: <a href="https://twitter.com/devsforfuture">@DevsForFuture</a>
                       <br>
                       Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
+                      <br />
+                      Mattermost: <a target="_blank" href="https://mattermost.developersforfuture.org/signup_user_complete/?id=40da52c168fd6333bbfa4923ffe11a33">Register on Mattermost</a>
                     </p>
               codeBlock:
                 class: App\Document\Block\CardTextWithoutFooterBlock
@@ -383,7 +385,7 @@ static:
                 <div class="section01-imageWrapper">
                   <div class="section01-imageAlignHelper">
                     <img src="/build/images/developers-for-future-logo.902296d2.png" />
-                    <a target="_blank" href="https://github.com/developersforfuture/developersforfuture/wiki/Communication"><h3 class="join-us">Join us!</h3></a>
+                    <a target="_blank" href="https://mattermost.developersforfuture.org/signup_user_complete/?id=40da52c168fd6333bbfa4923ffe11a33"><h3 class="join-us">Join us!</h3></a>
                   </div>
                 </div>
                 <div class="section01-scroll-down-icon">
