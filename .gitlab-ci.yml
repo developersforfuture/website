@@ -30,8 +30,10 @@ stages:
   services:
     - docker:dind
   before_script:
-    - apk update && apk add --no-cache curl python3 git make m4
+    - apk update
+    - apk add --no-cache curl git
     - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
+    - apk add --no-cache python3  make m4
     - make docker_login
   script:
     - export TAG=$(head -n1 ./VERSION)
