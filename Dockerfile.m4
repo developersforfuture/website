@@ -1,4 +1,4 @@
-FROM m4BaseContainerPath()/alpine-node-builder:1.0.0 as node_builder
+FROM m4BaseContainerPath()/alpine-node-builder:m4baseContainerVersion() as node_builder
 
 ENV NPM_CONFIG_CACHE /cache/npm
 
@@ -8,7 +8,7 @@ RUN yarn install
 COPY /app/src/assets/ /app/src/assets
 RUN mkdir -p /app/src/public/build && yarn build
 
-FROM m4BaseContainerPath()/alpine-php7.2-builder:1.0.0 as composer_builder
+FROM m4BaseContainerPath()/alpine-php7.2-builder:m4baseContainerVersion() as composer_builder
 
 ARG composer_cache_dir="/build_cache/composer/"
 ENV COMPOSER_HOME $composer_cache_dir
@@ -39,7 +39,7 @@ RUN apk update \
     /usr/local/bin/composer-install-wrapper.sh
 
 # Build the PHP container
-FROM m4BaseContainerPath()/alpine-php-fpm7.2-nginx:1.0.0
+FROM m4BaseContainerPath()/alpine-php-fpm7.2-nginx:m4baseContainerVersion()
 
 COPY / /
 COPY --from=node_builder /app/src/public/build/ /app/src/public/build
