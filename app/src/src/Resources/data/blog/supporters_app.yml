@@ -1,0 +1,59 @@
+name: hacking-session-supporters-app
+title: First Hacking Session - The Supporters App
+body: ''
+description: |
+  First hacking sessions to create a supporters app for the groups that organzie events, where they need many helping hands.
+class: \App\Document\BlogPage
+blocks:
+  additionalInfoBlock:
+    class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+    children:
+      blogArticle:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\CardOnlyContentBlock
+            properties:
+              tileLength: 12
+              tileClass: mainintroduction
+              body: |
+                <p>
+                  When my colleagues stay at the internal barcamp in Bayreuth, I want to use my slacktime
+                  to promote a project for a volunteer portal. I have already created some stories together with friends from Berlin.
+                </p>
+                <img src="/img/blog/supporters_app/user-stories.png" title="First Draft for user stories">
+                <p>
+                  As usual those stories are open to edit, we start implementing and will adjust, where we need it.
+                  But now we have to convert the stories into code and at least get the MVP (Minimal viable product) up and running.
+                </p>
+                <p>
+                  I would like to use the next 3 days and offer a hacking session. That doesn't mean that I want to code 72 hours now.
+                  We will agree in the chat and if necessary also publicly, who is when there and works.
+                <p>
+                </p>
+                  If you visit us in the chat, we will also set up a video or audio channel there.
+                  This will make it a little more comfortable.
+                  We will feed the post here with new information, if necessary. Just join us in the chat, that would be the easiest way. I can imagine that a few collegues from the
+                  Barcamp will join us.
+                <p>
+                </p>
+                <p>
+                  <b>Chat link:</b> <a href="https://mattermost.developersforfuture.org/signup_user_complete/?id=40da52c168fd6333bbfa4923ffe11a33" target="_blank" title="Mattermost invite link">Mattermost Invite</a></br>
+                  <b>Code:</b> <a href="https://gitlab.com/developersforfuture/supporters" target="_blank" title="GitLab Repository">GitLab</a>
+                </p>
+      speakerRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          authorBlock:
+            class: App\Document\Block\CardTextBlock
+            properties:
+              tileLength: 12
+              tileClass: blog-author-card
+              cardTitle: Author
+              buttonText: Twitter
+              buttonLink: https://twitter.com/ElectricMaxxx
+              body: |
+                <h4 class="author-name">Maximilian Berghoff</h5>
+                <p>I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                watching Game of Thrones.</p>

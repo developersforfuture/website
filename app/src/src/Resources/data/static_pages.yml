@@ -17,12 +17,6 @@ static:
                   tileLength: 12
                   tileClass: legalBlock
                   body: |
-                    <p>
-                        Maximilian Berghoff<br>
-                        Rosestraße 7<br>
-                        91617 Oberdachstetten<br>
-                        E-Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
-                    </p>
                     <h3>Disclaimer:</h3>
                     <p>
                         Liability for contents
@@ -73,6 +67,16 @@ static:
                         expressly contradicted. The operators of the pages expressly reserve the right to take legal action against the visitors of this website.
                         in the case of the unsolicited sending of advertising information, such as spam mails.
                     </p>
+                    <p>
+                        Developers For Future <br>
+                        Responsible for web content: </br>
+                        <small>
+                          Maximilian Berghoff<br>
+                          Rosestraße 7<br>
+                          91617 Oberdachstetten<br>
+                          E-Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
+                        </small>
+                    </p>
   - name: 'data-policy'
     description: 'page for legal information for data policy'
     title: 'Data policy'
@@ -101,12 +105,13 @@ static:
                     </p>
                     <h3 id="dsg-general-controller">Responsible</h3>
                     <p>
-                      Maximilian Berghoff<br />
-                      Rosestraße 7<br>
-                      91617 Oberdachstetten<br />
-                      Deutschland<br />
-                      E-Mail: info@developersforfuture.org<br />
-                      Imprint: <a href="https://developersforfuture.org/imprint">https://developersforfuture.org/imprint</a>
+                        Developers For Future <br>
+                        <small>
+                          Maximilian Berghoff<br>
+                          Rosestraße 7<br>
+                          91617 Oberdachstetten<br>
+                          E-Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
+                        </small>
                     </p>
                     <h3 id="dsg-general-datatype">Types of processed data:</h3>
                     <p>
