@@ -18,8 +18,8 @@ blocks:
               tileClass: mainintroduction
               body: |
                 <p>
-                  After my talk yesterday at the "Rooftop Brains & BBQ" I had to go over my
-                  calculations again. And yes, there was a mistake in the ten digits.
+                  After my talk yesterday at the <a href="https://www.meetup.com/de-DE/Rooftop-Brains-BBQ-Munich/events/261289322/" target="_blank">
+                  Rooftop Brains & BBQ</a> I had to go over my calculations again. And yes, there was a mistake in the ten digits.
                   In addition, there are now new factors for calculating the CO² consumption for one unit of electricity.
                 </p>
                 <img src="/img/blog/correction_of_the_calculations/Faktor_CO2.jpg" title="Evolution of factor to calculate CO2 per Energy unit.">
