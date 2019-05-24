@@ -1,0 +1,51 @@
+name: correction_of_the_calculations
+title: Correction of the calculations
+body: ''
+description: |
+  When non professionals try to calculate ... so lets do it right again
+class: \App\Document\BlogPage
+blocks:
+  additionalInfoBlock:
+    class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+    children:
+      blogArticle:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\CardOnlyContentBlock
+            properties:
+              tileLength: 12
+              tileClass: mainintroduction
+              body: |
+                <p>
+                  After my talk yesterday at the "Rooftop Brains & BBQ" I had to go over my
+                  calculations again. And yes, there was a mistake in the ten digits.
+                  In addition, there are now new factors for calculating the CO² consumption for one unit of electricity.
+                </p>
+                <img src="/img/blog/correction_of_the_calculations/Faktor_CO2.jpg" title="Evolution of factor to calculate CO2 per Energy unit.">
+                <p>
+                  Based on the factor, we can then take the consumption from it and calculate a value for the CO² Footprint for 2018.
+                </p>
+                <img src="/img/blog/correction_of_the_calculations/calculation.png" title="Correct calculation">
+                <p>
+                  You can now see the numbers shown in the slides, or at least the numbers that should be shown.
+                  We now have a CO2 footprint of 26 million tonnes.
+                  This corresponds to 130000000000 km with a VW Golf 4.692 Mio. €
+                  if we had a CO2 tax of 180 € per ton.
+                <p>
+      speakerRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          authorBlock:
+            class: App\Document\Block\CardTextBlock
+            properties:
+              tileLength: 12
+              tileClass: blog-author-card
+              cardTitle: Author
+              buttonText: Twitter
+              buttonLink: https://twitter.com/ElectricMaxxx
+              body: |
+                <h4 class="author-name">Maximilian Berghoff</h5>
+                <p>I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                watching Game of Thrones.</p>
