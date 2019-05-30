@@ -1,7 +1,7 @@
 pid /var/run/nginx.pid;
 
 user {{ .Env.SYSTEM_APPUSER_NAME }};
-error_log {{ .Env.APP_BASEDIR_LOG }}/nginx_error.log notice;
+error_log /dev/stdout notice;
 
 worker_processes auto;
 events {
@@ -11,13 +11,16 @@ events {
 }
 
 http {
-    error_log {{ .Env.APP_BASEDIR_LOG }}/nginx_error.log notice;
+    error_log /dev/stdout notice;
+    access_log /dev/stdout;
     server {
         server_name   ~^(www\.)(?<domain>.+)$;
         expires       max;
         return        301 http://$domain$request_uri;
     }
     server {
+        error_log /dev/stdout notice;
+        access_log /dev/stdout;
         listen 80 default_server;
         root {{ .Env.APP_WEBROOT }};
         index index.php index.html;

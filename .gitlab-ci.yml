@@ -96,12 +96,13 @@ build-image.development:
 .deploy_template: &deploy_job
   stage: deploy
   image: dtzar/helm-kubectl
+  before_script:
+    - apk update
+    - apk add --no-cache git python3  make m4
   script:
     - export TAG=$(git describe --abbrev=0 --tags)
     - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
-    - sed -i "s/<KUBE_API_SERVER>/${KUBE_API_SERVER}/g" ${KUBECONFIG}
-    - sed -i "s/<KUBE_CERTIFICATE_AUTHORITY_DATA>/${KUBE_CERTIFICATE_AUTHORITY_DATA}/g" ${KUBECONFIG}
-    - sed -i "s/<KUBE_USER_TOKEN>/${KUBE_USER_TOKEN}/g" ${KUBECONFIG}
+    - make kubernetes/gitlab_kube_config.yaml
     - kubectl apply -f kubernetes/app.${RUNTIME}.yaml
 
 deploy.production:

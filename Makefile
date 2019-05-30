@@ -1,4 +1,4 @@
-.PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, release, dobi.yaml, push_tag
+.PHONY:  kubernetes/app.production.yaml, Dockerfile, unit_test, release, dobi.yaml, push_tag, kubernetes/gitlab_kube_config.yaml
 unit_test:
 	@echo "+++ Unit tests +++"
 
@@ -14,7 +14,7 @@ override baseContainerVersion=1.1.0
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = kubernetes/app.production.yaml dobi.yaml Dockerfile docker_login
+override dobiDeps = kubernetes/app.production.yaml dobi.yaml kubernetes/gitlab_kube_config.yaml Dockerfile docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
@@ -30,12 +30,18 @@ override M4_OPTS = \
 	--define m4ReleaseImageTag=$(call getImageTag, $(releaseImage),latest) \
 	--define m4ContainerBasePath=$(containerBasePath) \
 	--define m4BaseContainerPath=$(baseContainerPath) \
-	--define m4baseContainerVersion=$(baseContainerVersion)
+	--define "m4baseContainerVersion=$(baseContainerVersion)" \
+	--define "m4KubeCertificateAuthorityData=$(KUBE_CERTIFICATE_AUTHORITY_DATA)" \
+	--define "m4KubeUserTokenData=$(KUBE_USER_TOKEN)"
 
 
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
 	@echo "\n + + + Build Kubernetes app yml + + + "
 	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
+
+kubernetes/gitlab_kube_config.yaml: kubernetes/gitlab_kube_config.m4.yaml $(projectVersionFile) Makefile
+	@echo "\n + + + Build Kubernetes cluster config + + + "
+	@m4 $(M4_OPTS) kubernetes/gitlab_kube_config.m4.yaml > kubernetes/gitlab_kube_config.yaml
 
 Dockerfile: Dockerfile.m4
 	@echo "\n + + + Build Dockerfile + + + "
@@ -52,7 +58,7 @@ $(dobiTargets): $(dobiDeps)
 	@dobi $@
 
 clean: | autoclean
-	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml
+	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml kubernetes/gitlab_kube_config.yaml
 
 release:
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))

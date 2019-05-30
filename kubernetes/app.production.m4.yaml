@@ -112,6 +112,8 @@ spec:
               value: appuser
             - name: XDEBUG_ENABLED
               value: "0"
+            - name: PHPFPM_PM_MAX_CHILDREN
+
           image: m4ReleaseImage():m4ReleaseImageTag()
           name: developers-web
           ports:

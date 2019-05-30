@@ -1,5 +1,5 @@
 [global]
-error_log = {{ .Env.APP_BASEDIR_LOG }}/php_error.log
+error_log = /proc/self/fd/2
 log_level = notice
 daemonize = no
 
@@ -20,7 +20,7 @@ pm.max_requests = {{ default .Env.PHPFPM_PM_MAX_REQUESTS "500" }}
 chdir = /
 clear_env = no
 catch_workers_output = no
-access.log = {{ .Env.APP_BASEDIR_LOG }}/php_access.log
+access.log = /proc/self/fd/2
 access.format = "%{HTTP_X_TRACE_ID}e: %{REMOTE_ADDR}e - %u %t \"%m %r%{REQUEST_URI}e\" %s %{mili}d %{kilo}M %{user}C%% %{system}C%% %n"
 
 php_admin_value[error_log] = {{ .Env.APP_BASEDIR_LOG }}/php_error.log
