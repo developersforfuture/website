@@ -1,0 +1,75 @@
+name: first-weekly-information
+title: First Weekly Information
+body: ''
+description: |
+  Acording to the "daily" as an agile artifact, i would like to start a weekly series to inform about current state of our work.
+class: \App\Document\BlogPage
+blocks:
+  additionalInfoBlock:
+    class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+    children:
+      blogArticle:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\CardOnlyContentBlock
+            properties:
+              tileLength: 12
+              tileClass: mainintroduction
+              body: |
+                <p>
+                  We know it when we work in agile teams, but how to do it in a non profit sofware team,
+                  who usually do their work at night and where you basically can't force anyone.
+                  It's about the so-called daily. Well, I would limit it to one weekly for the time being.
+                </p>
+                <p>
+                  However, the weekly should have two pages. One that allows us to transport
+                  to the outside world what we have done, what we are currently doing and what
+                  we are going to do. All this should be based on an internal call, where we as developers exchanged exactly the same questions.
+                </p>
+                <p>
+                  At the moment I would just like to set this tradition in motion.
+                  Therefore I will briefly present the current status (before current week) in the following. For the next time I would like to suggest a
+                  <a href="https://doodle.com/poll/k5h74rgxvxnsbwct">Doodle</a> for the date finding. The goal should not be to exert control and pressure
+                  on free developers in any way. Rather, I would like to recognize where we stand at the moment, as well as the stakeholders.
+                  So it provides transparency.
+                </p>
+                <h3>What has been done last Weeks</h3>
+                <p>
+                  Last week was of course marked by the global strike on 24 May. For the global map on https://fridaysforfuture.org
+                  I have to convert the data from national Excel/Google sheets into the format for the world map.
+                  This has become a small tool that Germany, France and the Netherlands can already convert.
+                  I gave the first <a href="https://www.slideshare.net/maximilianberghoff/development-is-for-future-147400543" target="blank">presentation</a>
+                  on our responsibility for climate change at the so-called "Rooftop Brains&Barbecue".
+                  Leo really put a lot of work into the "angel system" to get the app up and running for helper support.
+                </p>
+                <h3>What are you currently doing</h3>
+                <p>
+                  At the moment we are working on the last bugs for the Supporter-App, which was developed from the so-called angel system. The One-Page
+                  for the registration on the ScientistsForFuture World-Campaign is almost finished, working and in the process of being created.
+                </p>
+                <h3>What are we going to do</h3>
+                <p>
+                  Max (me) will be in Berline next week for 3 lectures from Monday to Thursday.
+                  One of the <a href="https://phpconference.com/agile-culture/what-does-it-actually-cost-an-ecological-price-tag-for-software-development/">lectures</a> will be about the mobilization of colleagues.
+                  Therefore we should make sure that the two projects Supporters-App and the world campaign of the Scientists will be finished next week.
+                  And of course we want to hold our first weekly next week.
+                </p>
+                <p>I you miss a point here, you can just have a look into our
+                <a href="https://gitlab.com/developersforfuture/developersforfuture/boards" target="_blank">board</a>. There you can find any project with its state.
+      speakerRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          authorBlock:
+            class: App\Document\Block\CardTextBlock
+            properties:
+              tileLength: 12
+              tileClass: blog-author-card
+              cardTitle: Author
+              buttonText: Twitter
+              buttonLink: https://twitter.com/ElectricMaxxx
+              body: |
+                <h4 class="author-name">Maximilian Berghoff</h5>
+                <p>I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                watching Game of Thrones.</p>
