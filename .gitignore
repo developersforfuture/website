@@ -4,3 +4,4 @@ Dockerfile
 .dobi
 .idea
 /kubernetes/gitlab_kube_config.yaml
+/kubernetes/app.production.yaml

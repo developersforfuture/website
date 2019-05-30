@@ -38,7 +38,7 @@ spec:
       app.kubernetes.io/name: developers-web
       app.kubernetes.io/instance: developers-web-v1
       app.kubernetes.io/version: "v1"
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       name: developers-web-v1
@@ -113,7 +113,7 @@ spec:
             - name: XDEBUG_ENABLED
               value: "0"
             - name: PHPFPM_PM_MAX_CHILDREN
-
+              value: "10"
           image: m4ReleaseImage():m4ReleaseImageTag()
           name: developers-web
           ports:
@@ -130,7 +130,7 @@ spec:
             httpGet:
               path: /home
               port: 80
-            initialDelaySeconds: 200
+            initialDelaySeconds: 90
             timeoutSeconds: 1
             periodSeconds: 15
           livenessProbe:
