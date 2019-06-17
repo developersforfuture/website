@@ -30,7 +30,7 @@ blocks:
                 It will definitely go further in the topic than I try to sketch in this blog post. But for the beginning I would like to
                 only once for the classification into the causes and factors of the entire crisis.
                 </p>
-                <h3>Warum ist die ICT beteiligt</h3>
+                <h3>Why is ICT involved?</h3>
                 <p>
                 <!--
                 Ob nun berechtigt oder nicht, man kann die Frage aufwerfen ob und warum die ICT überhaupt an der Klimakrise ihren Anteil hält.
@@ -41,11 +41,10 @@ blocks:
                 [Bild verschiedene Anteile an CO2 Emmissionen bei der Strom Produktion]
 
                 -->
-                Whether justified or not, the question can be raised as to whether and why ICT is even playing its part in the climate crisis.
-                After all, neither our servers nor our machines have an exhaust through which they emit carbon dioxide. Or do they
-                basically, isn't it?
+                Justified or not, the question can be raised as to whether and why ICT is even playing its part in the climate crisis.
+                After all, neither our servers nor our machines have an exhaust through which they emit carbon dioxide. Or do they, isn't it?
                 <br />
-                It is the electricity that is responsible for our share in the crisis. Every CPU, every interaction requires power for the arithmetic operation.
+                It is the electricity that is responsible for our share in the crisis. Every CPU, every interaction requires power for the arithmetic operation
                 and the cooling of the chip. This electricity comes from the national socket. But this is where the crux begins.
                 </p>
                 <a href="https://www.electricitymap.org/?page=country&solar=false&remote=true&wind=false&countryCode=DE" target="_blank" title="Global electricity map">
@@ -56,7 +55,11 @@ blocks:
                 Da jedes Land ihren eignen Strom-Mix aufweist, ist der Anteil der in der Produktion durch die Verbrennung von fossilen Brennstoffen
                 generiert wird unterschiedlich. Dazu schwanken diese Anteile je nach Produktionsgrad der Kraftwerke und der Wettersituation, denen erneuerbare
                 Energien ausgesetzt sind.
+                -->
                 </p>
+                As each country has its own electricity mix, the proportion of electricity generated in production by the combustion of fossil fuels is
+                is generated differently. In addition, these shares fluctuate depending on the degree of production of the power plants and the weather situation, to which renewable energy sources are exposed.
+                are exposed to energies.
                 <p>
                 <h3>ICT in Germany</h3>
                 <a href="https://de.statista.com/statistik/daten/studie/157866/umfrage/ikt-stromverbrauch-nach-hauptanwendungen-von-2007-bis-2020/" target="_blank" title="ICT electricity consumption germany">
@@ -66,7 +69,7 @@ blocks:
                 Basierend auf der Grafik möchte ich nun von einem Ungefähren Wert von 60TWh Stromverbrauch für die gesammte Internet- und Kommunikationsbrache
                 für Deutschland veranschlagen. Nun bringt uns diese Zahl Nicht, wenn wir sie nicht einordnen können.
                 -->
-                Based on the graph, I would like to estimate the power consumption for the entire internet and communication industry at 60TWh.
+                Based on the graph, I would like to estimate the power consumption for the entire Internet and communication industry at 60TWh
                 for Germany. Now this number does not bring us if we cannot classify it.
                 </p>
                 <img src="/img/blog/responsibility_ict/gross-power-consumption-germany.png" title="Gross electricity consumption Germany" />
@@ -82,10 +85,10 @@ blocks:
                 <p>
                 <!--
                 Die Stromproduktion ist nur ein Teil, der gesammten Energiewirtschaft - ca 1/5 davon. Wenn dem so ist, dann macht der Energieverbrauch
-                der deutschen ICT nur noch grob <b>2%</b> des Energieverbrauchs aus.
+                der deutschen ICT nur noch grob <b>2%</b> des gesammtdeutschen Energieverbrauchs aus.
                 -->
                 Electricity production is only one part of the overall energy economy - about 1/5 of it.
-                If this is the case, then energy consumption makes of German ICT only roughly <b>2%</b> of energy consumption.
+                If this is the case, then energy consumption of German ICT makes only roughly <b>2%</b> of overall german energy consumption.
                 </p>
                 <h3>2% is easy</h3>
                 <p>
@@ -95,7 +98,7 @@ blocks:
                 Das ist definitiv nicht Null. Doch da müssen wir hin.
                 -->
                 This number appears relatively small at first glance. So small that you could say "You don't have to do anything here". But if we look at the 60TWh
-                taking into account the carbon monoxide factor in the first picture, the emission is <b>23.5 million t</b> carbon dioxide per anno.
+                taking into account the carbon monoxide factor in the first figure, the emission is <b>23.5 million t</b> carbon dioxide per anno.
                 This is definitely not zero. But that's where we have to go.
                 </p>
                 <h3>What to do?</h3>
@@ -139,7 +142,7 @@ blocks:
                   Es bleibt also dabei: es ist noch viel zu tun, viel zu erarbeiten. Wer dazu konstruktiven Input hat, darf gerne eine Mail an uns schreiben oder uns im Chat
                   ansprechen.
                   -->
-                  Of course, this isn't over. It won't do any good, if we have set all computing power in the network to 100% renewable, but
+                  Of course, this isn't the end of it. It won't do any good, if we have set all computing power in the network to 100% renewable, but
                   the user himself uses the application with end devices that are charged with 50-70% coal electricity, for example. In addition, digitalization carries the danger that
                   we may be working something off by progress. But the climate effect then fizzles out because of increasing consumption. One only has to look at the development in the
                   watch streaming. <br />
