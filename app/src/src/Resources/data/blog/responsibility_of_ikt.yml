@@ -1,0 +1,164 @@
+name: first-weekly-information
+title: First Weekly Information
+body: ''
+description: |
+ What is the responsibility of the information and communications technology (ICT), what are the things we can do, what is our damage we are doing
+ throug our daily work.
+class: \App\Document\BlogPage
+blocks:
+  additionalInfoBlock:
+    class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
+    children:
+      blogArticle:
+        class: App\Document\Block\FeatureBlock
+        children:
+          introductionBlock:
+            class: App\Document\Block\CardOnlyContentBlock
+            properties:
+              tileLength: 12
+              tileClass: mainintroduction
+              body: |
+                <p>
+                <!---
+                Nicht nur Coden an sich kann diese Bewegung voran bringen. Jede Branche, oder jede Organisation
+                fängt vor ihrer eigenen Haustüre das Kehren an. So möchte ich nun für den Bereich Informations- und Komunikationstechnik IKT den Anfang machen.
+                Es wird auf jeden Fall weiter in dem Thema gehen, als ich in diesem Blog Post versuche zu skizzieren. Doch für den Anfang möchte ich
+                hier nur einmal für die Einordnung in die Ursachen und Faktoren der gesammten Kriese sorgen.
+                -->
+                Not only codes themselves can bring this movement forward. Every industry, or every organization
+                sweeping starts on her own doorstep. So now I want to start with Information and Comunication Technique (ICT).
+                It will definitely go further in the topic than I try to sketch in this blog post. But for the beginning I would like to
+                only once for the classification into the causes and factors of the entire crisis.
+                </p>
+                <h3>Warum ist die ICT beteiligt</h3>
+                <p>
+                <!--
+                Ob nun berechtigt oder nicht, man kann die Frage aufwerfen ob und warum die ICT überhaupt an der Klimakrise ihren Anteil hält.
+                Schließlich haben weder unsere Server noch unsere Maschinen einen Auspuff über den sie Kohlendioxide emmitieren. Oder tun sie das
+                im Grunde doch?
+                Es ist der Strom, der unseren Anteil in der Krise begründet. Jede CPU, jede Interaktion benötigt Strom für die Rechenoperation
+                und der Kühlung des Chips. Dieser Strom stammt jeweils aus der nationalen Steckdose. Doch hier fängt die Krux schon an:
+                [Bild verschiedene Anteile an CO2 Emmissionen bei der Strom Produktion]
+
+                -->
+                Whether justified or not, the question can be raised as to whether and why ICT is even playing its part in the climate crisis.
+                After all, neither our servers nor our machines have an exhaust through which they emit carbon dioxide. Or do they
+                basically, isn't it?
+                <br />
+                It is the electricity that is responsible for our share in the crisis. Every CPU, every interaction requires power for the arithmetic operation.
+                and the cooling of the chip. This electricity comes from the national socket. But this is where the crux begins.
+                </p>
+                <a href="https://www.electricitymap.org/?page=country&solar=false&remote=true&wind=false&countryCode=DE" target="_blank" title="Global electricity map">
+                  <img src="/img/blog/responsibility_ict/carbon_emmision_world_vs_germany.jpg" title="Carbon dioxide emmision for electricity production" />
+                </a>
+                <p>
+                <!--
+                Da jedes Land ihren eignen Strom-Mix aufweist, ist der Anteil der in der Produktion durch die Verbrennung von fossilen Brennstoffen
+                generiert wird unterschiedlich. Dazu schwanken diese Anteile je nach Produktionsgrad der Kraftwerke und der Wettersituation, denen erneuerbare
+                Energien ausgesetzt sind.
+                </p>
+                <p>
+                <h3>ICT in Germany</h3>
+                <a href="https://de.statista.com/statistik/daten/studie/157866/umfrage/ikt-stromverbrauch-nach-hauptanwendungen-von-2007-bis-2020/" target="_blank" title="ICT electricity consumption germany">
+                  <img src="/img/blog/responsibility_ict/ict_consumption_germany.png" title="ICT electricity consumption germany" />
+                </a>
+                <!--
+                Basierend auf der Grafik möchte ich nun von einem Ungefähren Wert von 60TWh Stromverbrauch für die gesammte Internet- und Kommunikationsbrache
+                für Deutschland veranschlagen. Nun bringt uns diese Zahl Nicht, wenn wir sie nicht einordnen können.
+                -->
+                Based on the graph, I would like to estimate the power consumption for the entire internet and communication industry at 60TWh.
+                for Germany. Now this number does not bring us if we cannot classify it.
+                </p>
+                <img src="/img/blog/responsibility_ict/gross-power-consumption-germany.png" title="Gross electricity consumption Germany" />
+                <p>
+                <!--
+                Wenn man nun die 60TWh im Rahmen des nationalen Stromverbrauchs betrachten, so muss man fesstellen, dass die ICT ein wenig
+                mehr wie 11% des Stromverbrauchsausgeht. Nun ist aber der Strom nicht die einziege Energiequelle bei uns in Deutschland.
+                -->
+                If one now considers the 60TWh in the context of national electricity consumption, one has to note that ICT is a little bit
+                more than 11% of electricity consumption goes out. But now electricity is not the only source of energy in Germany.
+                </p>
+                <img src="/img/blog/responsibility_ict/gross-energy-germany.png" title="Gross energy consumption Germany" />
+                <p>
+                <!--
+                Die Stromproduktion ist nur ein Teil, der gesammten Energiewirtschaft - ca 1/5 davon. Wenn dem so ist, dann macht der Energieverbrauch
+                der deutschen ICT nur noch grob <b>2%</b> des Energieverbrauchs aus.
+                -->
+                Electricity production is only one part of the overall energy economy - about 1/5 of it.
+                If this is the case, then energy consumption makes of German ICT only roughly <b>2%</b> of energy consumption.
+                </p>
+                <h3>2% is easy</h3>
+                <p>
+                <!--
+                Diese Zahl erscheint im ersten Blick einmal relativ klein. So klein, dass man sagen könnte "Hier muss man Nichts tun". Doch wenn wir die 60TWh
+                unter berücksichtung der des Kohlenmonoxid-Faktors aus dem Ersten Bild betrachten, so ergibt sich eine Emmision in Höhe von <b>23,5 Mio t</b> Kohlenstoffdioxid.
+                Das ist definitiv nicht Null. Doch da müssen wir hin.
+                -->
+                This number appears relatively small at first glance. So small that you could say "You don't have to do anything here". But if we look at the 60TWh
+                taking into account the carbon monoxide factor in the first picture, the emission is <b>23.5 million t</b> carbon dioxide per anno.
+                This is definitely not zero. But that's where we have to go.
+                </p>
+                <h3>What to do?</h3>
+                <p>
+                <!--
+                Was können wir tun um diese Menge an Kohlenstoffdioxid-Ausstoß auf Null zu reduzieren? Nun, es gibt mehrere Ansatzpunkte, die ich hier erst einmal nur
+                aufzählen möchte:
+                -->
+                What can we do to reduce this amount of carbon dioxide emissions to zero? Well, there are several
+                starting points that I would like to mention here:
+                <ul style="list-style: none;">
+                  <li>Working remote or come together in one place</li>
+                  <li>Hoster/Cloud Provider Selection</li>
+                  <li>Energy Provider Selection of your Company</li>
+                  <li>Application running on bare metal or in a containerized environment</li>
+                </ul>
+                </p>
+                <p>
+                  <!--
+                  Neben den Dingen, die wir im täglichen Entwickler leben anpacken können, gibt es auch Aufgaben, die Digitalisierung für
+                  uns bereithält. Denn auch die Digitalisierung birgt Chancen in der Klima-Krise, Schritte in die richtige Richtung einzuleiten.
+                  Aber sind alle Bereiche, welche durch die Digitalisierung gelöst werden sollen auch gleichzeigit klimafreundlich? Können wir durch
+                  künstliche Intelligenzen Probleme lösen oder schaffen wir dort wieder Lücken in der Energieversorgung, die wir eigentlich gerne schließen wollten.
+                  Das sind Themen für mehr als einen Artikel. Es sind auch Themen, die wir gerne zusammen mit den Wissenschaftlern erörtern wollen. Ziel sollte
+                  es sein hier für aufklärung zu sorgen und Handlungsoptionen zu schaffen.
+                  -->
+                  In addition to the things we can tackle in everyday developer life, there are also tasks that digitize for
+                  is holding us in readiness. Digitalization also offers opportunities in the climate crisis to take steps in the right direction.
+                  But are all the areas that are to be solved by digitization at the same time climate-friendly? Can we achieve this through
+                  artificial intelligence we solve problems or create gaps in the energy supply that we actually wanted to close.
+                  These are topics for more than one article. They are also topics that we would like to discuss together with the scientists. The goal should be
+                  to be here to educate and create options for action.
+                </p>
+                <h3>Is that all?</h3>
+                <p>
+                  <!--
+                  Natürlich ist hier nicht schluss. Es wird auch Nichts bringen, wenn wir alle Rechnenleistunge im Netzt auf 100% erneuerbar gestellt haben, doch
+                  der User selbst mit Endgeräten die Applikation nutzt, die bspw. mit 50-70% Kohlestrom geladen werden. Dazu birgt die Digitalisierung die Gefahr, dass
+                  wir uns zwar durch Fortschrit ewas erabeiten. Doch der Klima-Effect verpufft dann wegen steigendem Konsum. Man muss sich dazu nur einmal die Entwicklung im
+                  streaming anschauen.
+                  Es bleibt also dabei: es ist noch viel zu tun, viel zu erarbeiten. Wer dazu konstruktiven Input hat, darf gerne eine Mail an uns schreiben oder uns im Chat
+                  ansprechen.
+                  -->
+                  Of course, this isn't over. It won't do any good, if we have set all computing power in the network to 100% renewable, but
+                  the user himself uses the application with end devices that are charged with 50-70% coal electricity, for example. In addition, digitalization carries the danger that
+                  we may be working something off by progress. But the climate effect then fizzles out because of increasing consumption. One only has to look at the development in the
+                  watch streaming. <br />
+                  So it remains: there is still a lot to do, a lot to work out. If you have any constructive input, please feel free to send us an email or chat with us.
+                  to address.
+                </p>
+      speakerRow:
+        class: App\Document\Block\FeatureBlock
+        children:
+          authorBlock:
+            class: App\Document\Block\CardTextBlock
+            properties:
+              tileLength: 12
+              tileClass: blog-author-card
+              cardTitle: Author
+              buttonText: Twitter
+              buttonLink: https://twitter.com/ElectricMaxxx
+              body: |
+                <h4 class="author-name">Maximilian Berghoff</h5>
+                <p>I work as a developer for the Mayflower GmbH in Würzburg. As such, I develop highly professional PHP and javascript applications. I invest my
+                free time in contributing to the Symfony CMF (Content Management Framework). Besides I am a dad of two lovely sons and enjoy reading and
+                watching Game of Thrones.</p>
