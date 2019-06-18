@@ -6,7 +6,7 @@ Currently it is a Symfony application with some help of Symfony CMF. To run the 
 
 ```
 git clone git@github.com:developersforfuture/website.git
-cd website/aapp/src
+cd website/app/src
 composer install
 bin/console server:run
 ```
