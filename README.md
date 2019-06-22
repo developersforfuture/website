@@ -5,7 +5,9 @@ This is the repository for the webpage of [DevelopersForFuture](https://develope
 Currently it is a Symfony application with some help of Symfony CMF. To run the app locally run a:
 
 ```
-git clone git@github.com:developersforfuture/website.git
+git clone git@gitlab.com:developersforfuture/website.git
+OR
+git clone https://gitlab.com/developersforfuture/website.git
 cd website/app/src
 composer install
 bin/console server:run
