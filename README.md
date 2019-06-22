@@ -6,7 +6,7 @@ Currently it is a Symfony application with some help of Symfony CMF. To run the 
 
 ```
 git clone git@github.com:developersforfuture/website.git
-cd website/aapp/src
+cd website/app/src
 composer install
 bin/console server:run
 ```
@@ -18,6 +18,10 @@ At the end we do manually build a application wide image by running:
 ```
 cp .env.dist .env # and fill the vars with your values
 source .env
+bin/reloadFixtures.sh
+# run npm to get the latest assets (you must be in app/src)
+npm install
+npm run build
 # set the version you'd like to tag in ./VERSION
 # make
 # make push
