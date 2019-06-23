@@ -36,25 +36,25 @@ override M4_OPTS = \
 
 
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
-	@echo "\n + + + Build Kubernetes app yml + + + "
+	@echo " + + + Build Kubernetes app yml + + + "
 	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
 
 kubernetes/gitlab_kube_config.yaml: kubernetes/gitlab_kube_config.m4.yaml $(projectVersionFile) Makefile
-	@echo "\n + + + Build Kubernetes cluster config + + + "
+	@echo " + + + Build Kubernetes cluster config + + + "
 	@m4 $(M4_OPTS) kubernetes/gitlab_kube_config.m4.yaml > kubernetes/gitlab_kube_config.yaml
 
 Dockerfile: Dockerfile.m4
-	@echo "\n + + + Build Dockerfile + + + "
+	@echo " + + + Build Dockerfile + + + "
 	@m4 $(M4_OPTS) Dockerfile.m4 > Dockerfile
 
 dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
-	@echo "\n + + + Build dobi.yaml + + + "
+	@echo " + + + Build dobi.yaml + + + "
 	@m4 $(M4_OPTS) dobi.yaml.m4 > dobi.yaml
 
 $(dobiTargets): $(dobiDeps)
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
 	@echo $(VERSION_TAG) > ./VERSION
-	@echo "\n + + + Do it with version $(VERSION_TAG) + + + "
+	@echo " + + + Do it with version $(VERSION_TAG) + + + "
 	@dobi $@
 
 clean: | autoclean
@@ -62,10 +62,10 @@ clean: | autoclean
 
 release:
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
-	@echo "\n + + + Set next version: $(VERSION_TAG) + + + "
+	@echo " + + + Set next version: $(VERSION_TAG) + + + "
 	@echo $(VERSION_TAG) > ./VERSION
 	@make kubernetes/app.production.yaml
-	@echo "\n + + + Push tags to repository + + + "
+	@echo " + + + Push tags to repository + + + "
 	@git add .
 	@git commit -m "Changes for next release $(VERSION_TAG)"
 	@git tag -s $(VERSION_TAG) -m "Next release $(VERSION_TAG)"
@@ -73,9 +73,9 @@ release:
 
 
 docker_login:
-	@echo "\n + + + Login into registry: $(REGISTRY) +  +  + "
+	@echo " + + + Login into registry: $(REGISTRY) +  +  + "
 	@docker login -p$(REGISTRY_PASSWORD) -u$(REGISTRY_USER) $(REGISTRY)
 
 docker_logout:
-	@echo "\n + + + Logout from registry: $(REGISTRY) +  +  + "
+	@echo " + + + Logout from registry: $(REGISTRY) +  +  + "
 	@docker logout $(REGISTRY)
