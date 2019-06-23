@@ -30,9 +30,9 @@ override M4_OPTS = \
 	--define m4ReleaseImageTag=$(call getImageTag, $(releaseImage),latest) \
 	--define m4ContainerBasePath=$(containerBasePath) \
 	--define m4BaseContainerPath=$(baseContainerPath) \
-	--define "m4baseContainerVersion=$(baseContainerVersion)" \
-	--define "m4KubeCertificateAuthorityData=$(KUBE_CERTIFICATE_AUTHORITY_DATA)" \
-	--define "m4KubeUserTokenData=$(KUBE_USER_TOKEN)"
+	--define m4baseContainerVersion=$(baseContainerVersion) \
+	--define m4KubeCertificateAuthorityData=$(KUBE_CERTIFICATE_AUTHORITY_DATA) \
+	--define m4KubeUserTokenData=$(KUBE_USER_TOKEN)
 
 
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
