@@ -110,13 +110,13 @@ blocks:
                 What can we do to reduce this amount of carbon dioxide emissions to zero? Well, there are several
                 starting points that I would like to mention here:
                 <ul style="list-style: none;">
-                  <li>Working remote or come together in one place?</li>
-                  <li>Hoster/Cloud Provider Selection, which one do you trust for renewable energy plan?</li>
-                  <li>Energy Provider Selection of your Company or Home Office?</li>
-                  <li>Application running on bare metal or in a containerized environment?</li>
-                  <li>Do I need a complete CI run for each single commit?</li>
-                  <li>Does a user really needs every byte of content we deliver on a website?</li>
-                  <li>Why is my mobile device getting that hot, when using it for routing?</li>
+                  <li>– Working remote or come together in one place?</li>
+                  <li>– Hoster/Cloud Provider Selection, which one do you trust for renewable energy plan?</li>
+                  <li>– Energy Provider Selection of your Company or Home Office?</li>
+                  <li>– Application running on bare metal or in a containerized environment?</li>
+                  <li>– Do I need a complete CI run for each single commit?</li>
+                  <li>– Does a user really needs every byte of content we deliver on a website?</li>
+                  <li>– Why is my mobile device getting that hot, when using it for routing?</li>
                 </ul>
                 </p>
                 <p>
