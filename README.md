@@ -18,6 +18,10 @@ At the end we do manually build a application wide image by running:
 ```
 cp .env.dist .env # and fill the vars with your values
 source .env
+bin/reloadFixtures.sh
+# run npm to get the latest assets (you must be in app/src)
+npm install
+npm run build
 # set the version you'd like to tag in ./VERSION
 # make
 # make push
