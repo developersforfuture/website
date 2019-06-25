@@ -143,3 +143,5 @@ services:
     class: App\Controller\DocsListController
     arguments:
       $repository: "@app.repository.docs"
+
+  Monolog\Formatter\JsonFormatter: ~
