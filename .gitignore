@@ -3,5 +3,5 @@ dobi.yaml
 Dockerfile
 .dobi
 .idea
-/kubernetes/gitlab_kube_config.yaml
+docker-compose.yaml
 /kubernetes/app.production.yaml

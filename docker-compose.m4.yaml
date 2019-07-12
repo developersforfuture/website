@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  web-app:
+    environment:
+      - APP_ENV
+      - MAILER_URL
+      - XDEBUG_ENABLED=1
+      - COMPOSER_CACHE_DIR
+      - APP_BASEDIR_LOG=/app/log
+      - APP_WEBROOT=/app/src/public
+      - APP_BASEDIR_TMP=/app/tmp
+      - CONTAINER_DEBUG=1
+      - APP_DEBUG=1
+      - DB_HOST
+      - DB_PASSWORD
+      - DB_PORT
+      - DB_DATABASE
+      - DB_USERNAME
+      - ADMIN_USER_PW
+      - MAIL_USERNAME
+      - MAIL_PASSWORD
+      - MAIL_HOST
+      - PHPCR_USER
+      - PHPCR_PASSWORD
+      - PHPCR_WORKSPACE
+    container_name: app-container-m4ProjectName()
+    image: m4ReleaseImage():m4ReleaseImageTag()
+    restart: on-failure
+    ports:
+      - 7082:80
+    volumes:
+      - ./app/src/:/app/src/

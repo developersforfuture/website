@@ -14,7 +14,7 @@ override baseContainerVersion=1.1.0
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = kubernetes/app.production.yaml dobi.yaml kubernetes/gitlab_kube_config.yaml Dockerfile docker_login
+override dobiDeps = kubernetes/app.production.yaml dobi.yaml docker-compose.yaml Dockerfile docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
@@ -23,29 +23,26 @@ override getImageTag = $(or $(word 2,$(subst :, ,$1)),$(value 2))
 override printRow = @printf "%+22s = %-s\n" $1 $2
 
 override M4_OPTS = \
-	--define m4ProjectName=$(projectName) \
-	--define m4ProjectVersion=$(projectVersion) \
-	--define m4GitOriginUrl=$(gitOriginUrl) \
-	--define m4ReleaseImage=$(call getImage, $(releaseImage)) \
-	--define m4ReleaseImageTag=$(call getImageTag, $(releaseImage),latest) \
-	--define m4ContainerBasePath=$(containerBasePath) \
-	--define m4BaseContainerPath=$(baseContainerPath) \
-	--define m4baseContainerVersion=$(baseContainerVersion) \
-	--define m4KubeCertificateAuthorityData=$(KUBE_CERTIFICATE_AUTHORITY_DATA) \
-	--define m4KubeUserTokenData=$(KUBE_USER_TOKEN)
-
+	--define "m4ProjectName=$(projectName)" \
+	--define "m4ProjectVersion=$(projectVersion)" \
+	--define "m4GitOriginUrl=$(gitOriginUrl)" \
+	--define "m4ReleaseImage=$(call getImage, $(releaseImage))" \
+	--define "m4ReleaseImageTag=$(call getImageTag, $(releaseImage),latest)" \
+	--define "m4ContainerBasePath=$(containerBasePath)" \
+	--define "m4BaseContainerPath=$(baseContainerPath)" \
+	--define "m4baseContainerVersion=$(baseContainerVersion)"
 
 kubernetes/app.production.yaml: kubernetes/app.production.m4.yaml $(projectVersionFile) Makefile
 	@echo " + + + Build Kubernetes app yml + + + "
 	@m4 $(M4_OPTS) kubernetes/app.production.m4.yaml > kubernetes/app.production.yaml
 
-kubernetes/gitlab_kube_config.yaml: kubernetes/gitlab_kube_config.m4.yaml $(projectVersionFile) Makefile
-	@echo " + + + Build Kubernetes cluster config + + + "
-	@m4 $(M4_OPTS) kubernetes/gitlab_kube_config.m4.yaml > kubernetes/gitlab_kube_config.yaml
-
 Dockerfile: Dockerfile.m4
 	@echo " + + + Build Dockerfile + + + "
 	@m4 $(M4_OPTS) Dockerfile.m4 > Dockerfile
+
+docker-compose.yaml: docker-compose.m4.yaml $(projectVersionFile) Makefile
+	@echo "\n + + + Build docker-compose.yaml + + + "
+	@m4 $(M4_OPTS) docker-compose.m4.yaml > docker-compose.yaml
 
 dobi.yaml: dobi.yaml.m4 $(projectVersionFile) Makefile
 	@echo " + + + Build dobi.yaml + + + "
@@ -58,7 +55,7 @@ $(dobiTargets): $(dobiDeps)
 	@dobi $@
 
 clean: | autoclean
-	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml kubernetes/gitlab_kube_config.yaml
+	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml docker-compose.yaml
 
 release:
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))

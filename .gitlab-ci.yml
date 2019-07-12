@@ -8,7 +8,6 @@ variables:
   REPOSITORY_PATH: developersforfuture/registry
   CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
   COMPOSE_PROJECT_NAME: developers
-  KUBECONFIG: kubernetes/gitlab_kube_config
 
 stages:
   - build-ci
@@ -102,7 +101,7 @@ build-image.development:
   script:
     - export TAG=$(git describe --abbrev=0 --tags)
     - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
-    - make kubernetes/gitlab_kube_config.yaml
+    - make kubernetes/app.${RUNTIME}.yaml
     - kubectl apply -f kubernetes/app.${RUNTIME}.yaml
 
 deploy.production:
@@ -112,5 +111,5 @@ deploy.production:
     RUNTIME: production
     COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
   environment:
-    name: runtime/${RUNTIME}
+    name: ${RUNTIME}
     url: https://developersforfuture.org
