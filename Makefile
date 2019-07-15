@@ -14,7 +14,7 @@ override baseContainerVersion=1.1.0
 override releaseImage = $(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME):$(projectVersion)
 
 override containerBasePath=$(REGISTRY)/$(REPOSITORY_PATH)/app-$(RUNTIME)
-override dobiDeps = kubernetes/app.production.yaml dobi.yaml docker-compose.yaml Dockerfile docker_login
+override dobiDeps = kubernetes/app.production.yaml dobi.yaml docker-compose.yaml Dockerfile kubernetes/gitlab_kube_config docker_login
 dobiTargets = shell build push autoclean
 
 # helper macros
@@ -54,8 +54,12 @@ $(dobiTargets): $(dobiDeps)
 	@echo " + + + Do it with version $(VERSION_TAG) + + + "
 	@dobi $@
 
+kubernetes/gitlab_kube_config: kubernetes/gitlab_kube_config.m4 $(projectVersionFile) Makefile
+	@echo "\n + + + Build kubernetes config to deploy + + + "
+	@m4 $(M4_OPTS) kubernetes/gitlab_kube_config.m4 > kubernetes/gitlab_kube_config
+
 clean: | autoclean
-	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml docker-compose.yaml
+	@rm -rf .dobi dobi.yaml Dockerfile kubernetes/app.production.yaml docker-compose.yaml kubernetes/gitlab_kube_config
 
 release:
 	$(if $(VERSION_TAG),,$(error: set project version string on VERSION_TAG, when calling this task))
