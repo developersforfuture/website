@@ -19,3 +19,79 @@ docs:
     link: 'https://sustainablesoftware.blogspot.com/2015/02/sustainable-software-processes-episode.html'
     categories: ['german', 'advertising']
     description: '[German] Own advertising of AWS. Declaration of intent of Amazon to use 100% renewable. Must be confirmed.'
+  - title: "Meal calculation [german]"
+    link: https://www.klimatarier.com/de/CO2_Rechner
+    categories: ['calculation']
+    description: 'Evaluate the carbon footprint of your meal by simply drag and drop the parts.'
+  - title: "Carbon Years"
+    link: https://twitter.com/julian0liver/status/1075354877075820546
+    categories: ['calculation']
+    description: 'The amount of carbon to emit before reaching the tipping points'
+  - title: Train Travel
+    link: https://loco2.com/
+    categories: ['travel']
+    description: 'Buy bus or train tickets to ride across europe.'
+  - title: "emissions per country for power"
+    link: https://www.electricitymap.org/?page=country&solar=false&remote=true&wind=false&countryCode=DE
+    categories: ['graph', 'power']
+    description: 'This map is awesome. It shows the currently mix of energy production per country around the world.'
+  - title: GreenWebFoundation
+    link: https://www.thegreenwebfoundation.org/
+    categories: ['tools', 'power']
+    description: 'This tools checks whether your domain run on green hosting or not.'
+  - title: "footprint cacluation - myclimate"
+    link: https://co2.myclimate.org/en/portfolios?calculation_id=1984775
+    categories: ['calcuation']
+    description: 'Calculate the carbon footprint of your event or vacation.'
+  - title: "footprint calculation - open source jupyter"
+    link: "https://github.com/dotconferences/dotjs2018-carbon-footprint"
+    categories: ['calculation']
+    description: 'Open source code to calculate the carbon footprint of your event or vacation.'
+  - title: "AMEE the opne source models for carbon calc"
+    link: https://github.com/openamee/datasets
+    categories: []
+    description: ''
+  - title: climate change - the facts
+    link: https://www.theguardian.com/tv-and-radio/2019/apr/18/climate-change-the-facts-review-our-greatest-threat-laid-bare-david-attenborough
+    categories: ['article']
+    description: 'Good article to read from the guardian.'
+  - title: carbon brief
+    link:  https://interactive.carbonbrief.org/impacts-climate-change-one-point-five-degrees-two-degrees/?utm_content=buffer621d0&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer#
+    categories: ['graph', 'education']
+    description: 'What happens, when the temperature rises across 1.5 degrees? Have a look at the consequences.'
+  - title: climate outreach
+    link: https://climateoutreach.org
+    categories: ['visuals', 'resources']
+    description: 'Helpful resources like visuals for climate crisis.'
+  - title: mozilla
+    link: https://internethealthreport.org/2018/the-internet-uses-more-electricity-than/
+    categories: ['article', 'internet', 'power']
+    description: 'German article, what the internet consumes like.'
+  - title: sustainable web manesto
+    link:  https://www.sustainablewebmanifesto.com/
+    categories: ['CoC', 'manifesto']
+    description: 'A first definition for a manifesto describing how to behave when writing sustainable code.'
+  - title: sustainable
+    link:  https://www.wholegraindigital.com/blog/measuring-your-carbon-footprint/
+    categories: ['calculation']
+    description: 'How to measure your organisations carbon footprint'
+  - title: climat history
+    link:  https://www.climatehistories.com/who
+    categories: ['article']
+    description: 'A short history of climate crisis'
+  - title: php energy usage
+    link: http://talks.php.net/bnl19#/impact4
+    categories: ['slides']
+    description: 'Rasmus explains the power consumption differences between PHP 5 and 7.'
+  - title: IEA energy report
+    link: https://www.iea.org/digital/#section-5
+    categories: ['report']
+    description: 'Digitization and energy consumption'
+  - title: a sankey report
+    link:  https://www.fastcompany.com/3062630/this-very-very-detailed-chart-shows-how-all-the-energy-in-the-us-is-used
+    categories: ['report']
+    description: 'This report shows the energy usage in the US.'
+  - title: aws new processor
+    link:  https://www.engadget.com/2018/11/27/amazon-web-services-arm-chips/?guccounter=1
+    categories: ['article']
+    description: 'New chip generation for AWS.'
