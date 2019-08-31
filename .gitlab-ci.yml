@@ -50,6 +50,18 @@ build-image.ci:
   variables:
     RUNTIME: 'ci'
 
+test_static:
+  cache: *cache_definition
+  image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}
+  stage: test
+  except: [tags]
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
+    - cd app/src
+    - composer --no-ansi install --dev
+  script:
+    - vendor/bin/phpstan analyse --configuration=./config/phpstan.neon src tests
+
 test_unit:
   cache: *cache_definition
   image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}

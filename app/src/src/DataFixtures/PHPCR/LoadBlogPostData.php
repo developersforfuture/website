@@ -40,6 +40,10 @@ class LoadBlogPostData extends AbstractPageLoader
         }
         $this->manager = $manager;
 
+        if ($this->container === null) {
+            throw new \Exception('Container cannot be null.');
+        }
+
         $session = $this->manager->getPhpcrSession();
         $contentBasePath = $this->container->getParameter('cmf_content.persistence.phpcr.content_basepath');
         $routesBasePaths = $this->container->getParameter('cmf_routing.dynamic.persistence.phpcr.route_basepaths');
@@ -47,7 +51,14 @@ class LoadBlogPostData extends AbstractPageLoader
         $blogBasePath = $contentBasePath . '/blog';
         NodeHelper::createPath($session, $blogBasePath);
         $blogParentNode = $this->manager->find(null, $blogBasePath);
+        if ($blogParentNode === null) {
+            throw new \Exception('$blogParentNode cannot be null.');
+        }
+
         $blogParentRouteNode = $this->manager->find(null, $routesBasePath);
+        if ($blogParentRouteNode === null) {
+            throw new \Exception('$blogParentRouteNode cannot be null.');
+        }
 
         $blogParentRoute = new Route();
         $blogParentRoute->setName('blog');
@@ -67,7 +78,12 @@ class LoadBlogPostData extends AbstractPageLoader
             $fileNameWithExtension = $file->getRelativePathname();
 
             $yaml = new Parser();
-            $data = $yaml->parse(file_get_contents($file->getPath().'/'.$fileNameWithExtension));
+            $configFilePath = $file->getPath() . '/' . $fileNameWithExtension;
+            $content = file_get_contents($configFilePath);
+            if ($content === false) {
+                throw new \Exception("'$configFilePath' could not be read.");
+            }
+            $data = $yaml->parse($content);
             /** @var BlogPage $page */
             $page = $this->loadStaticPageData($data, $contentBasePath, $blogParentNode);
 

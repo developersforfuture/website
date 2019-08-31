@@ -7,6 +7,10 @@ namespace App\Services;
  */
 class Utils
 {
+    /**
+     * @param string $string
+     * @return string
+     */
     public static function createSeoUrl($string)
     {
         $string = strtolower($string);
@@ -14,10 +18,21 @@ class Utils
         $string = str_replace('ö', 'oe', $string);
         $string = str_replace('ü', 'ue', $string);
         $string = str_replace('ß', 'ss', $string);
-        $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
-        $string = preg_replace("/[\s-]+/", " ", $string);
-        $string = preg_replace("/[\s_]/", "-", $string);
+        $string = static::replaceByPatternOrFallback("/[^a-z0-9_\s-]/", "", $string);
+        $string = static::replaceByPatternOrFallback("/[\s-]+/", " ", $string);
+        $string = static::replaceByPatternOrFallback("/[\s_]/", "-", $string);
 
         return $string;
+    }
+
+    private static function replaceByPatternOrFallback(string $pattern, string $replacement, string $subject): string
+    {
+        $replaced = preg_replace($pattern, $replacement, $subject);
+
+        if ($replaced === null) {
+            return $subject;
+        }
+
+        return $replaced;
     }
 }

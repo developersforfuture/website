@@ -18,7 +18,7 @@ class ArticleRepository
      */
     private $documentManager;
     /**
-     * @var PublishWorkflowChecker
+     * @var PublishWorkflowChecker|AuthorizationCheckerInterface
      */
     private $publishWorkflowChecker;
 

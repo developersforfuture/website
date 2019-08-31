@@ -8,8 +8,6 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
-use Doctrine\ODM\PHPCR\DocumentManagerInterface;
-use PHPCR\NodeInterface;
 use Symfony\Cmf\Bundle\SeoBundle\Model\SeoMetadata;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -20,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class AbstractPageLoader implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
-     * @var ContainerInterface
+     * @var ContainerInterface|null
      */
     protected $container;
 
@@ -93,7 +91,6 @@ abstract class AbstractPageLoader implements FixtureInterface, OrderedFixtureInt
     /**
      * Load a block from the fixtures and create / update the node. Recurse if there are children.
      *
-     * @param ObjectManager|DocumentManagerInterface $this->manager the document manager
      * @param object $parent
      * @param string $name the name of the block
      * @param array $block the block definition
