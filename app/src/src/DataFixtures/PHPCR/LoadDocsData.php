@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Parser;
 class LoadDocsData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
-     * @var ContainerInterface
+     * @var ContainerInterface|null
      */
     private $container;
     /**
@@ -52,6 +52,9 @@ class LoadDocsData implements FixtureInterface, OrderedFixtureInterface, Contain
 
         $this->manager = $manager;
 
+        if ($this->container === null) {
+            throw new \Exception('Container cannot be null.');
+        }
 
         $session = $this->manager->getPhpcrSession();
         $contentBasePath = $this->container->getParameter('cmf_content.persistence.phpcr.content_basepath');
@@ -60,10 +63,22 @@ class LoadDocsData implements FixtureInterface, OrderedFixtureInterface, Contain
         $docsBasePath = $contentBasePath . '/blog';
         NodeHelper::createPath($session, $docsBasePath);
         $docsParentNode = $this->manager->find(null, $docsBasePath);
+        if ($docsParentNode === null) {
+            throw new \Exception('$docsParentNode cannot be null.');
+        }
+
         $docsParentRouteNode = $this->manager->find(null, $routesBasePath);
+        if ($docsParentRouteNode === null) {
+            throw new \Exception('$docsParentRouteNode cannot be null.');
+        }
 
         $yaml = new Parser();
-        $data = $yaml->parse(file_get_contents(__DIR__ . '/../../Resources/data/docs.yml'));
+        $configFilePath = __DIR__ . '/../../Resources/data/docs.yml';
+        $content = file_get_contents($configFilePath);
+        if ($content === false) {
+            throw new \Exception("'$configFilePath' could not be read.");
+        }
+        $data = $yaml->parse($content);
 
         $docsParentRoute = new Route();
         $docsParentRoute->setName('docs');
