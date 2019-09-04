@@ -29,13 +29,22 @@ class LoadStaticPages extends AbstractPageLoader
         }
         $this->manager = $manager;
 
+        if ($this->container === null) {
+            throw new \Exception('Container cannot be null.');
+        }
+
         $session = $this->manager->getPhpcrSession();
 
         $basepath = $this->container->getParameter('cmf_content.persistence.phpcr.content_basepath');
         NodeHelper::createPath($session, $basepath);
 
         $yaml = new Parser();
-        $data = $yaml->parse(file_get_contents(__DIR__ . '/../../Resources/data/static_pages.yml'));
+        $configFilePath = __DIR__ . '/../../Resources/data/static_pages.yml';
+        $content = file_get_contents($configFilePath);
+        if ($content === false) {
+            throw new \Exception("'$configFilePath' could not be read.");
+        }
+        $data = $yaml->parse($content);
 
         $parent = $this->manager->find(null, $basepath);
         foreach ($data['static'] as $overview) {

@@ -1,0 +1,12 @@
+parameters:
+    level: 7
+    ignoreErrors:
+        - '#Call to an undefined method Symfony\\Component\\OptionsResolver\\OptionsResolverInterface::.+#'
+        - '#Call to an undefined method Doctrine\\Common\\Persistence\\ObjectManager::bindTranslation\(\)\.#'
+        - '#Call to an undefined method Doctrine\\Common\\Persistence\\Mapping\\ClassMetadata::newInstance\(\)\.#'
+        - '#Access to an undefined property Doctrine\\Common\\Persistence\\Mapping\\ClassMetadata::\$reflFields\.#'
+        - '#Variable \$lang might not be defined\.#'
+        - '#Call to an undefined method Doctrine\\Common\\Persistence\\Mapping\\ClassMetadata::getIdentifierValue\(\)\.#'
+        - '#Parameter \#1 \$className of method Doctrine\\ODM\\PHPCR\\DocumentManager::find\(\) expects string, null given\.#'
+        - '#Parameter \#1 \$className of method Doctrine\\Common\\Persistence\\ObjectManager::find\(\) expects string, null given\.#'
+        - '#Parameter \#1 \$parentDocument of method App\\Document\\Speaker::setParentDocument\(\) expects PHPCR\\NodeInterface, App\\Document\\BlogPage given\.#'

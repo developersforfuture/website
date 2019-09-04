@@ -26,7 +26,7 @@ class LegalPage extends StaticContent implements SitemapAwareInterface, SeoAware
      */
     private $isVisibleForSitemap = true;
     /**
-     * @var SeoMetadata
+     * @var SeoMetadataInterface
      *
      * @PHPCRODM\Child
      */
@@ -58,7 +58,7 @@ class LegalPage extends StaticContent implements SitemapAwareInterface, SeoAware
      * Decision whether a document should be visible
      * in sitemap or not.
      *
-     * @param $sitemap
+     * @param string $sitemap
      *
      * @return bool
      */
@@ -110,7 +110,7 @@ class LegalPage extends StaticContent implements SitemapAwareInterface, SeoAware
      * plain array in order to persist it and converts it back when the content
      * is fetched.
      *
-     * @param array|SeoMetadataInterface $metadata
+     * @param SeoMetadataInterface $metadata
      */
     public function setSeoMetadata($metadata): void
     {
