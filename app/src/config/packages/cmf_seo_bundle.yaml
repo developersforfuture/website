@@ -2,8 +2,10 @@
 cmf_seo:
     persistence:
         phpcr: ~
-    title: '%%content_title%% | Developers For Future'
-    description: '%%content_description%% Support the movement, evaluate a climate friendly development workflow.'
+    title: '%%content_title%% | %default_title%'
+    description: '%%content_description%% %default_description%'
+
+
 
 sonata_seo:
     page:
@@ -15,25 +17,26 @@ sonata_seo:
                 title: '%default_title%'
                 description: '%default_description%'
                 "msapplication-TileColor": "#ffffff"
-                "msapplication-TileImage": "/favicons/ms-icon-144x144.png"
+                "msapplication-TileImage": "%base_url%/favicons/ms-icon-144x144.png"
                 "theme-color": "#ffffff"
                 "referrer": "origin"
-                "twitter:site": "DevelopersForFuture"
+                "twitter:site": "%default_title%"
                 "twitter:creator": "@DevelopersForFuture"
                 "twitter:card": "summary_large_image"
                 "twitter:title": '%default_title%'
                 "twitter:description": '%default_description%'
-                "twitter:url": "https://developers-for-future.org"
-                "twitter:image:src": "https://developers-for-future.org/img/twitter_card.jpeg"
+                "twitter:url": "%base_url%"
+                "twitter:image": "%base_url%/img/twitter_card.jpeg"
             http-equiv:
                 "Content-Type": "text/html; charset=utf-8"
             property:
+                "og:locale": "de-DE"
                 "og:site_name": '%default_title%'
                 "og:type": "article"
                 "og:title": '%default_title%'
                 "og:description": '%default_description%'
-                "og:url": "/img/facebook_card.jpg"
+                "og:url": "%base_url%"
                 "og:image": "%default_page_image%"
                 "og:image:alt": "%default_description%"
-                "article:author": "https://developers-for-future.org"
-                "article:publisher": "https://developers-for-future.org"
+                "article:author": "%base_url%"
+                "article:publisher": "%base_url%"

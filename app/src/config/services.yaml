@@ -5,9 +5,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
   app_version: '%env(VERSION_TAG)%'
-  default_description: "Developers for Future"
-  default_title: ''
-  default_page_image: ''
+  default_description: "Support the movement, evaluate a climate friendly development workflow."
+  default_title: "Developers for Future"
+  default_page_image: "https://developers-for-future.org/img/socialcard.jpeg"
+  base_url: "https://developersforfuture.org"
   database_driver: pdo_sqlite
   database_host: localhost
   database_port: null
