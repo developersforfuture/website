@@ -296,7 +296,10 @@ static:
                     <p>
                       Twitter: <a href="https://twitter.com/devsforfuture">@DevsForFuture</a>
                       <br>
-                      Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
+                      Support-Mail: <a href="mailto:info@developersforfuture.org">support@developersforfuture.org</a>
+                      <br />
+
+                      Info-Mail: <a href="mailto:info@developersforfuture.org">info@developersforfuture.org</a>
                       <br />
                       Mattermost: <a target="_blank" href="https://mattermost.developersforfuture.org/signup_user_complete/?id=40da52c168fd6333bbfa4923ffe11a33">Register on Mattermost</a>
                     </p>

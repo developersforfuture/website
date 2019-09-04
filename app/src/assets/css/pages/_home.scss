@@ -7,7 +7,10 @@ main .page-home {
     position: relative;
     top: -52px;
     padding: 0;
-    //background-image: url("https://labcode.de/imgs/background-sky.jpg");
+    background-image: url("../../img/Klimastreik_Webbanner_1200x630.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: $medium-green;
     width: 100%;
     .section01-imageWrapper {
@@ -25,7 +28,7 @@ main .page-home {
         }
         .join-us {
           text-align: center;
-          color: $light-gray;
+          color: $dark-green;
         }
       }
     }
