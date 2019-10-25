@@ -4,6 +4,7 @@ namespace App\DataFixtures\PHPCR;
 
 use App\Controller\BlogListController;
 use App\Document\BlogPage;
+use App\Document\Document;
 use App\Document\Speaker;
 use App\Document\StaticPage;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -38,6 +39,19 @@ class LoadBlogPostData extends AbstractPageLoader
 
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
+
+        $parentDocument = $manager->find('/cms/content');
+
+        $document = new Document();
+        $document->setTitle('foo-bar');
+        $document->setDescription('describe foo-bar');
+        $document->setParentDocument($parentDocument);
+        $manager->persist($document);
+
+        $manager->find(null, '/cms/content/foo-ba');
+
+
+
         $this->manager = $manager;
 
         if ($this->container === null) {
