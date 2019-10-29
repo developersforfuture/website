@@ -40,7 +40,7 @@ class LoadBlogPostData extends AbstractPageLoader
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
 
-        $parentDocument = $manager->find('/cms/content');
+        $parentDocument = $manager->find(null, '/cms/content');
 
         $document = new Document();
         $document->setTitle('foo-bar');
