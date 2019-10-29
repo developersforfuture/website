@@ -41,17 +41,6 @@ class LoadBlogPostData extends AbstractPageLoader
         }
 
         $parentDocument = $manager->find(null, '/cms/content');
-
-        $document = new Document();
-        $document->setTitle('foo-bar');
-        $document->setDescription('describe foo-bar');
-        $document->setParentDocument($parentDocument);
-        $manager->persist($document);
-
-        $manager->find(null, '/cms/content/foo-ba');
-
-
-
         $this->manager = $manager;
 
         if ($this->container === null) {
