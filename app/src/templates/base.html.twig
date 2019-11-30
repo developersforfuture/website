@@ -17,11 +17,16 @@
             {% endspaceless %}</script>
     {% endblock %}
 
-    {{ sonata_seo_metadatas() }}
-    {{ sonata_seo_link_canonical() }}
-    {{ sonata_seo_lang_alternates() }}
-    {{ sonata_seo_title() }}
-    {{ sonata_seo_head_attributes() }}
+    
+    {% block meta %}
+        {% include "SuluWebsiteBundle:Extension:seo.html.twig" with {
+        "seo": extension.seo|default([]),
+        "content": content|default([]),
+        "urls": urls|default([]),
+        "shadowBaseLocale": shadowBaseLocale|default(),
+        "defaultLocale": app.request.locale
+    } %}
+    {% endblock %}
     <meta name="og:url" charset="UTF-8" content="{{ app.request.uri }}"/>
     {% block extra_metas %}{% endblock %}
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">

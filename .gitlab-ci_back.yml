@@ -1,0 +1,127 @@
+image: php
+
+variables:
+  DOCKER_DRIVER: overlay2
+  REGISTRY: registry.gitlab.com
+  REGISTRY_USER: gitlab-ci-token
+  REGISTRY_PASSWORD: $CI_JOB_TOKEN
+  REPOSITORY_PATH: developersforfuture/registry
+  CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
+  COMPOSE_PROJECT_NAME: developers
+
+stages:
+  - build-ci
+  - test
+  - release
+  - deploy
+
+.cache_template:
+  cache: &cache_definition
+    key: "$CI_PROJECT_ID"
+    paths:
+      - vendor
+      - web/build
+      - node_modules
+      - $HOME/.composer
+.build_service_template: &build_service
+  cache: *cache_definition
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - apk update
+    - apk add --no-cache curl git
+    - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
+    - apk add --no-cache python3  make m4
+    - make docker_login
+  script:
+    - export TAG=$(head -n1 ./VERSION)
+    - if [ "${RUNTIME}" == "production" ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - echo " + + + Build Runtime '${RUNTIME}' and version '${VERSION_TAG}' + + + "
+    - make build
+    - make push
+  after_script:
+    - make docker_logout
+
+build-image.ci:
+  <<: *build_service
+  stage:  build-ci
+  except: [tags]
+  variables:
+    RUNTIME: 'ci'
+
+test_static:
+  cache: *cache_definition
+  image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}
+  stage: test
+  except: [tags]
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
+    - cd app/src
+    - composer --no-ansi install --dev
+  script:
+    - vendor/bin/phpstan analyse --configuration=./config/phpstan.neon src tests
+
+test_unit:
+  cache: *cache_definition
+  image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}
+  stage: test
+  except: [tags]
+  variables:
+    DB_ROOT_PW: root
+    DB_DATABASE: developers
+    DB_HOST: mysql
+    DB_USER: developers
+    DB_PASSWORD: developers
+    PHPCR_USER: admin
+    PHPCR_PASSWORD: admin
+    PHPCR_WORKSPACE: default
+    APP_DEBUG: 0
+    APP_ENV: test
+    SYMFONY_ENV: test
+  before_script:
+    - apk add ${PHPIZE_DEPS} && pecl install xdebug-beta && docker-php-ext-enable xdebug
+    - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
+    - export HOMEDIR=$(pwd)
+    - sleep 30
+    - cd app/src
+    - composer --no-ansi install --dev
+  script:
+    - bin/phpunit -v
+
+build-image.production:
+  <<: *build_service
+  stage: release
+  only: [tags]
+  variables:
+    RUNTIME: 'production'
+
+build-image.development:
+  <<: *build_service
+  stage: release
+  except: [ tags ]
+  when: manual
+  variables:
+    RUNTIME: 'development'
+
+.deploy_template: &deploy_job
+  stage: deploy
+  image: dtzar/helm-kubectl
+  before_script:
+    - apk update
+    - apk add --no-cache git python3  make m4
+  script:
+    - export TAG=$(git describe --abbrev=0 --tags)
+    - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    - make kubernetes/app.${RUNTIME}.yaml
+    - kubectl apply -f kubernetes/app.${RUNTIME}.yaml
+
+deploy.production:
+  <<: *deploy_job
+  only: [tags]
+  variables:
+    RUNTIME: production
+    COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+  environment:
+    name: ${RUNTIME}
+    url: https://developersforfuture.org

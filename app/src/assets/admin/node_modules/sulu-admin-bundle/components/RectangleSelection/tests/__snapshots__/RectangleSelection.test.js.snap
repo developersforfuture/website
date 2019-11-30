@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The component should center and maximize the selection when a minHeight and minWidth is given 1`] = `
+<div
+  class="selection"
+>
+  <p>
+    Lorem ipsum
+  </p>
+  <div
+    class="rectangle"
+    role="button"
+    style="left: 0px; top: 250px; width: 2000px; height: 500px;"
+  >
+    <div
+      class="resizeHandle"
+      role="slider"
+    />
+    <div
+      class="backdrop"
+      style="outline-width: 2000px;"
+    />
+  </div>
+</div>
+`;
+
+exports[`The component should render with children 1`] = `
+<div
+  class="selection"
+>
+  <p>
+    Lorem ipsum
+  </p>
+  <div
+    class="rectangle"
+    role="button"
+    style="left:0px;top:0px;width:2000px;height:1000px"
+  >
+    <div
+      class="resizeHandle"
+      role="slider"
+    />
+    <div
+      class="backdrop"
+      style="outline-width:2000px"
+    />
+  </div>
+</div>
+`;
+
+exports[`The component should render with minimum size notification 1`] = `
+<div
+  class="selection"
+>
+  <p>
+    Lorem ipsum
+  </p>
+  <div
+    class="minSizeNotification"
+    style="left: 40px; top: 230px; width: 100px;"
+  >
+    sulu_media.min_size_notification
+  </div>
+  <div
+    class="rectangle"
+    role="button"
+    style="left: 40px; top: 30px; width: 100px; height: 200px;"
+  >
+    <div
+      class="resizeHandle"
+      role="slider"
+    />
+    <div
+      class="backdrop"
+      style="outline-width: 2000px;"
+    />
+  </div>
+</div>
+`;
+
+exports[`The component should render with value as selection 1`] = `
+<div
+  class="selection"
+>
+  <p>
+    Lorem ipsum
+  </p>
+  <div
+    class="rectangle"
+    role="button"
+    style="left: 4px; top: 3px; width: 1px; height: 2px;"
+  >
+    <div
+      class="resizeHandle"
+      role="slider"
+    />
+    <div
+      class="backdrop"
+      style="outline-width: 2000px;"
+    />
+  </div>
+</div>
+`;
+
+exports[`The component should render without minimum size notification 1`] = `
+<div
+  class="selection"
+>
+  <p>
+    Lorem ipsum
+  </p>
+  <div
+    class="rectangle"
+    role="button"
+    style="left: 40px; top: 30px; width: 100px; height: 200px;"
+  >
+    <div
+      class="resizeHandle"
+      role="slider"
+    />
+    <div
+      class="backdrop"
+      style="outline-width: 2000px;"
+    />
+  </div>
+</div>
+`;

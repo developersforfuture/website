@@ -1,0 +1,16 @@
+# Define your website routes here
+
+#static:
+#    path: /static-route
+#    controller: App\Controller\DefaultController::index
+campaign_subscription:
+  path: /campaign-subscription
+  controller: App\Controller\Campaign\SubscriptionController::index
+
+successful_campaign_subscription:
+  path: /subscription-success
+  controller: App\Controller\Campaign\SubscriptionController::successfulSubscription
+
+campaign_verification:
+  path: /campaign-verification?token={token}
+  controller: App\Controller\Campaign\VerificationController::index

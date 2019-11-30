@@ -8,6 +8,7 @@ Encore
 
 	.addEntry('app', './assets/js/app.js')
 	.addEntry('base', './assets/css/base.scss')
+	.addEntry('cookies', './assets/js/cookies.js')
 	.disableSingleRuntimeChunk()
 
 	.autoProvidejQuery()

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render PageList 1`] = `
+<div
+  class="pageList"
+>
+  <div
+    class="listContainer"
+  >
+    <div
+      class="headerContainer"
+    >
+      <div
+        class="toolbar"
+      >
+        <div
+          class="buttonGroup"
+        >
+          <button
+            class="button icon active button"
+            type="button"
+          >
+            <span
+              class="text"
+            >
+              <span
+                aria-label="su-columns"
+                class="su-columns"
+              />
+            </span>
+          </button>
+          <button
+            class="button icon button"
+            type="button"
+          >
+            <span
+              class="text"
+            >
+              <span
+                aria-label="su-columns"
+                class="su-columns"
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="list"
+    >
+      <div
+        class="columnListAdapter"
+      >
+        <div
+          class="columnListToolbarContainer"
+        >
+          <div
+            class="toolbarContainer"
+            style="margin-left: 0px;"
+          />
+          <div
+            class="columnListContainer firstVisibleColumnActive lastVisibleColumnActive"
+          >
+            <div
+              class="columnList"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

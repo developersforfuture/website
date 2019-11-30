@@ -1,0 +1,22 @@
+{% extends 'normal-page.html.twig' %}
+
+{% block content %}
+    <div class="article-page">
+        {% if content.article %}
+            <div class="columns">
+                <div class="column is-12">
+                    <div class="card is-shady">
+                    </div>
+                    <div class="card-title has-text-centered">
+                        <h2 class="has-text-weight-light">{{ content.title }}</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ content.article|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

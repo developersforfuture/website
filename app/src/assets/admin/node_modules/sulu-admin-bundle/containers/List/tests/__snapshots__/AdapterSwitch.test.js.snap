@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The component should render with current adapter "folder" 1`] = `
+<div
+  class="buttonGroup"
+>
+  <button
+    class="button icon button"
+    type="button"
+  >
+    <span
+      class="text"
+    >
+      <span
+        aria-label="su-th-large"
+        class="su-th-large"
+      />
+    </span>
+  </button>
+  <button
+    class="button icon active button"
+    type="button"
+  >
+    <span
+      class="text"
+    >
+      <span
+        aria-label="su-th-large"
+        class="su-th-large"
+      />
+    </span>
+  </button>
+</div>
+`;
+
+exports[`The component should render with current adapter "table" 1`] = `
+<div
+  class="buttonGroup"
+>
+  <button
+    class="button icon active button"
+    type="button"
+  >
+    <span
+      class="text"
+    >
+      <span
+        aria-label="su-th-large"
+        class="su-th-large"
+      />
+    </span>
+  </button>
+  <button
+    class="button icon button"
+    type="button"
+  >
+    <span
+      class="text"
+    >
+      <span
+        aria-label="su-th-large"
+        class="su-th-large"
+      />
+    </span>
+  </button>
+</div>
+`;

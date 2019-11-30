@@ -1,0 +1,9 @@
+@import '../../containers/Application/variables.scss';
+@import '../../components/Overlay/variables.scss';
+@import '../../components/ColumnList/variables.scss';
+
+.form {
+    margin: $viewPadding;
+    overflow: hidden;
+    position: relative;
+}

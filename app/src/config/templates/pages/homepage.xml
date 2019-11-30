@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>homepage</key>
+
+    <view>pages/homepage</view>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+    <cacheLifetime>86400</cacheLifetime>
+
+    <meta>
+        <title lang="en">Economists for Future - Sign the Open Letter</title>
+        <title lang="de">Economists for Future - Sign the Open Letter</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+
+            <tag name="sulu.rlp.part"/>
+        </property>
+        <property name="main_title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Main Title</title>
+                <title lang="de">Haupttitel</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+
+            <tag name="sulu.rlp.part"/>
+        </property>
+
+        <property name="sub_title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Subtitle</title>
+                <title lang="de">Untertitel</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+
+            <tag name="sulu.rlp.part"/>
+        </property>
+        <section name="openLetter">
+            <meta>
+                <title lang="en">Open Letter</title>
+                <title lang="de">Open Letter</title>
+            </meta>
+            <properties>
+                <property name="open_letter_intro" type="text_editor" mandatory="true">
+                    <meta>
+                        <title lang="en">Block Intro</title>
+                        <title lang="de">Block Intro</title>
+                    </meta>
+                    <params>
+                        <param name="text" value="true"/>
+                    </params>
+
+                    <tag name="sulu.rlp.part"/>
+                </property>
+                <property name="open_letter_block_a" type="text_editor" mandatory="true">
+                    <meta>
+                        <title lang="en">Block A</title>
+                        <title lang="de">Block A</title>
+                    </meta>
+                    <params>
+                        <param name="text" value="true"/>
+                    </params>
+
+                    <tag name="sulu.rlp.part"/>
+                </property>
+                <property name="open_letter_block_b" type="text_editor" mandatory="true">
+                    <meta>
+                        <title lang="en">Block B</title>
+                        <title lang="de">Block B</title>
+                    </meta>
+                    <params>
+                        <param name="text" value="true"/>
+                    </params>
+
+                    <tag name="sulu.rlp.part"/>
+                </property>
+            </properties>
+        </section>
+
+
+        <property name="url" type="resource_locator" mandatory="true">
+            <meta>
+                <title lang="en">Resourcelocator</title>
+                <title lang="de">Adresse</title>
+            </meta>
+
+            <tag name="sulu.rlp"/>
+        </property>
+
+        <property name="article" type="text_editor">
+            <meta>
+                <title lang="en">Article</title>
+                <title lang="de">Artikel</title>
+            </meta>
+        </property>
+
+    </properties>
+
+</template>

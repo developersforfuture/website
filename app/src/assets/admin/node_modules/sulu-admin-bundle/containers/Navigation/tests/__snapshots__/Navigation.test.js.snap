@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render navigation 1`] = `
+<div
+  class="navigation"
+>
+  <div
+    class="header"
+  >
+    <div
+      class="headerContent"
+    >
+      <span
+        aria-label="su-sulu"
+        class="su-sulu headerIcon"
+      />
+      <span
+        class="headerTitle"
+      >
+        Sulu
+      </span>
+    </div>
+  </div>
+  <div
+    class="user"
+  >
+    <div
+      class="userContent"
+    >
+      <button
+        class="noUserImage"
+      >
+        <span
+          aria-label="fa-user"
+          class="fa fa-user"
+        />
+      </button>
+      <div
+        class="userProfile"
+      >
+        <button
+          class="username"
+        />
+        <button
+          class="logout"
+        >
+          <span
+            aria-label="su-exit"
+            class="su-exit"
+          />
+          Log out
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="items"
+  >
+    <div
+      class="item active"
+    >
+      <div
+        class="title"
+        role="button"
+      >
+        <span
+          aria-label="su-options"
+          class="su-options"
+        />
+      </div>
+    </div>
+    <div
+      class="item"
+    >
+      <div
+        class="title"
+        role="button"
+      >
+        <span
+          aria-label="su-article"
+          class="su-article"
+        />
+      </div>
+    </div>
+    <div
+      class="item active"
+    >
+      <div
+        class="title"
+        role="button"
+      >
+        <span
+          aria-label="su-options"
+          class="su-options"
+        />
+      </div>
+      <div>
+        <div
+          class="item active"
+        >
+          <div
+            class="title"
+            role="button"
+          />
+        </div>
+        <div
+          class="item"
+        >
+          <div
+            class="title"
+            role="button"
+          />
+        </div>
+      </div>
+      <span
+        aria-label="su-angle-down"
+        class="su-angle-down clickable childrenIndicator"
+        role="button"
+        tabindex="0"
+      />
+    </div>
+  </div>
+  <div
+    class="footer"
+  >
+    <button
+      class="pin"
+      type="button"
+    >
+      <span
+        aria-label="fa-thumb-tack"
+        class="fa fa-thumb-tack pinIcon"
+      />
+    </button>
+    <div
+      class="versions"
+    >
+      <div>
+        Sulu (666)
+      </div>
+      <div>
+        Sulu (
+        <a
+          href="https://github.com/sulu/sulu/releases"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          2.0.0-RC1
+        </a>
+        )
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Should render navigation without appVersion 1`] = `
+<div
+  class="navigation"
+>
+  <div
+    class="header"
+  >
+    <div
+      class="headerContent"
+    >
+      <span
+        aria-label="su-sulu"
+        class="su-sulu headerIcon"
+      />
+      <span
+        class="headerTitle"
+      >
+        Sulu
+      </span>
+    </div>
+  </div>
+  <div
+    class="user"
+  >
+    <div
+      class="userContent"
+    >
+      <button
+        class="noUserImage"
+      >
+        <span
+          aria-label="fa-user"
+          class="fa fa-user"
+        />
+      </button>
+      <div
+        class="userProfile"
+      >
+        <button
+          class="username"
+        />
+        <button
+          class="logout"
+        >
+          <span
+            aria-label="su-exit"
+            class="su-exit"
+          />
+          Log out
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="items"
+  >
+    <div
+      class="item active"
+    >
+      <div
+        class="title"
+        role="button"
+      >
+        <span
+          aria-label="su-options"
+          class="su-options"
+        />
+      </div>
+    </div>
+    <div
+      class="item"
+    >
+      <div
+        class="title"
+        role="button"
+      >
+        <span
+          aria-label="su-article"
+          class="su-article"
+        />
+      </div>
+    </div>
+    <div
+      class="item active"
+    >
+      <div
+        class="title"
+        role="button"
+      >
+        <span
+          aria-label="su-options"
+          class="su-options"
+        />
+      </div>
+      <div>
+        <div
+          class="item active"
+        >
+          <div
+            class="title"
+            role="button"
+          />
+        </div>
+        <div
+          class="item"
+        >
+          <div
+            class="title"
+            role="button"
+          />
+        </div>
+      </div>
+      <span
+        aria-label="su-angle-down"
+        class="su-angle-down clickable childrenIndicator"
+        role="button"
+        tabindex="0"
+      />
+    </div>
+  </div>
+  <div
+    class="footer"
+  >
+    <button
+      class="pin"
+      type="button"
+    >
+      <span
+        aria-label="fa-thumb-tack"
+        class="fa fa-thumb-tack pinIcon"
+      />
+    </button>
+    <div
+      class="versions"
+    >
+      <div>
+        Sulu (
+        <a
+          href="https://github.com/sulu/sulu/releases"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          2.0.0-RC1
+        </a>
+        )
+      </div>
+    </div>
+  </div>
+</div>
+`;

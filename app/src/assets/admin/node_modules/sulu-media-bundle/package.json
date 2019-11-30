@@ -1,0 +1,27 @@
+{
+    "name": "sulu-media-bundle",
+    "description": "Adds support for media handling to Sulu",
+    "license": "MIT",
+    "repository": "https://github.com/sulu/sulu.git",
+    "dependencies": {
+        "classnames": "^2.2.5",
+        "copy-to-clipboard": "^3.0.8",
+        "fast-deep-equal": "^1.0.0",
+        "mousetrap": "^1.6.1",
+        "react-clipboard.js": "^1.1.2",
+        "react-dropzone": "^4.2.1",
+        "url-search-params-polyfill": "^2.0.0"
+    },
+    "devDependencies": {
+        "enzyme": "^3.3.0",
+        "sulu-admin-bundle": "file:../../../AdminBundle/Resources/js",
+        "sulu-page-bundle": "file:../../../PageBundle/Resources/js"
+    },
+    "peerDependencies": {
+        "mobx": "^4.0.0",
+        "mobx-react": "^5.0.0",
+        "react": "^16.2.0",
+        "sulu-admin-bundle": "*",
+        "sulu-page-bundle": "*"
+    }
+}

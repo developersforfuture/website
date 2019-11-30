@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  sulu:
+    image: $DOCKER_IMAGE/production:$CI_COMMIT_SHA
+    container_name: sulu-app-production
+    ports:
+      - 8091:80
+    volumes:
+      - /app/src/var:/var/app/src/var:cached
+      - uploads_production:/var/app/public/uploads:cached
+    env_file: .env
+  mysql:
+    container_name: sulu-mysql-production
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - mysql_production:/var/lib/mysql:cached
+    env_file: .env
+  
+volumes: 
+  mysql_production: {}
+  uploads_production: {}

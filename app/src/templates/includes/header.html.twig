@@ -13,10 +13,10 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item" href="{{ url('/cms/routes/about') }}">About</a>
-                <a class="navbar-item" href="{{ url('/cms/routes/organisation') }}">Organisation</a>
-                <a class="navbar-item" href="{{ url('/cms/routes/blog') }}">Blog</a>
-                <a class="navbar-item" href="{{ url('/cms/routes/docs') }}">Docs</a>
+                {% for item in sulu_navigation_root_tree('main') %}
+                    {% set item_path=sulu_content_path(item.url) %}
+                    <a class="navbar-item" href="{{ item_path }}" title="{{ item.title }}">{{ item.title }}</a>
+                {% endfor %}
                 <div class="navbar-item">
                     <a class="button view-source-button" href="https://gitlab.com/DevelopersForFuture" target="_blank">View Source on GitLab</a>
                 </div>

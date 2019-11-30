@@ -1,0 +1,60 @@
+@import '../../containers/Application/colors.scss';
+
+$blockBorderRadius: 3px;
+$blockBackgroundColor: $white;
+$blockBorderColor: $silver;
+$blockHandleColor: $black;
+$blockHandleBackgroundColor: $silver;
+$blockCollapsedTextColor: $silver;
+
+.block {
+    display: flex;
+    background-color: $blockBackgroundColor;
+    border-radius: $blockBorderRadius;
+
+    &:not(.expanded) {
+        color: $blockCollapsedTextColor;
+        cursor: pointer;
+        border: 1px solid $blockBorderColor;
+
+        .content {
+            padding: 20px 40px;
+        }
+    }
+}
+
+.handle {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: $blockHandleColor;
+    background-color: $blockHandleBackgroundColor;
+    border-radius: $blockBorderRadius 0 0 $blockBorderRadius;
+    width: 20px;
+}
+
+.content {
+    font-size: 12px;
+    line-height: 18px;
+    flex-grow: 1;
+    padding: 30px 60px 30px 40px;
+}
+
+.header {
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.types {
+    width: 120px;
+}
+
+.icons {
+    flex-grow: 1;
+    text-align: right;
+
+    & > * {
+        margin-left: 20px;
+    }
+}

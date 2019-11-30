@@ -10,8 +10,10 @@
             </span>
         </div>
         <div class="is-pulled-right legal-links">
-            <a href="{{ url('/cms/routes/imprint') }}">Imprint</a>
-            <a href="{{ url('/cms/routes/data-policy') }}">Data Policy</a>
+            {% for item in sulu_navigation_root_tree('main') %}
+                {% set item_path=sulu_content_path(item.url) %}
+                <a href="{{ item_path }}" title="{{ item.title }}">{{ item.title }}</a>
+            {% endfor %}
         </div>
     </div>
 </footer>

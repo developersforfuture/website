@@ -1,109 +1,200 @@
-image: php
-
 variables:
-  DOCKER_DRIVER: overlay2
-  REGISTRY: registry.gitlab.com
-  REGISTRY_USER: gitlab-ci-token
-  REGISTRY_PASSWORD: $CI_JOB_TOKEN
-  REPOSITORY_PATH: developersforfuture/registry
-  CONTAINER_IMAGE: ${REGISTRY}/${REPOSITORY_PATH}/app
-  COMPOSE_PROJECT_NAME: developers
+    DOCKER_DRIVER: overlay2
+    DOCKER_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH
+    APP_ENV: test
+    APP_SECRET: a448d1dfcaa563fce56c2fd9981f662b
+    MAILER_URL: null://localhost
+    MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: su_website
+    MYSQL_USER: website
+    DATABASE_URL: "mysql://root:root@mysql:3306/su_website"
+    EMAIL_FROM_ADDRESS: admin@localhost
+    COMPOSER_PROCESS_TIMEOUT: "1200" # int is not supported by local gitlab-runner
+    VERSION_TAG: "VERSION_TAG=${CI_COMMIT_REF_SLUG}-$(git describe --abbrev=0 --tags)"
+    XDEBUG_ENABLED: 0
+    APP_BASEDIR_LOG: /app/log
+    APP_WEBROOT: /app/src/public
+    APP_BASEDIR_TMP: /app/tmp
+    CONTAINER_DEBUG: 0
 
 stages:
-  - build-ci
-  - test
-  - release
-  - deploy
+    - install
+    - test
+    - build
+    - deploy
 
-.cache_template:
-  cache: &cache_definition
-    key: "$CI_PROJECT_ID"
-    paths:
-      - vendor
-      - web/build
-      - node_modules
-      - $HOME/.composer
-.build_service_template: &build_service
-  cache: *cache_definition
-  image: docker:latest
-  services:
-    - docker:dind
-  before_script:
-    - apk update
-    - apk add --no-cache curl git
-    - curl -L -o /usr/local/bin/dobi "https://github.com/dnephin/dobi/releases/download/v0.12.0/dobi-$(uname -s)"; chmod +x /usr/local/bin/dobi
-    - apk add --no-cache python3  make m4
-    - make docker_login
-  script:
-    - export TAG=$(head -n1 ./VERSION)
-    - if [ "${RUNTIME}" == "production" ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
-    - echo " + + + Build Runtime '${RUNTIME}' and version '${VERSION_TAG}' + + + "
-    - make build
-    - make push
-  after_script:
-    - make docker_logout
+composer:
+    stage: install
+    image: composer:latest
+    before_script:
+        - composer config -g cache-dir "$(pwd)/.composer-cache"
+    script:
+        - cd app/src/
+        - composer install -n --prefer-dist --no-scripts
+        - composer test install
+        - curl --show-error --silent https://getcomposer.org/installer | php
+    artifacts:
+        name: composer-dependencies
+        expire_in: 8 hours
+        paths:
+            - app/src/vendor
+            - app/src/composer.phar
+    cache:
+        key: composer
+        paths:
+            - app/src/.composer-cache/
+    except:
+        - /^fastlane\/.+$/
 
-build-image.ci:
-  <<: *build_service
-  stage:  build-ci
-  except: [tags]
-  variables:
-    RUNTIME: 'ci'
+test:
+    cache:
+        key: composer
+        paths:
+            - .composer-cache/
+    stage: test
+    image: sulu/php:7.3-cli
+    allow_failure: true
+    services:
+        - mysql:5.7
+    before_script:
+        - cd app/src/
+        - php composer.phar bootstrap-test-environment
+    script:
+        - cd app/src/
+        - php composer.phar test
+    except:
+        - /^fastlane\/.+$/
 
-test_static:
-  cache: *cache_definition
-  image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}
-  stage: test
-  except: [tags]
-  before_script:
-    - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
-    - cd app/src
-    - composer --no-ansi install --dev
-  script:
-    - vendor/bin/phpstan analyse --configuration=./config/phpstan.neon src tests
+lint:
+    cache:
+        key: composer
+        paths:
+            - .composer-cache/
+    stage: test
+    image: sulu/php:7.3-cli
+    allow_failure: true
+    services:   
+        - mysql:5.7
+    before_script:
+        - cd app/src/
+        - php composer.phar bootstrap-test-environment
+    script:
+        - cd app/src/
+        - php composer.phar lint
+    except:
+        - /^fastlane\/.+$/
 
-test_unit:
-  cache: *cache_definition
-  image: ${CONTAINER_IMAGE}-ci:${CI_COMMIT_REF_SLUG}
-  stage: test
-  except: [tags]
-  variables:
-    DB_ROOT_PW: root
-    DB_DATABASE: developers
-    DB_HOST: mysql
-    DB_USER: developers
-    DB_PASSWORD: developers
-    PHPCR_USER: admin
-    PHPCR_PASSWORD: admin
-    PHPCR_WORKSPACE: default
-    APP_DEBUG: 0
-    APP_ENV: test
-    SYMFONY_ENV: test
-  before_script:
-    - apk add ${PHPIZE_DEPS} && pecl install xdebug-beta && docker-php-ext-enable xdebug
-    - curl -sS https://getcomposer.org/installer | php -- --no-ansi --install-dir /usr/local/bin/ --filename composer
-    - export HOMEDIR=$(pwd)
-    - sleep 30
-    - cd app/src
-    - composer --no-ansi install --dev
-  script:
-    - bin/phpunit -v
+js-css-admin:
+    stage: test
+    image: node:12
+    allow_failure: true
+    dependencies: []
+    variables:
+        NODE_OPTIONS: --max-old-space-size=1536
+    before_script:
+        - npm config set cache "$(pwd)/.npm-cache"
+    script:
+        - cd app/src/assets/admin/
+        - npm ci
+        - npm run build
+    cache:
+        key: npm
+        paths:
+            - .npm-cache/
+    except:
+        - /^fastlane\/.+$/
+js-css-website:
+    stage: test
+    image: node:12
+    allow_failure: true
+    dependencies: []
+    variables:
+        NODE_OPTIONS: --max-old-space-size=1536
+    before_script:
+        - npm config set cache "$(pwd)/.npm-cache"
+    script:
+        - cd app/src/
+        - cd assets/website/
+        - npm ci
+        - npm run build
+    cache:
+        key: npm
+        paths:
+            - .npm-cache/
+    except:
+        - /^fastlane\/.+$/
 
-build-image.production:
-  <<: *build_service
-  stage: release
-  only: [tags]
-  variables:
-    RUNTIME: 'production'
+security-check:
+    stage: test
+    image: sulu/php:7.3-cli
+    script:
+        - php composer.phar security-check
+    allow_failure: true
+    except:
+        - /^fastlane\/.+$/
 
-build-image.development:
-  <<: *build_service
-  stage: release
-  except: [ tags ]
-  when: manual
-  variables:
-    RUNTIME: 'development'
+build:
+    stage: build
+    services:
+        - docker:18-dind
+    image: docker:latest
+    dependencies: []
+    before_script:
+        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+        - export TAG=$(git describe --abbrev=0 --tags)
+        - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
+    script:
+        # try to pull previously built images to utilize docker cache during new build
+        - docker pull $DOCKER_IMAGE/composer:latest || true
+        - docker pull $DOCKER_IMAGE/node-admin:latest || true
+        - docker pull $DOCKER_IMAGE/node-website:latest || true
+        - docker pull $DOCKER_IMAGE/server:latest || true
+        # build and tag intermediate images and application image
+        - docker build . --target composer -t $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/composer:latest
+        - docker build . --target node-admin -t $DOCKER_IMAGE/node-admin:latest
+            --cache-from $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/node-admin:latest
+        - docker build . --target node-website -t $DOCKER_IMAGE/node-website:latest
+            --cache-from $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/node-admin:latest
+            --cache-from $DOCKER_IMAGE/node-website:latest
+        - docker build . --target server -t $DOCKER_IMAGE/server:latest
+            --cache-from $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/node-admin:latest
+            --cache-from $DOCKER_IMAGE/node-website:latest
+            --cache-from $DOCKER_IMAGE/server:latest
+        - docker build . --target production -t $DOCKER_IMAGE/production:$TAG
+            --cache-from $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/node-admin:latest
+            --cache-from $DOCKER_IMAGE/node-website:latest
+            --cache-from $DOCKER_IMAGE/server:latest
+        - docker build . --target staging  -t $DOCKER_IMAGE/staging:$TAG
+            --cache-from $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/node-admin:latest
+            --cache-from $DOCKER_IMAGE/node-website:latest
+            --cache-from $DOCKER_IMAGE/server:latest
+        - docker build . --target development  -t $DOCKER_IMAGE/development:$TAG
+            --cache-from $DOCKER_IMAGE/composer:latest
+            --cache-from $DOCKER_IMAGE/node-admin:latest
+            --cache-from $DOCKER_IMAGE/node-website:latest
+            --cache-from $DOCKER_IMAGE/server:latest
+        # push new images to registry
+        - docker push $DOCKER_IMAGE/composer:latest
+        - docker push $DOCKER_IMAGE/node-admin:latest
+        - docker push $DOCKER_IMAGE/node-website:latest
+        - docker push $DOCKER_IMAGE/server:latest
+        - docker push $DOCKER_IMAGE/production:$TAG
+        - docker push $DOCKER_IMAGE/staging:$TAG
+        - docker push $DOCKER_IMAGE/development:$TAG
+    only:
+        - branches
+        - master
+        - /^deploy\/.+$/
+        - /^fastlane\/.+$/
 
+.deploy_template: &deploy_job
 .deploy_template: &deploy_job
   stage: deploy
   image: dtzar/helm-kubectl
@@ -113,15 +204,26 @@ build-image.development:
   script:
     - export TAG=$(git describe --abbrev=0 --tags)
     - if [ ${CI_COMMIT_REF_SLUG} == 'master' ]; then export VERSION_TAG=${TAG}; else export VERSION_TAG=${CI_COMMIT_REF_SLUG}; fi;
-    - make kubernetes/app.${RUNTIME}.yaml
     - kubectl apply -f kubernetes/app.${RUNTIME}.yaml
 
-deploy.production:
+deploy_production:
   <<: *deploy_job
-  only: [tags]
+  when: manual
+  only: [master]
   variables:
     RUNTIME: production
-    COMPOSE_PROJECT_NAME: ${CI_PROJECT_ID}-${RUNTIME}
+    APP_DIR: /data/apps/webisite/production
   environment:
-    name: ${RUNTIME}
-    url: https://developersforfuture.org
+    name: runtime/${RUNTIME}
+    url: https://econ4future.org
+
+
+deploy_staging:
+  <<: *deploy_job
+  only: [master]
+  variables:
+    RUNTIME: staging
+    APP_DIR: /data/apps/webisite/staging
+  environment:
+    name: runtime/${RUNTIME}
+    url: https://staging.econ4future.org

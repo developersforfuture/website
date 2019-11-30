@@ -1,0 +1,8 @@
+$viewPadding: 60px;
+$viewMinWidth: 420px;
+$viewMaxWidth: 1140px;
+
+$sidebarShrinkAnimationDuration: 700ms;
+$navigationMoveAnimationDuration: 500ms;
+
+$sidebarMaxWidth: calc(100% - $viewMinWidth - 2 * $viewPadding);

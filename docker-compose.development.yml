@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  sulu:
+    image: $DOCKER_IMAGE/development:$CI_COMMIT_SHA
+    container_name: sulu-app-development
+    ports:
+      - 8089:80
+    volumes:
+      - ./app/src/:/app/src/:cached
+      - ${COMPOSER_PATH}/cache:/var/app/src/.composer/cache:cached
+    env_file: .env
+
+  mysql:
+    container_name: sulu-mysql-development
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - ./app/src/var/data/mysql:/var/lib/mysql:cached
+    env_file: .env

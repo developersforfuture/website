@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render ItemSection 1`] = `
+<div
+  class="section"
+>
+  <div
+    class="title"
+  >
+    Select your house
+  </div>
+  <div
+    class="children"
+  >
+    <button
+      class="item"
+    >
+      <span
+        class="icon"
+      />
+      <span>
+        Villa
+      </span>
+    </button>
+    <button
+      class="item"
+    >
+      <span
+        class="icon"
+      />
+      <span>
+        White House
+      </span>
+    </button>
+    <button
+      class="item"
+    >
+      <span
+        class="icon"
+      />
+      <span>
+        Flat
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Render ItemSection with value 1`] = `
+<div
+  class="section"
+>
+  <div
+    class="title"
+  >
+    Select your house
+  </div>
+  <div
+    class="children"
+  >
+    <button
+      class="item"
+    >
+      <span
+        class="icon"
+      />
+      <span>
+        Villa
+      </span>
+    </button>
+    <button
+      class="item"
+    >
+      <span
+        class="icon"
+      />
+      <span>
+        White House
+      </span>
+    </button>
+    <button
+      class="item active"
+    >
+      <span
+        class="icon"
+      >
+        <span
+          aria-label="fa-home"
+          class="fa fa-home icon"
+        />
+      </span>
+      <span>
+        Flat
+      </span>
+    </button>
+  </div>
+</div>
+`;

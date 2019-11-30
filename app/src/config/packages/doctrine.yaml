@@ -3,35 +3,28 @@ parameters:
     # This allows you to run cache:warmup even if your
     # environment variables are not available yet.
     # You should not need to change this value.
-
+    env(DATABASE_URL): ''
 
 doctrine:
     dbal:
-        driver:   '%database_driver%'
-        host:     '%database_host%'
-        port:     '%database_port%'
-        dbname:   '%database_name%'
-        user:     '%database_user%'
-        password: '%database_password%'
-        path:     '%database_path%'
-        charset:  UTF8
+        # configure these for your database server
+        driver: 'pdo_mysql'
+        server_version: '5.7'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
 
+        url: '%env(resolve:DATABASE_URL)%'
 
-doctrine_phpcr:
-    # configure the PHPCR session
-    session:
-        backend:   '%phpcr_backend%'
-        workspace: '%phpcr_workspace%'
-        username:  '%phpcr_user%'
-        password:  '%phpcr_pass%'
-    # enable the ODM layer
-    odm:
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        auto_generate_proxy_classes: '%kernel.debug%'
-
-doctrine_cache:
-    providers:
-        phpcr_meta:
-            type: file_system
-        phpcr_nodes:
-            type: file_system
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App

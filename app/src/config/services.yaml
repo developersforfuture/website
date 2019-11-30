@@ -30,7 +30,6 @@ parameters:
     parameters:
       jackalope.check_login_on_server: false
 
-
 services:
   # default configuration for services in *this* file
   _defaults:

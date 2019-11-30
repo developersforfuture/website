@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render controls 1`] = `
+<nav
+  class="toolbar light"
+>
+  <div
+    class="controls light"
+  >
+    <button
+      class="button light"
+    >
+      <span
+        class="label"
+      >
+        Test
+      </span>
+    </button>
+  </div>
+  <div
+    class="controls light"
+  >
+    <button
+      class="button light"
+    >
+      <span
+        class="label"
+      >
+        Test
+      </span>
+    </button>
+  </div>
+</nav>
+`;
+
+exports[`Render dark theme 1`] = `
+<nav
+  class="toolbar dark"
+>
+  <div
+    class="controls dark"
+  >
+    <button
+      class="button dark"
+    >
+      <span
+        class="label"
+      >
+        Test
+      </span>
+    </button>
+  </div>
+  <div
+    class="controls dark"
+  >
+    <button
+      class="button dark"
+    >
+      <span
+        class="label"
+      >
+        Test
+      </span>
+    </button>
+  </div>
+</nav>
+`;

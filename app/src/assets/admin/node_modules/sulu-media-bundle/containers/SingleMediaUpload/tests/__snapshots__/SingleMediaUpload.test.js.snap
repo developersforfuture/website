@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render a SingleMediaUpload 1`] = `
+Array [
+  <div
+    aria-disabled="false"
+    class="mediaContainer default"
+    style="position:relative"
+  >
+    <img
+      class="thumbnail"
+      src="sulu-400x400"
+    />
+    <div
+      class="uploadIndicatorContainer"
+    >
+      <div
+        class="uploadIndicator"
+      >
+        <div>
+          <span
+            aria-label="fa-cloud-upload"
+            class="fa fa-cloud-upload uploadIcon"
+          />
+          <div
+            class="uploadInfoText"
+          >
+            Upload media
+          </div>
+        </div>
+      </div>
+    </div>
+    <input
+      autocomplete="off"
+      style="position:absolute;top:0;right:0;bottom:0;left:0;opacity:0.00001;pointer-events:none"
+      type="file"
+    />
+  </div>,
+  <div
+    class="buttons"
+  >
+    <button
+      class="button link"
+      type="button"
+    >
+      <span
+        aria-label="su-download"
+        class="su-download buttonIcon"
+      />
+      <span
+        class="text"
+      >
+        sulu_media.download_media
+      </span>
+    </button>
+    <button
+      class="button link"
+      type="button"
+    >
+      <span
+        aria-label="su-trash-alt"
+        class="su-trash-alt buttonIcon"
+      />
+      <span
+        class="text"
+      >
+        sulu_media.delete_media
+      </span>
+    </button>
+  </div>,
+]
+`;
+
+exports[`Render a SingleMediaUpload in disabled state 1`] = `
+<div
+  aria-disabled="true"
+  class="mediaContainer default disabled"
+  style="position:relative"
+>
+  <img
+    class="thumbnail"
+    src="sulu-400x400"
+  />
+  <div
+    class="uploadIndicatorContainer"
+  >
+    <div
+      class="uploadIndicator"
+    >
+      <div>
+        <span
+          aria-label="fa-cloud-upload"
+          class="fa fa-cloud-upload uploadIcon"
+        />
+        <div
+          class="uploadInfoText"
+        >
+          Upload media
+        </div>
+      </div>
+    </div>
+  </div>
+  <input
+    autocomplete="off"
+    disabled=""
+    style="position:absolute;top:0;right:0;bottom:0;left:0;opacity:0.00001;pointer-events:none"
+    type="file"
+  />
+</div>
+`;
+
+exports[`Render a SingleMediaUpload with a different image size 1`] = `
+Array [
+  <div
+    aria-disabled="false"
+    class="mediaContainer default"
+    style="position:relative"
+  >
+    <img
+      class="thumbnail"
+      src="sulu-400x400"
+    />
+    <div
+      class="uploadIndicatorContainer"
+    >
+      <div
+        class="uploadIndicator"
+      >
+        <div>
+          <span
+            aria-label="fa-cloud-upload"
+            class="fa fa-cloud-upload uploadIcon"
+          />
+          <div
+            class="uploadInfoText"
+          >
+            Upload media
+          </div>
+        </div>
+      </div>
+    </div>
+    <input
+      autocomplete="off"
+      style="position:absolute;top:0;right:0;bottom:0;left:0;opacity:0.00001;pointer-events:none"
+      type="file"
+    />
+  </div>,
+  <div
+    class="buttons"
+  >
+    <button
+      class="button link"
+      type="button"
+    >
+      <span
+        aria-label="su-download"
+        class="su-download buttonIcon"
+      />
+      <span
+        class="text"
+      >
+        sulu_media.download_media
+      </span>
+    </button>
+    <button
+      class="button link"
+      type="button"
+    >
+      <span
+        aria-label="su-trash-alt"
+        class="su-trash-alt buttonIcon"
+      />
+      <span
+        class="text"
+      >
+        sulu_media.delete_media
+      </span>
+    </button>
+  </div>,
+]
+`;
+
+exports[`Render a SingleMediaUpload with an empty icon if no image is passed 1`] = `
+<div
+  aria-disabled="false"
+  class="mediaContainer default"
+  style="position:relative"
+>
+  <div
+    class="emptyIndicator"
+  >
+    <span
+      aria-label="su-image"
+      class="su-image"
+    />
+  </div>
+  <div
+    class="uploadIndicatorContainer"
+  >
+    <div
+      class="uploadIndicator"
+    >
+      <div>
+        <span
+          aria-label="fa-cloud-upload"
+          class="fa fa-cloud-upload uploadIcon"
+        />
+        <div
+          class="uploadInfoText"
+        >
+          Upload media
+        </div>
+      </div>
+    </div>
+  </div>
+  <input
+    autocomplete="off"
+    style="position:absolute;top:0;right:0;bottom:0;left:0;opacity:0.00001;pointer-events:none"
+    type="file"
+  />
+</div>
+`;
+
+exports[`Render a SingleMediaUpload with the round skin 1`] = `
+Array [
+  <div
+    aria-disabled="false"
+    class="mediaContainer round"
+    style="position:relative"
+  >
+    <img
+      class="thumbnail"
+      src="sulu-400x400"
+    />
+    <div
+      class="uploadIndicatorContainer"
+    >
+      <div
+        class="uploadIndicator"
+      >
+        <div>
+          <span
+            aria-label="fa-cloud-upload"
+            class="fa fa-cloud-upload uploadIcon"
+          />
+          <div
+            class="uploadInfoText"
+          >
+            Upload media
+          </div>
+        </div>
+      </div>
+    </div>
+    <input
+      autocomplete="off"
+      style="position:absolute;top:0;right:0;bottom:0;left:0;opacity:0.00001;pointer-events:none"
+      type="file"
+    />
+  </div>,
+  <div
+    class="buttons"
+  >
+    <button
+      class="button link"
+      type="button"
+    >
+      <span
+        aria-label="su-download"
+        class="su-download buttonIcon"
+      />
+      <span
+        class="text"
+      >
+        sulu_media.download_media
+      </span>
+    </button>
+    <button
+      class="button link"
+      type="button"
+    >
+      <span
+        aria-label="su-trash-alt"
+        class="su-trash-alt buttonIcon"
+      />
+      <span
+        class="text"
+      >
+        sulu_media.delete_media
+      </span>
+    </button>
+  </div>,
+]
+`;
+
+exports[`Render a SingleMediaUpload without delete and download button 1`] = `
+Array [
+  <div
+    aria-disabled="false"
+    class="mediaContainer default"
+    style="position:relative"
+  >
+    <img
+      class="thumbnail"
+      src="sulu-400x400"
+    />
+    <div
+      class="uploadIndicatorContainer"
+    >
+      <div
+        class="uploadIndicator"
+      >
+        <div>
+          <span
+            aria-label="fa-cloud-upload"
+            class="fa fa-cloud-upload uploadIcon"
+          />
+          <div
+            class="uploadInfoText"
+          >
+            Test
+          </div>
+        </div>
+      </div>
+    </div>
+    <input
+      autocomplete="off"
+      style="position:absolute;top:0;right:0;bottom:0;left:0;opacity:0.00001;pointer-events:none"
+      type="file"
+    />
+  </div>,
+  <div
+    class="buttons"
+  />,
+]
+`;
