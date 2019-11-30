@@ -1,0 +1,142 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: developers-web
+  labels:
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/version: "v1"
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: developers
+    app.kubernetes.io/managed-by: max
+spec:
+  ports:
+    -
+      name: "http"
+      port: 7092
+      targetPort: 80
+      protocol: "TCP"
+  selector:
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/version: "v1"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: developers-web-v1
+  labels:
+    app.kubernetes.io/name: developers-web
+    app.kubernetes.io/instance: developers-web-v1
+    app.kubernetes.io/version: "v1"
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: developers
+    app.kubernetes.io/managed-by: max
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: developers-web
+      app.kubernetes.io/instance: developers-web-v1
+      app.kubernetes.io/version: "v1"
+  replicas: 3
+  template:
+    metadata:
+      name: developers-web-v1
+      labels:
+        app.kubernetes.io/name: developers-web
+        app.kubernetes.io/instance: developers-web-v1
+        app.kubernetes.io/version: "v1"
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - env:
+            - name: VERSION_TAG
+              value: 3.8.18
+            - name: APP_BASEDIR_LOG
+              value: /app/log
+            - name: APP_BASEDIR_SRC
+              value: /app/src
+            - name: APP_BASEDIR_TMP
+              value: /app/tmp
+            - name: APP_DEBUG
+              value: "0"
+            - name: APP_ENV
+              value: "prod"
+            - name: APP_GROUP_ID
+              value: "1000"
+            - name: APP_PHP_MODULE_DIRECTORY
+              value: /etc/php7/conf.d
+            - name: APP_USER_ID
+              value: "1000"
+            - name: APP_WEBROOT
+              value: /app/src/public
+            - name: BASE_URL
+              value: developersforfuture.org
+            - name: COMPOSER_CACHE_DIR
+              value: /build/cache/composeer
+            - name: CONTAINER_DEBUG
+              value: "0"
+            - name: DB_DATABASE
+              value: developers
+            - name: DB_HOST
+              value: developers-mysql
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: developers-db
+            - name: DB_ROOT_PW
+              valueFrom:
+                secretKeyRef:
+                  key: root
+                  name: developers-db
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: developers-db
+            - name: DB_URL
+              value: mysql://${DB_USER}:${DB_PASSWORD}@developers-mysql:3306/developers
+            - name: PHPCR_PASSWORD
+              value: admin
+            - name: PHPCR_USER
+              value: admin
+            - name: PHPCR_WORKSPACE
+              value: developers
+            - name: RUNTIME
+              value: production
+            - name: SYMFONY_ENV
+              value: prod
+            - name: SYSTEM_APPUSER_NAME
+              value: appuser
+            - name: XDEBUG_ENABLED
+              value: "0"
+            - name: PHPFPM_PM_MAX_CHILDREN
+              value: "10"
+          image: registry.gitlab.com/developersforfuture/registry/app-production:3.8.18
+          name: developers-web
+          ports:
+            - containerPort: 80
+              name: "http"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "248Mi"
+              cpu: "250m"
+          readinessProbe:
+            httpGet:
+              path: /home
+              port: 80
+            initialDelaySeconds: 90
+            timeoutSeconds: 1
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /home
+              port: 80
+            initialDelaySeconds: 200
+            timeoutSeconds: 1
+            periodSeconds: 15

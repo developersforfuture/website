@@ -1,8 +1,5 @@
 .env
 dobi.yaml
-Dockerfile
 .dobi
 .idea
-docker-compose.yaml
 kubernetes/gitlab_kube_config
-kubernetes/app.production.yaml
